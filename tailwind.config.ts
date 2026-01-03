@@ -75,6 +75,16 @@ export default {
           foreground: "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
           border: "var(--sidebar-accent-border)"
         },
+        royal: {
+          DEFAULT: "#0a34bd",
+          light: "#3b5ed6",
+          dark: "#062280"
+        },
+        khaki: {
+          DEFAULT: "#6b7b3a",
+          light: "#8a9c52",
+          dark: "#4d592a"
+        },
         status: {
           online: "rgb(34 197 94)",
           away: "rgb(245 158 11)",
@@ -83,7 +93,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
+        sans: ["DM Sans", "sans-serif"],
+        display: ["Outfit", "sans-serif"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
       },
