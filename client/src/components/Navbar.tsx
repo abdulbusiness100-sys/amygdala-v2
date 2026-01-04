@@ -37,9 +37,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
             <img src={logo} alt="Amygdala Acquisitions" className="h-10 w-auto mix-blend-screen" />
-            <span className="font-display font-bold text-lg tracking-tight text-white">
-              AMYGDALA ACQUISITIONS
-            </span>
+            <span className="font-display font-bold text-lg tracking-tight text-[#6f7e3f]">AMYGDALA  ACQUISITIONS</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -73,7 +71,6 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-background border-b border-white/10 absolute top-full left-0 right-0 p-4 flex flex-col gap-4 shadow-2xl">
