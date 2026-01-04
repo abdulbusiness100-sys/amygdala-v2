@@ -33,13 +33,6 @@ interface ProjectCardProps {
 
 const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
   ({ image, title, delay, isVisible, index, totalCount, onClick, isSelected, details }, ref) => {
-    const middleIndex = (totalCount - 1) / 2;
-    const factor = totalCount > 1 ? (index - middleIndex) / middleIndex : 0;
-    
-    const rotation = factor * 25; 
-    const translationX = factor * 85; 
-    const translationY = Math.abs(factor) * 12;
-
     return (
       <div
         ref={ref}
@@ -49,10 +42,10 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
         )}
         style={{
           transform: isVisible
-            ? `translateY(calc(-100px + ${translationY}px)) translateX(${translationX}px) rotate(${rotation}deg) scale(1)`
-            : "translateY(0px) translateX(0px) rotate(0deg) scale(0.4)",
+            ? `translateY(-100px) scale(1)`
+            : "translateY(0px) scale(0.4)",
           opacity: isSelected ? 0 : isVisible ? 1 : 0,
-          transition: `all 700ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+          transition: `all 500ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
           zIndex: 10 + index,
           left: "-40px",
           top: "-56px",
@@ -64,8 +57,8 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
       >
         <div className={cn(
           "w-full h-full rounded-lg overflow-hidden shadow-xl bg-card border border-white/5 relative",
-          "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          "group-hover/card:-translate-y-8 group-hover/card:shadow-2xl group-hover/card:shadow-primary/40 group-hover/card:ring-2 group-hover/card:ring-primary group-hover/card:scale-125"
+          "transition-all duration-300 ease-out",
+          "group-hover/card:-translate-y-2 group-hover/card:shadow-2xl group-hover/card:ring-1 group-hover/card:ring-primary group-hover/card:scale-105"
         )}>
           <div 
             className="w-full h-full bg-cover bg-center"
@@ -362,15 +355,15 @@ export default function Folder({
     <div className={cn("relative w-full max-w-sm mx-auto", className)}>
       <div 
         className={cn(
-          "relative h-48 bg-primary/20 rounded-2xl border border-primary/30 transition-all duration-500 cursor-pointer overflow-visible group/folder",
-          isOpen ? "scale-105 shadow-2xl shadow-primary/20" : "hover:scale-102"
+          "relative h-48 bg-primary/10 rounded-2xl border border-white/10 transition-all duration-300 cursor-pointer overflow-visible group/folder flex flex-col items-center justify-center p-4",
+          isOpen ? "bg-primary/20 shadow-xl border-primary/20" : "hover:bg-white/5"
         )}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-white font-bold tracking-widest uppercase opacity-50 transition-opacity group-hover/folder:opacity-80">{title}</span>
+        <div className="text-center">
+          <span className="text-white font-bold tracking-widest uppercase opacity-60 transition-opacity group-hover/folder:opacity-100">{title}</span>
         </div>
         
         {projects.map((project, idx) => (
