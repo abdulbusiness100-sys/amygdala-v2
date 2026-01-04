@@ -3,16 +3,41 @@ import { ArrowRight, Target, TrendingUp, Users, Calendar, CheckCircle2, LineChar
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import Folder from "@/components/ui/3d-folder";
 import heroBg from "@assets/hero_background.jpg";
+import processBehavioralImg from "@assets/process_behavioral_design.jpg";
+import processDataImg from "@assets/process_data_forecasting.jpg";
+import processAiImg from "@assets/process_ai_automation.jpg";
+import serviceAttractImg from "@assets/service_attract_qualify.jpg";
+import serviceNurtureImg from "@assets/service_nurture_book.jpg";
+import serviceCloseImg from "@assets/service_close_retain.jpg";
 
 export default function Home() {
-  const processSteps = [
-    { icon: Target, label: 'ATTRACT', color: 'from-blue-600 to-blue-800' },
-    { icon: Users, label: 'QUALIFY', color: 'from-[#6b7b3a] to-[#4d592a]' },
-    { icon: TrendingUp, label: 'NURTURE', color: 'from-blue-600 to-blue-800' },
-    { icon: Calendar, label: 'BOOK', color: 'from-[#6b7b3a] to-[#4d592a]' },
-    { icon: CheckCircle2, label: 'CLOSE', color: 'from-blue-600 to-blue-800' },
-    { icon: LineChart, label: 'RETAIN', color: 'from-[#6b7b3a] to-[#4d592a]' },
+  const processGroups = [
+    {
+      title: "ATTRACT",
+      projects: [{ id: "1", title: "Targeted Systems", image: serviceAttractImg }]
+    },
+    {
+      title: "QUALIFY",
+      projects: [{ id: "2", title: "Behavioral Filters", image: processBehavioralImg }]
+    },
+    {
+      title: "NURTURE",
+      projects: [{ id: "3", title: "Automated Trust", image: serviceNurtureImg }]
+    },
+    {
+      title: "BOOK",
+      projects: [{ id: "4", title: "Deterministic Scheduling", image: processDataImg }]
+    },
+    {
+      title: "CLOSE",
+      projects: [{ id: "5", title: "High-Value Conversion", image: serviceCloseImg }]
+    },
+    {
+      title: "RETAIN",
+      projects: [{ id: "6", title: "Lifecycle Optimization", image: processAiImg }]
+    }
   ];
 
   return (
@@ -64,19 +89,14 @@ export default function Home() {
       </section>
 
       {/* Process Flow */}
-      <section className="py-12 border-y border-white/5 bg-white/5 backdrop-blur-sm">
+      <section className="py-24 border-y border-white/5 bg-white/5 backdrop-blur-sm relative overflow-visible">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4 lg:gap-8">
-            {processSteps.map((step, index) => (
-              <ScrollReveal key={index} delay={index * 1} className="flex items-center">
-                 <div className={`group relative p-6 rounded-2xl bg-gradient-to-br ${step.color} shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-default min-w-[140px] text-center`}>
-                    <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <step.icon className="w-8 h-8 text-white mx-auto mb-3" />
-                    <span className="text-white font-bold text-sm tracking-widest">{step.label}</span>
-                 </div>
-                 {index < processSteps.length - 1 && (
-                   <div className="hidden md:block w-12 h-[2px] bg-gradient-to-r from-gray-700 to-gray-800 mx-2 opacity-50"></div>
-                 )}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+            {processGroups.map((group, index) => (
+              <ScrollReveal key={index} delay={index * 1}>
+                <div className="flex flex-col items-center gap-4">
+                  <Folder title={group.title} projects={group.projects} className="w-full" />
+                </div>
               </ScrollReveal>
             ))}
           </div>
