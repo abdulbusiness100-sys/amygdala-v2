@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import logo from "@assets/AMYGDALA_ACQUISITIONS_1767539487979.png";
+import logo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1767539527482.png";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +37,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
             <img src={logo} alt="Amygdala Acquisitions" className="h-12 w-auto" />
-            <span className="font-display font-bold text-lg tracking-tight text-white">AMYGDALA ACQUISITIONS</span>
+            <span className="font-display font-bold text-lg tracking-tight text-[#6b7c3a]">AMYGDALA  ACQUISITIONS</span>
           </Link>
 
           {/* Desktop Nav */}

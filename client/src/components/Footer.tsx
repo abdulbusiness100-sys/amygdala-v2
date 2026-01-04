@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import logo from "@assets/AMYGDALA_ACQUISITIONS_1767539487979.png";
+import logo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1767539527482.png";
 
 export default function Footer() {
   return (
