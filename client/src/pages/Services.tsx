@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ArrowRight, CheckCircle2, Sparkles, X } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import LeadForm from "@/components/LeadForm";
@@ -38,6 +39,29 @@ export default function Services() {
     { q: "Do I need technical skills?", a: 'No. We handle all the technical implementation. For the Amygdala tier, we provide training anyone can follow.' },
     { q: "What's the minimum commitment?", a: 'We recommend a minimum of 3 months to see full results, but we offer flexible arrangements based on your needs and goals.' },
   ];
+
+  useEffect(() => {
+    // Dynamically load Calendly script if not already present
+    if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
+      const script = document.createElement('script');
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      document.body.appendChild(script);
+    } else {
+      // If script already exists, we might need to re-initialize the widget
+      // @ts-ignore
+      if (window.Calendly) {
+        // @ts-ignore
+        window.Calendly.initBadgeWidget({
+          url: 'https://calendly.com/spidxr253/30min',
+          text: 'Book Your Strategy Call',
+          color: '#0b6315',
+          textColor: '#ffffff',
+          branding: true
+        });
+      }
+    }
+  }, []);
 
   return (
     <div className="overflow-hidden bg-background min-h-screen">
