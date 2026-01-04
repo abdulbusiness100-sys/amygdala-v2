@@ -1,9 +1,15 @@
 import { Link } from "wouter";
-import { ArrowRight, Target, Brain, BrainCircuit, BrainCog, BarChart3, Bot, Sparkles, Settings, Rocket, TrendingUp, DollarSign } from "lucide-react";
+import { ArrowRight, Target, Brain, BarChart3, Bot, Sparkles, Settings, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import heroBg from "@assets/hero_background.jpg";
+import iconSystemBuild from "@assets/download_(37)_1767538981647.png";
+import iconTargetedMarketing from "@assets/download_(38)_1767538989776.png";
+import iconSalesManagement from "@assets/download_(39)_1767538998761.png";
+import iconFinancialOptimization from "@assets/download_(40)_1767539007434.png";
+import iconInnovativeGrowth from "@assets/download_(41)_1767539016492.png";
+import iconAiIntegration from "@assets/download_(42)_1767539048260.png";
 
 export default function Home() {
   return (
@@ -73,54 +79,48 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: Brain,
+                image: iconSystemBuild,
                 title: "System Build & Operation",
                 desc: "Foundational architecture engineered for predictable, scalable growth.",
-                color: "from-primary/20 to-primary/5",
-                iconColor: "text-primary"
+                color: "from-primary/20 to-primary/5"
               },
               {
-                icon: Target,
+                image: iconTargetedMarketing,
                 title: "Targeted Marketing",
                 desc: "Precision campaigns that reach decision-makers at the moment of intent.",
-                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5",
-                iconColor: "text-[#6b7b3a]"
+                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5"
               },
               {
-                icon: BrainCircuit,
+                image: iconSalesManagement,
                 title: "Sales Management & Execution",
                 desc: "Systematic processes that convert qualified leads into closed deals.",
-                color: "from-primary/20 to-primary/5",
-                iconColor: "text-primary"
+                color: "from-primary/20 to-primary/5"
               },
               {
-                icon: DollarSign,
+                image: iconFinancialOptimization,
                 title: "Financial Optimization",
                 desc: "Data-driven allocation that maximizes ROI across every channel.",
-                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5",
-                iconColor: "text-[#6b7b3a]"
+                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5"
               },
               {
-                icon: BrainCog,
+                image: iconInnovativeGrowth,
                 title: "Innovative Growth & Enhancement",
                 desc: "Continuous iteration fueled by behavioral insights and market data.",
-                color: "from-primary/20 to-primary/5",
-                iconColor: "text-primary"
+                color: "from-primary/20 to-primary/5"
               },
               {
-                icon: Bot,
+                image: iconAiIntegration,
                 title: "AI Integration & Refinement",
                 desc: "Intelligent automation that learns and adapts to optimize outcomes.",
-                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5",
-                iconColor: "text-[#6b7b3a]"
+                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5"
               }
             ].map((item, i) => (
               <ScrollReveal key={i} delay={i * 1}>
                 <div className="group relative h-full bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:border-white/20 transition-all duration-300">
                   <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                   <div className="relative z-10">
-                    <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
-                      <item.icon className={`w-7 h-7 ${item.iconColor}`} />
+                    <div className="w-20 h-20 mb-6">
+                      <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
                     </div>
                     <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
                     <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
