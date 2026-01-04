@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import logo from "@assets/AMYGDALA_ACQUISITIONS_(1)_1767539284082.png";
+import logo from "@assets/AMYGDALA_ACQUISITIONS_1767539487979.png";
 
 export default function Footer() {
   return (
@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <img src={logo} alt="Amygdala Acquisitions" className="h-12 w-auto mix-blend-screen" />
+              <img src={logo} alt="Amygdala Acquisitions" className="h-14 w-auto" />
               <span className="font-display font-bold text-xl text-white">
                 AMYGDALA ACQUISITIONS
               </span>
