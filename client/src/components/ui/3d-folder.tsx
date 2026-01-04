@@ -67,10 +67,9 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
           "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
           "group-hover/card:-translate-y-8 group-hover/card:shadow-2xl group-hover/card:shadow-primary/40 group-hover/card:ring-2 group-hover/card:ring-primary group-hover/card:scale-125"
         )}>
-          <img 
-            src={image || PLACEHOLDER_IMAGE} 
-            alt={title} 
-            className="w-full h-full object-cover"
+          <div 
+            className="w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${image || PLACEHOLDER_IMAGE})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
           <p className="absolute bottom-1.5 left-1.5 right-1.5 text-[9px] font-black uppercase tracking-tighter text-white truncate drop-shadow-md">
@@ -294,10 +293,9 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
             >
               {projects.map((project, idx) => (
                 <div key={project.id} className="min-w-full h-full relative">
-                  <img
-                    src={project.image || PLACEHOLDER_IMAGE}
-                    alt={project.title}
-                    className="w-full h-full object-cover select-none"
+                  <div 
+                    className="w-full h-full bg-cover bg-center select-none"
+                    style={{ backgroundImage: `url(${project.image || PLACEHOLDER_IMAGE})` }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none" />
                 </div>
