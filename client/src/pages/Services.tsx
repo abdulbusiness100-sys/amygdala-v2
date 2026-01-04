@@ -174,12 +174,12 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">Book Your Strategy Call</h2>
           <p className="text-gray-400 mb-12">Select a time that works for you.</p>
-          <div className="bg-background rounded-2xl h-[600px] flex items-center justify-center border border-white/10 shadow-2xl">
-             {/* Placeholder for real calendly embed */}
-             <div className="text-center">
-               <p className="text-gray-500 mb-4">[ Calendly Embed Widget Would Go Here ]</p>
-               <Button variant="outline" onClick={() => window.open('https://calendly.com', '_blank')}>Open Calendar</Button>
-             </div>
+          <div className="bg-background rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+             <div 
+               className="calendly-inline-widget" 
+               data-url="https://calendly.com/spidxr253/30min?background_color=0b6315"
+               style={{ minWidth: '320px', height: '700px' }}
+             />
           </div>
         </div>
       </section>
