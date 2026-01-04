@@ -1,75 +1,11 @@
 import { Link } from "wouter";
-import { ArrowRight, Target, TrendingUp, Users, Calendar, CheckCircle2, LineChart, Brain, BarChart3, Bot, Sparkles, Settings, Rocket } from "lucide-react";
+import { ArrowRight, Target, Brain, BarChart3, Bot, Sparkles, Settings, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
-import Folder from "@/components/ui/3d-folder";
 import heroBg from "@assets/hero_background.jpg";
-import processBehavioralImg from "@assets/process_behavioral_design.jpg";
-import processDataImg from "@assets/process_data_forecasting.jpg";
-import processAiImg from "@assets/process_ai_automation.jpg";
-import serviceAttractImg from "@assets/service_attract_qualify.jpg";
-import serviceNurtureImg from "@assets/service_nurture_book.jpg";
-import serviceCloseImg from "@assets/service_close_retain.jpg";
 
 export default function Home() {
-  const processGroups = [
-    {
-      title: "ATTRACT",
-      projects: [{ 
-        id: "1", 
-        title: "Targeted Systems", 
-        image: serviceAttractImg,
-        details: ["Psychological Profiling", "Data-Driven Targeting", "Multi-Channel Distribution", "Pattern Interrupt Design"]
-      }]
-    },
-    {
-      title: "QUALIFY",
-      projects: [{ 
-        id: "2", 
-        title: "Behavioral Filters", 
-        image: processBehavioralImg,
-        details: ["Automated Vetting", "Commitment Escalation", "Pain Point Mapping", "Intake Optimization"]
-      }]
-    },
-    {
-      title: "NURTURE",
-      projects: [{ 
-        id: "3", 
-        title: "Automated Trust", 
-        image: serviceNurtureImg,
-        details: ["Behavioral Retargeting", "Authority Anchoring", "Scientific Content Loops", "Automated Sequence Optimization"]
-      }]
-    },
-    {
-      title: "BOOK",
-      projects: [{ 
-        id: "4", 
-        title: "Deterministic Scheduling", 
-        image: processDataImg,
-        details: ["Frictionless Booking", "Confirmation Psychology", "Zero-Latency Handoff", "Calendar Density Management"]
-      }]
-    },
-    {
-      title: "CLOSE",
-      projects: [{ 
-        id: "5", 
-        title: "High-Value Conversion", 
-        image: serviceCloseImg,
-        details: ["Sales Process Engineering", "Objection Pre-emption", "Contract Automation", "Value Anchoring"]
-      }]
-    },
-    {
-      title: "RETAIN",
-      projects: [{ 
-        id: "6", 
-        title: "Lifecycle Optimization", 
-        image: processAiImg,
-        details: ["LTV Forecasting", "Churn Predicition", "Upsell Automation", "Referral Engineering"]
-      }]
-    }
-  ];
-
   return (
     <div className="overflow-hidden relative min-h-screen">
       {/* Global Background Image with Overlay */}
@@ -119,20 +55,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process Flow */}
-      <section className="py-24 border-y border-white/5 relative overflow-visible z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-            {processGroups.map((group, index) => (
-              <ScrollReveal key={index} delay={index * 1}>
-                <div className="flex flex-col items-center gap-4">
-                  <Folder title={group.title} projects={group.projects} className="w-full" />
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Problem Section */}
       <section className="py-24 relative z-10">
