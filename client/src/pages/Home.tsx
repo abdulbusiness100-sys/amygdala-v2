@@ -37,15 +37,14 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-              Build & Scale With<br />
+              We build & scale businesses with<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6b7b3a] via-white to-primary">
-                Empirical Growth Systems
+                High-Level Growth Systems
               </span>
             </h1>
 
             <p className="text-gray-400 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-              We replace guesswork with granular behavioral science.
-              Stop marketing. Start engineering your growth.
+              Through scientific application of your own business data, market performance and economics.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
