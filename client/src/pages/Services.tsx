@@ -47,19 +47,6 @@ export default function Services() {
       script.src = "https://assets.calendly.com/assets/external/widget.js";
       script.async = true;
       document.body.appendChild(script);
-    } else {
-      // If script already exists, we might need to re-initialize the widget
-      // @ts-ignore
-      if (window.Calendly) {
-        // @ts-ignore
-        window.Calendly.initBadgeWidget({
-          url: 'https://calendly.com/spidxr253/30min',
-          text: 'Book Your Strategy Call',
-          color: '#0b6315',
-          textColor: '#ffffff',
-          branding: true
-        });
-      }
     }
   }, []);
 
