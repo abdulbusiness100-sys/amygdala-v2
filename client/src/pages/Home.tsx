@@ -71,18 +71,19 @@ export default function Home() {
   ];
 
   return (
-    <div className="overflow-hidden bg-background">
+    <div className="overflow-hidden relative min-h-screen">
+      {/* Global Background Image with Overlay */}
+      <div className="fixed inset-0 z-0">
+        <img src={heroBg} alt="Background" className="w-full h-full object-cover opacity-15" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95"></div>
+      </div>
+      
+      {/* Animated Orbs */}
+      <div className="fixed top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[128px] animate-pulse z-0" />
+      <div className="fixed bottom-1/4 right-1/4 w-80 h-80 bg-[#6b7b3a]/10 rounded-full blur-[128px] animate-pulse delay-1000 z-0" />
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-            <img src={heroBg} alt="Background" className="w-full h-full object-cover opacity-20" />
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background"></div>
-        </div>
-        
-        {/* Animated Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#6b7b3a]/20 rounded-full blur-[128px] animate-pulse delay-1000" />
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <ScrollReveal>
@@ -119,7 +120,7 @@ export default function Home() {
       </section>
 
       {/* Process Flow */}
-      <section className="py-24 border-y border-white/5 bg-white/5 backdrop-blur-sm relative overflow-visible">
+      <section className="py-24 border-y border-white/5 relative overflow-visible z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
             {processGroups.map((group, index) => (
@@ -134,7 +135,7 @@ export default function Home() {
       </section>
 
       {/* Problem Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal>
@@ -176,7 +177,7 @@ export default function Home() {
       </section>
 
       {/* Amygdala Method */}
-      <section className="py-24 bg-white/5 relative">
+      <section className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -227,8 +228,7 @@ export default function Home() {
       </section>
 
       {/* Results Stats */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/10"></div>
+      <section className="py-24 relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
              <h2 className="text-4xl md:text-5xl text-white text-center mb-16">
@@ -238,16 +238,17 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {[
-              { value: 342, label: "Qualified Leads", prefix: "+" },
-              { value: 85, label: "Booked Calls", prefix: "+" },
-              { value: 42, label: "Close Rate", suffix: "%" }
+              { value: 100, label: "Qualified Leads", suffix: "+" },
+              { value: 2, label: "More Booked Calls", suffix: "x", subtext: "ICP aligned" },
+              { value: 40, label: "Close Rate", suffix: "%" }
             ].map((stat, i) => (
               <ScrollReveal key={i} delay={i * 1.5}>
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl">
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl text-center">
                   <div className="text-6xl font-display font-bold text-white mb-2">
                     <AnimatedCounter end={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                   </div>
                   <div className="text-[#6b7b3a] font-bold tracking-wider uppercase text-sm">{stat.label}</div>
+                  {stat.subtext && <div className="text-gray-400 text-xs mt-1">{stat.subtext}</div>}
                 </div>
               </ScrollReveal>
             ))}
@@ -255,45 +256,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-display font-bold text-center text-white mb-16">Real <span className="text-primary">Results</span></h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                text: "Finance restructure saved us £20K. Their CFO advisory is worth 10x the investment.",
-                author: "ZE", role: "CEO", color: "bg-green-500"
-              },
-              {
-                text: "Cut overhead in all 11 locations using their AI booking. Game changer.",
-                author: "SM", role: "Dental Practice Manager", color: "bg-pink-500"
-              },
-              {
-                text: "Hired our entire C-suite in 3 weeks through their executive partner program.",
-                author: "SH", role: "Clinic Owner", color: "bg-purple-500"
-              }
-            ].map((t, i) => (
-              <ScrollReveal key={i} delay={i * 1}>
-                <div className="bg-white/5 border border-white/10 p-8 rounded-2xl h-full flex flex-col justify-between">
-                  <p className="text-gray-300 text-lg italic mb-6">"{t.text}"</p>
-                  <div className="flex items-center gap-4">
-                    <div className={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center font-bold text-white text-sm`}>
-                      {t.author}
-                    </div>
-                    <div>
-                      <div className="text-white font-bold text-sm">{t.role}</div>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Roadmap */}
-      <section className="py-24 bg-white/5">
+      <section className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <h2 className="text-4xl md:text-5xl text-center text-white mb-16">
@@ -325,8 +290,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-background relative overflow-hidden text-center">
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent"></div>
+      <section className="py-32 relative overflow-hidden text-center z-10">
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <ScrollReveal>
             <h2 className="text-5xl font-display font-bold text-white mb-8">

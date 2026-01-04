@@ -3,6 +3,7 @@ import { Target, Brain, MessageSquare, Calendar, Phone, LineChart, CheckCircle2,
 import processBehavioral from "@assets/process_behavioral_design.jpg";
 import processData from "@assets/process_data_forecasting.jpg";
 import processAi from "@assets/process_ai_automation.jpg";
+import heroBg from "@assets/hero_background.jpg";
 
 export default function WhatWeDo() {
   const systemDiagram = [
@@ -23,10 +24,15 @@ export default function WhatWeDo() {
   ];
 
   return (
-    <div className="bg-background min-h-screen overflow-hidden">
+    <div className="min-h-screen overflow-hidden relative">
+      {/* Global Background Image with Overlay */}
+      <div className="fixed inset-0 z-0">
+        <img src={heroBg} alt="Background" className="w-full h-full object-cover opacity-15" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95"></div>
+      </div>
       
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-primary/10 to-background text-center">
+      <section className="pt-32 pb-20 text-center relative z-10">
         <div className="max-w-7xl mx-auto px-4">
           <ScrollReveal>
              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
@@ -40,7 +46,7 @@ export default function WhatWeDo() {
       </section>
 
       {/* System Diagram */}
-      <section className="py-20 bg-white/5">
+      <section className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
              {systemDiagram.map((item, i) => (
@@ -59,7 +65,7 @@ export default function WhatWeDo() {
       </section>
 
       {/* Deep Dive Pillars */}
-      <section className="py-20">
+      <section className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -132,7 +138,7 @@ export default function WhatWeDo() {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 bg-white/5">
+      <section className="py-20 relative z-10">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center text-white mb-16">Implementation Timeline</h2>
           

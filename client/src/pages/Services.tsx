@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { ArrowRight, CheckCircle2, Sparkles, X } from "lucide-react";
+import { CheckCircle2, Sparkles, X } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import LeadForm from "@/components/LeadForm";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Button } from "@/components/ui/button";
+import heroBg from "@assets/hero_background.jpg";
 
 export default function Services() {
   const services = [
@@ -40,21 +40,17 @@ export default function Services() {
     { q: "What's the minimum commitment?", a: 'We recommend a minimum of 3 months to see full results, but we offer flexible arrangements based on your needs and goals.' },
   ];
 
-  useEffect(() => {
-    // Dynamically load Calendly script if not already present
-    if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
-      const script = document.createElement('script');
-      script.src = "https://assets.calendly.com/assets/external/widget.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
 
   return (
-    <div className="overflow-hidden bg-background min-h-screen">
+    <div className="overflow-hidden relative min-h-screen">
+      {/* Global Background Image with Overlay */}
+      <div className="fixed inset-0 z-0">
+        <img src={heroBg} alt="Background" className="w-full h-full object-cover opacity-15" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95"></div>
+      </div>
       
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-background via-background to-white/5">
+      <section className="pt-32 pb-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <ScrollReveal>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
@@ -68,7 +64,7 @@ export default function Services() {
       </section>
 
       {/* Pricing Tiers */}
-      <section className="py-20">
+      <section className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-8">
             {services.map((tier, i) => (
@@ -118,7 +114,7 @@ export default function Services() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-20 bg-white/5">
+      <section className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white text-center mb-12">Compare All Tiers</h2>
           <div className="overflow-x-auto">
@@ -152,7 +148,7 @@ export default function Services() {
       </section>
 
       {/* Lead Form */}
-      <section id="audit" className="py-24">
+      <section id="audit" className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <ScrollReveal>
@@ -181,22 +177,25 @@ export default function Services() {
       </section>
 
       {/* Calendly */}
-      <section id="book-call" className="py-24 bg-white/5">
-        <div className="max-w-7xl mx-auto px-4 text-center">
+      <section id="book-call" className="py-24 relative z-10">
+        <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">Book Your Strategy Call</h2>
           <p className="text-gray-400 mb-12">Select a time that works for you.</p>
-          <div className="bg-background rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-             <div 
-               className="calendly-inline-widget" 
-               data-url="https://calendly.com/spidxr253/30min?background_color=0b6315"
-               style={{ minWidth: '320px', height: '700px' }}
+          <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 shadow-2xl p-4">
+             <iframe 
+               src="https://calendly.com/spidxr253/30min?hide_gdpr_banner=1&background_color=1a1f2c&text_color=ffffff&primary_color=6b7b3a"
+               width="100%"
+               height="700"
+               frameBorder="0"
+               title="Schedule a call"
+               className="rounded-xl"
              />
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-24">
+      <section className="py-24 relative z-10">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-white text-center mb-12">
             Frequently Asked <span className="text-[#6b7b3a]">Questions</span>
