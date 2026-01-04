@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import logo from "@assets/brain_logo.svg";
+import logo from "@assets/AMYGDALA_ACQUISITIONS_(1)_1767539284082.png";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,13 +35,8 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="bg-white/10 p-2 rounded-lg group-hover:bg-white/20 transition-colors">
-              <img src={logo} alt="Amygdala Logo" className="h-8 w-8 invert opacity-90" />
-            </div>
-            <span className="font-display font-bold text-xl tracking-tight text-white">
-              AMYGDALA <span className="text-[#6b7b3a]">ACQUISITIONS</span>
-            </span>
+          <Link href="/" className="flex items-center group">
+            <img src={logo} alt="Amygdala Acquisitions" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
