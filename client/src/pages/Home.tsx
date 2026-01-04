@@ -16,27 +16,57 @@ export default function Home() {
   const processGroups = [
     {
       title: "ATTRACT",
-      projects: [{ id: "1", title: "Targeted Systems", image: serviceAttractImg }]
+      projects: [{ 
+        id: "1", 
+        title: "Targeted Systems", 
+        image: serviceAttractImg,
+        details: ["Psychological Profiling", "Data-Driven Targeting", "Multi-Channel Distribution", "Pattern Interrupt Design"]
+      }]
     },
     {
       title: "QUALIFY",
-      projects: [{ id: "2", title: "Behavioral Filters", image: processBehavioralImg }]
+      projects: [{ 
+        id: "2", 
+        title: "Behavioral Filters", 
+        image: processBehavioralImg,
+        details: ["Automated Vetting", "Commitment Escalation", "Pain Point Mapping", "Intake Optimization"]
+      }]
     },
     {
       title: "NURTURE",
-      projects: [{ id: "3", title: "Automated Trust", image: serviceNurtureImg }]
+      projects: [{ 
+        id: "3", 
+        title: "Automated Trust", 
+        image: serviceNurtureImg,
+        details: ["Behavioral Retargeting", "Authority Anchoring", "Scientific Content Loops", "Automated Sequence Optimization"]
+      }]
     },
     {
       title: "BOOK",
-      projects: [{ id: "4", title: "Deterministic Scheduling", image: processDataImg }]
+      projects: [{ 
+        id: "4", 
+        title: "Deterministic Scheduling", 
+        image: processDataImg,
+        details: ["Frictionless Booking", "Confirmation Psychology", "Zero-Latency Handoff", "Calendar Density Management"]
+      }]
     },
     {
       title: "CLOSE",
-      projects: [{ id: "5", title: "High-Value Conversion", image: serviceCloseImg }]
+      projects: [{ 
+        id: "5", 
+        title: "High-Value Conversion", 
+        image: serviceCloseImg,
+        details: ["Sales Process Engineering", "Objection Pre-emption", "Contract Automation", "Value Anchoring"]
+      }]
     },
     {
       title: "RETAIN",
-      projects: [{ id: "6", title: "Lifecycle Optimization", image: processAiImg }]
+      projects: [{ 
+        id: "6", 
+        title: "Lifecycle Optimization", 
+        image: processAiImg,
+        details: ["LTV Forecasting", "Churn Predicition", "Upsell Automation", "Referral Engineering"]
+      }]
     }
   ];
 

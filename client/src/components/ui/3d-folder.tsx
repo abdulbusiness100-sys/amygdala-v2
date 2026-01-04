@@ -14,6 +14,7 @@ export interface Project {
   id: string;
   image: string;
   title: string;
+  details?: string[];
 }
 
 const PLACEHOLDER_IMAGE = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200";
@@ -27,10 +28,11 @@ interface ProjectCardProps {
   totalCount: number;
   onClick: () => void;
   isSelected: boolean;
+  details?: string[];
 }
 
 const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
-  ({ image, title, delay, isVisible, index, totalCount, onClick, isSelected }, ref) => {
+  ({ image, title, delay, isVisible, index, totalCount, onClick, isSelected, details }, ref) => {
     const middleIndex = (totalCount - 1) / 2;
     const factor = totalCount > 1 ? (index - middleIndex) / middleIndex : 0;
     
@@ -63,7 +65,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
         <div className={cn(
           "w-full h-full rounded-lg overflow-hidden shadow-xl bg-card border border-white/5 relative",
           "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          "group-hover/card:-translate-y-6 group-hover/card:shadow-2xl group-hover/card:shadow-primary/40 group-hover/card:ring-2 group-hover/card:ring-primary group-hover/card:scale-125"
+          "group-hover/card:-translate-y-8 group-hover/card:shadow-2xl group-hover/card:shadow-primary/40 group-hover/card:ring-2 group-hover/card:ring-primary group-hover/card:scale-125"
         )}>
           <img 
             src={image || PLACEHOLDER_IMAGE} 
@@ -310,12 +312,24 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
               transition: "opacity 500ms ease-out 500ms, transform 600ms cubic-bezier(0.16, 1, 0.3, 1) 500ms",
             }}
           >
-            <div className="flex items-center justify-between gap-6">
-              <div className="flex-1 min-w-0 text-white">
-                <h2 className="text-2xl md:text-3xl font-bold truncate">
-                  {currentProject.title}
-                </h2>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between gap-6">
+                <div className="flex-1 min-w-0 text-white">
+                  <h2 className="text-2xl md:text-3xl font-bold truncate">
+                    {currentProject.title}
+                  </h2>
+                </div>
               </div>
+              {currentProject.details && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+                  {currentProject.details.map((detail, i) => (
+                    <div key={i} className="flex items-center gap-2 text-gray-400 text-sm md:text-base">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <span>{detail}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -350,13 +364,15 @@ export default function Folder({
     <div className={cn("relative w-full max-w-sm mx-auto", className)}>
       <div 
         className={cn(
-          "relative h-48 bg-primary/20 rounded-2xl border border-primary/30 transition-all duration-500 cursor-pointer overflow-visible",
+          "relative h-48 bg-primary/20 rounded-2xl border border-primary/30 transition-all duration-500 cursor-pointer overflow-visible group/folder",
           isOpen ? "scale-105 shadow-2xl shadow-primary/20" : "hover:scale-102"
         )}
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-white font-bold tracking-widest uppercase opacity-50">{title}</span>
+          <span className="text-white font-bold tracking-widest uppercase opacity-50 transition-opacity group-hover/folder:opacity-80">{title}</span>
         </div>
         
         {projects.map((project, idx) => (
@@ -371,6 +387,7 @@ export default function Folder({
             totalCount={projects.length}
             onClick={() => handleCardClick(idx)}
             isSelected={isLightboxOpen && activeProject === idx}
+            details={project.details}
           />
         ))}
       </div>
