@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Target, Brain, BarChart3, Bot, Sparkles, Settings, Rocket } from "lucide-react";
+import { ArrowRight, Target, Brain, BrainCircuit, BrainCog, BarChart3, Bot, Sparkles, Settings, Rocket, TrendingUp, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
@@ -55,6 +55,82 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Complete Infrastructure Section */}
+      <section className="py-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl text-white mb-4 leading-tight">
+                Complete infrastructure to build and scale<br />
+                <span className="text-[#6b7b3a]">your business accurately</span>
+              </h2>
+              <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+                Every function of your business, powered by the science of decision-making.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Brain,
+                title: "System Build & Operation",
+                desc: "Foundational architecture engineered for predictable, scalable growth.",
+                color: "from-primary/20 to-primary/5",
+                iconColor: "text-primary"
+              },
+              {
+                icon: Target,
+                title: "Targeted Marketing",
+                desc: "Precision campaigns that reach decision-makers at the moment of intent.",
+                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5",
+                iconColor: "text-[#6b7b3a]"
+              },
+              {
+                icon: BrainCircuit,
+                title: "Sales Management & Execution",
+                desc: "Systematic processes that convert qualified leads into closed deals.",
+                color: "from-primary/20 to-primary/5",
+                iconColor: "text-primary"
+              },
+              {
+                icon: DollarSign,
+                title: "Financial Optimization",
+                desc: "Data-driven allocation that maximizes ROI across every channel.",
+                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5",
+                iconColor: "text-[#6b7b3a]"
+              },
+              {
+                icon: BrainCog,
+                title: "Innovative Growth & Enhancement",
+                desc: "Continuous iteration fueled by behavioral insights and market data.",
+                color: "from-primary/20 to-primary/5",
+                iconColor: "text-primary"
+              },
+              {
+                icon: Bot,
+                title: "AI Integration & Refinement",
+                desc: "Intelligent automation that learns and adapts to optimize outcomes.",
+                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5",
+                iconColor: "text-[#6b7b3a]"
+              }
+            ].map((item, i) => (
+              <ScrollReveal key={i} delay={i * 1}>
+                <div className="group relative h-full bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:border-white/20 transition-all duration-300">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                  <div className="relative z-10">
+                    <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
+                      <item.icon className={`w-7 h-7 ${item.iconColor}`} />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Problem Section */}
       <section className="py-24 relative z-10">
@@ -167,7 +243,7 @@ export default function Home() {
               <ScrollReveal key={i} delay={i * 1.5}>
                 <div className="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl text-center">
                   <div className="text-6xl font-display font-bold text-white mb-2">
-                    <AnimatedCounter end={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+                    <AnimatedCounter end={stat.value} suffix={stat.suffix} />
                   </div>
                   <div className="text-[#6b7b3a] font-bold tracking-wider uppercase text-sm">{stat.label}</div>
                   {stat.subtext && <div className="text-gray-400 text-xs mt-1">{stat.subtext}</div>}
