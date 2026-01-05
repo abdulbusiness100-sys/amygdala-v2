@@ -9,8 +9,11 @@ import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import WhatWeDo from "@/pages/WhatWeDo";
 import NotFound from "@/pages/not-found";
+import { useScrollBehavior } from "@/hooks/useScrollBehavior";
 
 function Router() {
+  useScrollBehavior();
+  
   return (
     <Switch>
       <Route path="/" component={Home} />

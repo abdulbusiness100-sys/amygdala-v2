@@ -1,4 +1,4 @@
-import { Link, useLocation } from "wouter";
+import { Link, useLocation, useRoute } from "wouter";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -7,7 +7,25 @@ import logo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1767539527482.png";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
+
+  const handleBookCall = () => {
+    if (location === "/services") {
+      const element = document.getElementById("book-call");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      setLocation("/services");
+      setTimeout(() => {
+        const element = document.getElementById("book-call");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+    setMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,11 +73,9 @@ export default function Navbar() {
                 </div>
               </Link>
             ))}
-            <Link href="/services#book-call">
-              <Button variant="khaki" size="sm" className="font-semibold">
-                Book Strategy Call
-              </Button>
-            </Link>
+            <Button variant="khaki" size="sm" className="font-semibold" onClick={handleBookCall}>
+              Book Strategy Call
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -88,11 +104,9 @@ export default function Navbar() {
               </div>
             </Link>
           ))}
-          <Link href="/services#book-call">
-            <Button className="w-full" variant="khaki" onClick={() => setMobileMenuOpen(false)}>
-              Book Strategy Call
-            </Button>
-          </Link>
+          <Button className="w-full" variant="khaki" onClick={handleBookCall}>
+            Book Strategy Call
+          </Button>
         </div>
       )}
     </nav>

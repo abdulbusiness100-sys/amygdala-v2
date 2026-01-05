@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { ArrowRight, Target, Brain, BarChart3, Bot, Sparkles, Settings, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -12,6 +12,18 @@ import iconInnovativeGrowth from "@assets/download_(41)_1767539016492.png";
 import iconAiIntegration from "@assets/download_(42)_1767539048260.png";
 
 export default function Home() {
+  const [, setLocation] = useLocation();
+
+  const handleBookCall = () => {
+    setLocation("/services");
+    setTimeout(() => {
+      const element = document.getElementById("book-call");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   return (
     <div className="overflow-hidden relative min-h-screen">
       {/* Global Background Image with Overlay */}
@@ -46,11 +58,9 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/services#book-call">
-                <Button size="lg" variant="khaki" className="text-lg px-8 py-6">
-                  Start Your Engine <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
+              <Button size="lg" variant="khaki" className="text-lg px-8 py-6" onClick={handleBookCall}>
+                Start Your Engine <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
               <Link href="/what-we-do">
                 <Button size="lg" variant="glass" className="text-lg px-8 py-6">
                   See The Mechanism
@@ -294,11 +304,9 @@ export default function Home() {
             <h2 className="text-5xl font-display font-bold text-white mb-8">
               Ready to Build Your <span className="text-[#6b7b3a]">Growth Machine</span>?
             </h2>
-            <Link href="/services#book-call">
-              <Button size="lg" variant="khaki" className="text-xl px-12 py-8 rounded-2xl shadow-2xl hover:shadow-[#6b7b3a]/40">
-                Book Your Strategy Call <ArrowRight className="ml-2" />
-              </Button>
-            </Link>
+            <Button size="lg" variant="khaki" className="text-xl px-12 py-8 rounded-2xl shadow-2xl hover:shadow-[#6b7b3a]/40" onClick={handleBookCall}>
+              Book Your Strategy Call <ArrowRight className="ml-2" />
+            </Button>
           </ScrollReveal>
         </div>
       </section>
