@@ -22,9 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Loader2, ArrowRight } from "lucide-react";
 
-const formSchema = insertLeadSchema.extend({
-  // Override or add specific UI validations if needed
-});
+const formSchema = insertLeadSchema.extend({});
 
 export default function LeadForm() {
   const { mutate, isPending } = useCreateLead();
@@ -52,8 +50,8 @@ export default function LeadForm() {
   }
 
   return (
-    <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl">
-      <h3 className="text-2xl font-bold text-white mb-6">Request Your Audit</h3>
+    <div className="glass p-6 md:p-8 rounded-2xl">
+      <h3 className="font-display text-2xl text-charcoal mb-6">Request Your Audit</h3>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -62,9 +60,9 @@ export default function LeadForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-300">Full Name</FormLabel>
+                  <FormLabel className="text-charcoal-medium font-accent text-sm">Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-primary/50" />
+                    <Input placeholder="John Doe" {...field} className="bg-white border-gold/20 text-charcoal placeholder:text-charcoal-medium/50 focus:border-gold" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -75,9 +73,9 @@ export default function LeadForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-300">Email Address</FormLabel>
+                  <FormLabel className="text-charcoal-medium font-accent text-sm">Email Address</FormLabel>
                   <FormControl>
-                    <Input placeholder="john@company.com" {...field} className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-primary/50" />
+                    <Input placeholder="john@company.com" {...field} className="bg-white border-gold/20 text-charcoal placeholder:text-charcoal-medium/50 focus:border-gold" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -91,9 +89,9 @@ export default function LeadForm() {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-300">Phone (Optional)</FormLabel>
+                  <FormLabel className="text-charcoal-medium font-accent text-sm">Phone (Optional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="+1 (555) 000-0000" {...field} value={field.value || ""} className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-primary/50" />
+                    <Input placeholder="+1 (555) 000-0000" {...field} value={field.value || ""} className="bg-white border-gold/20 text-charcoal placeholder:text-charcoal-medium/50 focus:border-gold" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -104,10 +102,10 @@ export default function LeadForm() {
               name="businessType"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-300">Business Type</FormLabel>
+                  <FormLabel className="text-charcoal-medium font-accent text-sm">Business Type</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="bg-white/5 border-white/10 text-white focus:border-primary/50">
+                      <SelectTrigger className="bg-white border-gold/20 text-charcoal focus:border-gold">
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
                     </FormControl>
@@ -130,10 +128,10 @@ export default function LeadForm() {
             name="currentRevenue"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-300">Monthly Revenue</FormLabel>
+                <FormLabel className="text-charcoal-medium font-accent text-sm">Monthly Revenue</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
-                    <SelectTrigger className="bg-white/5 border-white/10 text-white focus:border-primary/50">
+                    <SelectTrigger className="bg-white border-gold/20 text-charcoal focus:border-gold">
                       <SelectValue placeholder="Select range" />
                     </SelectTrigger>
                   </FormControl>
@@ -155,11 +153,11 @@ export default function LeadForm() {
             name="mainChallenges"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-300">Main Challenges</FormLabel>
+                <FormLabel className="text-charcoal-medium font-accent text-sm">Main Challenges</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="What's stopping you from scaling right now?" 
-                    className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 min-h-[100px] focus:border-primary/50"
+                    className="bg-white border-gold/20 text-charcoal placeholder:text-charcoal-medium/50 min-h-[100px] focus:border-gold"
                     {...field} 
                   />
                 </FormControl>
@@ -170,7 +168,7 @@ export default function LeadForm() {
 
           <Button 
             type="submit" 
-            className="w-full bg-gradient-to-r from-[#6b7b3a] to-[#8a9c52] hover:shadow-lg hover:shadow-[#6b7b3a]/20 text-white font-bold py-6 text-lg"
+            className="w-full gold-gradient text-charcoal font-accent font-bold py-6 text-lg border-0"
             disabled={isPending}
           >
             {isPending ? (

@@ -1,8 +1,8 @@
-# Amygdala Acquisitions
+# SPIDXR NETWORK
 
 ## Overview
 
-Amygdala Acquisitions is a marketing agency website built as a full-stack TypeScript application. The site showcases their client acquisition services using behavioral psychology, predictive data, and AI automation. It features a modern dark-themed UI with lead capture functionality, service pages, and methodology explanations.
+SPIDXR NETWORK is a full-stack growth operator website built as a full-stack TypeScript application. The site showcases unified business development solutions across three funnel layers (Top/Middle/Back). It features a premium light-themed UI with gold accents, glass morphism effects, and a luxury tech consultancy aesthetic. Key features include lead capture functionality, service breakdowns by funnel stage, pricing tiers (Strand/Web/Network), and a detailed implementation process.
 
 ## User Preferences
 

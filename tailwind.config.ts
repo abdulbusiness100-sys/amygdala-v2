@@ -75,15 +75,21 @@ export default {
           foreground: "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
           border: "var(--sidebar-accent-border)"
         },
-        royal: {
-          DEFAULT: "#0a34bd",
-          light: "#3b5ed6",
-          dark: "#062280"
+        gold: {
+          DEFAULT: "#C4A052",
+          light: "#F5E6C8",
+          dark: "#D4AF37",
+          warm: "#D4AF37"
         },
-        khaki: {
-          DEFAULT: "#6b7b3a",
-          light: "#8a9c52",
-          dark: "#4d592a"
+        cream: {
+          DEFAULT: "#FAFAF8",
+          light: "#FFFFFF",
+          dark: "#F5F5F3"
+        },
+        charcoal: {
+          DEFAULT: "#1A1A1A",
+          light: "#333333",
+          medium: "#666666"
         },
         status: {
           online: "rgb(34 197 94)",
@@ -93,9 +99,10 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["DM Sans", "sans-serif"],
-        display: ["Outfit", "sans-serif"],
-        serif: ["var(--font-serif)"],
+        sans: ["Inter", "sans-serif"],
+        display: ["Playfair Display", "serif"],
+        accent: ["Space Grotesk", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
         mono: ["var(--font-mono)"],
       },
       keyframes: {

@@ -1,43 +1,65 @@
 import { Link } from "wouter";
-import logo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1767539527482.png";
+import { SiLinkedin, SiX, SiInstagram } from "react-icons/si";
+import logo from "@assets/AMYGDALA_ACQUISITIONS_(3)_1768832874297.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-background border-t border-white/10 pt-20 pb-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-2">
+    <footer className="bg-charcoal pt-20 pb-10 grain">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+          {/* Column 1 - Logo & About */}
+          <div>
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <img src={logo} alt="Amygdala Acquisitions" className="h-14 w-auto" />
-              <span className="font-display font-bold text-xl text-white">
-                AMYGDALA ACQUISITIONS
-              </span>
+              <img src={logo} alt="SPIDXR NETWORK" className="h-10 w-auto brightness-0 invert opacity-90" />
             </Link>
-            <p className="text-gray-400 max-w-sm mb-6">
-              Engineering growth through behavioral psychology, predictive data, and AI automation.
+            <p className="text-cream/70 text-sm leading-relaxed mb-6">
+              The unified growth engine for ambitious businesses ready to scale without the chaos.
             </p>
-            <div className="text-sm text-gray-500">
-              © {new Date().getFullYear()} Amygdala Acquisitions. All rights reserved.
+            <div className="flex items-center gap-4">
+              <a href="#" className="text-gold hover:text-gold-light transition-colors">
+                <SiLinkedin className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gold hover:text-gold-light transition-colors">
+                <SiX className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gold hover:text-gold-light transition-colors">
+                <SiInstagram className="w-5 h-5" />
+              </a>
             </div>
           </div>
           
+          {/* Column 2 - Navigate */}
           <div>
-            <h4 className="font-bold text-white mb-6">Navigation</h4>
+            <h4 className="font-accent font-semibold text-gold text-sm tracking-wider uppercase mb-6">Navigate</h4>
             <ul className="space-y-4">
-              <li><Link href="/" className="text-gray-400 hover:text-[#6b7b3a] transition-colors">Home</Link></li>
-              <li><Link href="/services" className="text-gray-400 hover:text-[#6b7b3a] transition-colors">Services</Link></li>
-              <li><Link href="/what-we-do" className="text-gray-400 hover:text-[#6b7b3a] transition-colors">Methodology</Link></li>
-              <li><Link href="/services#audit" className="text-gray-400 hover:text-[#6b7b3a] transition-colors">Get Audit</Link></li>
+              <li><Link href="/" className="text-cream/70 hover:text-gold transition-colors text-sm">Home</Link></li>
+              <li><Link href="/services" className="text-cream/70 hover:text-gold transition-colors text-sm">Services</Link></li>
+              <li><Link href="/what-we-do" className="text-cream/70 hover:text-gold transition-colors text-sm">Process</Link></li>
+              <li><Link href="/services#book-call" className="text-cream/70 hover:text-gold transition-colors text-sm">Contact</Link></li>
             </ul>
           </div>
 
+          {/* Column 3 - Contact */}
           <div>
-            <h4 className="font-bold text-white mb-6">Legal</h4>
-            <ul className="space-y-4">
-              <li><a href="#" className="text-gray-400 hover:text-[#6b7b3a] transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-[#6b7b3a] transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-[#6b7b3a] transition-colors">Cookie Policy</a></li>
+            <h4 className="font-accent font-semibold text-gold text-sm tracking-wider uppercase mb-6">Get In Touch</h4>
+            <ul className="space-y-4 text-cream/70 text-sm">
+              <li>strategy@spidxrnetwork.com</li>
+              <li className="pt-2">London, UK</li>
+              <li>Los Angeles, CA</li>
+              <li>Dubai, UAE</li>
             </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-cream/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-sm text-cream/50">
+            © {new Date().getFullYear()} SPIDXR NETWORK. All rights reserved.
+          </div>
+          <div className="flex items-center gap-6 text-sm text-cream/50">
+            <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>
+            <span>•</span>
+            <a href="#" className="hover:text-gold transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

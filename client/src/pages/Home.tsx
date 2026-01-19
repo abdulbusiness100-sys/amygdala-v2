@@ -1,15 +1,8 @@
-import { Link, useLocation } from "wouter";
-import { ArrowRight, Target, Brain, BarChart3, Bot, Sparkles, Settings, Rocket } from "lucide-react";
+import { useLocation } from "wouter";
+import { ArrowRight, Link2Off, Clock, Compass, Radar, Handshake, Server, ChevronDown, ArrowDown, ArrowUp, Search, Settings, Rocket, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
-import heroBg from "@assets/hero_background.jpg";
-import iconSystemBuild from "@assets/download_(37)_1767538981647.png";
-import iconTargetedMarketing from "@assets/download_(38)_1767538989776.png";
-import iconSalesManagement from "@assets/download_(39)_1767538998761.png";
-import iconFinancialOptimization from "@assets/download_(40)_1767539007434.png";
-import iconInnovativeGrowth from "@assets/download_(41)_1767539016492.png";
-import iconAiIntegration from "@assets/download_(42)_1767539048260.png";
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -24,239 +17,281 @@ export default function Home() {
     }, 100);
   };
 
-  return (
-    <div className="overflow-hidden relative min-h-screen">
-      {/* Global Background Image with Overlay */}
-      <div className="fixed inset-0 z-0">
-        <img src={heroBg} alt="Background" className="w-full h-full object-cover opacity-15" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95"></div>
-      </div>
-      
-      {/* Animated Orbs */}
-      <div className="fixed top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[128px] animate-pulse z-0" />
-      <div className="fixed bottom-1/4 right-1/4 w-80 h-80 bg-[#6b7b3a]/10 rounded-full blur-[128px] animate-pulse delay-1000 z-0" />
+  const problemCards = [
+    { icon: Link2Off, title: "Disconnected Systems", desc: "Your website doesn't talk to your CRM. Your ads don't inform your sales team. Your data lives in 15 different places." },
+    { icon: Clock, title: "Wasted Time & Budget", desc: "You're paying 5 agencies to do what one integrated team could do better. Each handoff adds 2 weeks. Each miscommunication costs $10K." },
+    { icon: Compass, title: "No Single Source of Truth", desc: "When something breaks, you play telephone between vendors. When something works, nobody knows why." },
+  ];
 
+  const stackLayers = [
+    {
+      title: "VISIBILITY & ACQUISITION",
+      subtitle: "Top of Funnel • Front End",
+      icon: Radar,
+      services: ["Website Development", "Branding", "Social Media Automation", "E-commerce Growth", "Lead Generation", "Funnel Creation", "Landing Pages", "Paid & Organic Acquisition"],
+      color: "from-gold to-gold-dark"
+    },
+    {
+      title: "CONVERSION & SALES",
+      subtitle: "Middle Funnel • Mid-Backend",
+      icon: Handshake,
+      services: ["Lead Nurturing", "Email Automation", "Full Sales Cycle", "Setter → Closer Pipeline", "CSM & Client Relations", "Sales Automation", "CRM Management", "Revenue Operations"],
+      color: "from-gold-dark to-gold"
+    },
+    {
+      title: "INFRASTRUCTURE & SCALE",
+      subtitle: "Back End • Enterprise",
+      icon: Server,
+      services: ["Full App Development", "Custom CRM Build", "Digital Products", "Go-To-Market Strategy", "AI Integration", "Technical Setup", "Social Media Team Deployment", "Enterprise Operations"],
+      color: "from-gold to-gold-dark"
+    }
+  ];
+
+  const processSteps = [
+    { num: "01", title: "Deep Dive Audit", week: "Week 1-2", desc: "We dissect your entire operation. Every system. Every metric. Every opportunity." },
+    { num: "02", title: "Unified Architecture", week: "Week 2-3", desc: "We design your custom growth system. Every component connected. Every workflow optimized." },
+    { num: "03", title: "Systematic Build", week: "Week 3-8", desc: "We construct your unified stack. Piece by piece. Test by test. Until it's bulletproof." },
+    { num: "04", title: "Growth Activation", week: "Week 8+", desc: "We turn on the engine. Optimize in real-time. Scale what works. Compound your returns." },
+  ];
+
+  return (
+    <div className="overflow-hidden relative min-h-screen grain">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden z-10">
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Background subtle pattern */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-cream via-white to-cream-dark"></div>
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gold/5 rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gold/5 rounded-full blur-[100px]"></div>
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8 mx-auto">
-              <Sparkles className="w-4 h-4 text-[#6b7b3a]" />
-              <span className="text-[#6b7b3a] font-medium text-sm tracking-wider uppercase">Psychology • Data • AI</span>
-            </div>
+            <div className="w-px h-12 bg-gold mx-auto mb-8"></div>
             
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-              We build & scale businesses with<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6b7b3a] via-white to-primary">
-                High-Level Growth Systems
-              </span>
+            <p className="font-accent text-gold text-sm tracking-[0.2em] uppercase mb-6">SPIDXR NETWORK</p>
+            
+            <h1 className="font-display text-5xl md:text-7xl text-charcoal mb-6 leading-tight">
+              The Unified<br />
+              <span className="text-gradient">Growth Engine</span>
             </h1>
 
-            <p className="text-gray-400 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-              Through scientific application of your own business data, market performance and economics.
+            <p className="text-charcoal-medium text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+              Full-stack business development. From first click to enterprise scale.<br />
+              One partner. One system. Zero fragmentation.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="khaki" className="text-lg px-8 py-6" onClick={handleBookCall}>
-                Start Your Engine <ArrowRight className="ml-2 h-5 w-5" />
+              <Button 
+                variant="outline"
+                size="lg" 
+                className="font-accent text-charcoal border-charcoal/20 hover:bg-charcoal/5 text-lg px-8 py-6"
+                onClick={() => setLocation("/what-we-do")}
+              >
+                See How It Works
               </Button>
-              <Link href="/what-we-do">
-                <Button size="lg" variant="glass" className="text-lg px-8 py-6">
-                  See The Mechanism
-                </Button>
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Complete Infrastructure Section */}
-      <section className="py-24 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl text-white mb-4 leading-tight">
-                Complete infrastructure to build and scale<br />
-                <span className="text-[#6b7b3a]">your business accurately</span>
-              </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-                Every function of your business, powered by the science of decision-making.
-              </p>
+              <Button 
+                size="lg" 
+                className="font-accent gold-gradient text-charcoal border-0 text-lg px-8 py-6 shimmer"
+                onClick={handleBookCall}
+              >
+                Book Strategy Call <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                image: iconSystemBuild,
-                title: "System Build & Operation",
-                desc: "Foundational architecture engineered for predictable, scalable growth.",
-                color: "from-primary/20 to-primary/5"
-              },
-              {
-                image: iconTargetedMarketing,
-                title: "Targeted Marketing",
-                desc: "Precision campaigns that reach decision-makers at the moment of intent.",
-                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5"
-              },
-              {
-                image: iconSalesManagement,
-                title: "Sales Management & Execution",
-                desc: "Systematic processes that convert qualified leads into closed deals.",
-                color: "from-primary/20 to-primary/5"
-              },
-              {
-                image: iconFinancialOptimization,
-                title: "Financial Optimization",
-                desc: "Data-driven allocation that maximizes ROI across every channel.",
-                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5"
-              },
-              {
-                image: iconInnovativeGrowth,
-                title: "Innovative Growth & Enhancement",
-                desc: "Continuous iteration fueled by behavioral insights and market data.",
-                color: "from-primary/20 to-primary/5"
-              },
-              {
-                image: iconAiIntegration,
-                title: "AI Integration & Refinement",
-                desc: "Intelligent automation that learns and adapts to optimize outcomes.",
-                color: "from-[#6b7b3a]/20 to-[#6b7b3a]/5"
-              }
-            ].map((item, i) => (
-              <ScrollReveal key={i} delay={i * 1}>
-                <div className="group relative h-full bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:border-white/20 transition-all duration-300">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                  <div className="relative z-10">
-                    <div className="w-20 h-20 mb-6">
-                      <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+          {/* Scroll indicator */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <ChevronDown className="w-6 h-6 text-gold" />
           </div>
         </div>
       </section>
 
-      {/* Problem Section */}
-      <section className="py-24 relative z-10">
+      {/* The Problem Section */}
+      <section className="py-24 bg-white relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <ScrollReveal>
-              <h2 className="text-4xl md:text-5xl text-white mb-6 leading-tight">
-                If you're posting but not <span className="text-[#6b7b3a]">converting...</span>
-              </h2>
-              <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                Your "marketing" is just noise. The market doesn't need more content. It needs clarity. Most firms rely on hope-marketing: throw content at the wall and pray for a lead.
-              </p>
-              <div className="p-6 bg-white/5 border-l-4 border-primary rounded-r-xl">
-                <p className="text-white italic text-lg">
-                  "We don't do hope. We build deterministic systems that turn strangers into high-value clients predictably."
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Left - Sticky headline */}
+            <div className="lg:sticky lg:top-32 lg:self-start">
+              <ScrollReveal>
+                <div className="w-px h-8 bg-gold mb-6"></div>
+                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">THE FRAGMENTATION PROBLEM</p>
+                <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
+                  Your Growth Stack<br />
+                  <span className="text-gradient">Is Bleeding Money</span>
+                </h2>
+                <p className="text-charcoal-medium text-lg leading-relaxed">
+                  The average scaling business juggles 7+ vendors, 12+ tools, and countless handoffs. Each gap is a leak. Each silo is a bottleneck. Each miscommunication costs you customers.
                 </p>
-              </div>
-            </ScrollReveal>
-
-            <div className="grid grid-cols-2 gap-6">
-              <ScrollReveal delay={2}>
-                <div className="bg-white/5 border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors">
-                  <div className="text-5xl font-bold text-[#6b7b3a] mb-2">0%</div>
-                  <div className="text-gray-400 text-sm uppercase tracking-wider">Predictability</div>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal delay={3}>
-                <div className="bg-white/5 border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors">
-                  <div className="text-5xl font-bold text-[#6b7b3a] mb-2">100h+</div>
-                  <div className="text-gray-400 text-sm uppercase tracking-wider">Wasted Monthly</div>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal delay={4} className="col-span-2">
-                <div className="bg-gradient-to-r from-primary to-primary/80 p-8 rounded-2xl text-center shadow-2xl shadow-primary/20">
-                  <h3 className="text-2xl font-bold text-white mb-2">The Fix</h3>
-                  <p className="text-blue-100">A closed-loop system that qualifies leads before you ever speak to them.</p>
-                </div>
               </ScrollReveal>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Amygdala Method */}
-      <section className="py-24 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl text-white mb-4">
-                The <span className="text-gradient">Amygdala</span> Method
-              </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-                We target the reptilian brain—the decision maker. Logic validates, but emotion decides.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { 
-                icon: Brain, 
-                title: 'Behavioral Design', 
-                desc: 'Every touchpoint is engineered to trigger specific psychological responses that build trust and authority.',
-                color: 'text-primary' 
-              },
-              { 
-                icon: BarChart3, 
-                title: 'Data & Forecasting', 
-                desc: 'No guesswork. We use predictive analytics to model your growth trajectory before spending a dollar.',
-                color: 'text-[#6b7b3a]' 
-              },
-              { 
-                icon: Bot, 
-                title: 'AI Automation', 
-                desc: 'Human connection where it matters. Ruthless automation everywhere else to scale without burnout.',
-                color: 'text-primary' 
-              }
-            ].map((item, i) => (
-              <ScrollReveal key={i} delay={i * 2}>
-                <div className="h-full bg-background border border-white/10 p-8 rounded-3xl hover:border-white/20 transition-all hover:shadow-2xl group">
-                  <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors`}>
-                    <item.icon className={`w-8 h-8 ${item.color}`} />
+            {/* Right - Problem cards */}
+            <div className="space-y-6">
+              {problemCards.map((card, i) => (
+                <ScrollReveal key={i} delay={i * 1}>
+                  <div className="glass p-8 rounded-2xl card-3d">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                        <card.icon className="w-6 h-6 text-gold" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-xl text-charcoal mb-2">{card.title}</h3>
+                        <p className="text-charcoal-medium text-sm leading-relaxed">{card.desc}</p>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    {item.desc}
+                </ScrollReveal>
+              ))}
+              
+              {/* Solution card */}
+              <ScrollReveal delay={4}>
+                <div className="gold-gradient p-8 rounded-2xl">
+                  <h3 className="font-display text-xl text-charcoal mb-2">The SPIDXR Solution</h3>
+                  <p className="text-charcoal/80 text-sm leading-relaxed">
+                    One unified system. Every strand connected. Marketing, sales, and technology moving as one organism.
                   </p>
                 </div>
               </ScrollReveal>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Results Stats */}
-      <section className="py-24 relative overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Unified Stack Section */}
+      <section className="py-24 bg-cream relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-             <h2 className="text-4xl md:text-5xl text-white text-center mb-16">
-               Results You Can <span className="text-[#6b7b3a]">Measure</span>
-             </h2>
+            <div className="text-center mb-16">
+              <div className="w-px h-8 bg-gold mx-auto mb-6"></div>
+              <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">THE UNIFIED GROWTH STACK</p>
+              <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-4">
+                Three Layers. One System.
+              </h2>
+              <p className="text-charcoal-medium text-lg max-w-2xl mx-auto">
+                Every service interconnected. Every action informed by data. Every result compounding on the last.
+              </p>
+            </div>
           </ScrollReveal>
-          
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            {[
-              { value: 100, label: "Qualified Leads", suffix: "+" },
-              { value: 2, label: "More Booked Calls", suffix: "x", subtext: "ICP aligned" },
-              { value: 40, label: "Close Rate", suffix: "%" }
-            ].map((stat, i) => (
+
+          {/* Stack visualization */}
+          <div className="space-y-6 mb-16">
+            {stackLayers.map((layer, i) => (
               <ScrollReveal key={i} delay={i * 1.5}>
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl text-center">
-                  <div className="text-6xl font-display font-bold text-white mb-2">
-                    <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                <div className="glass p-8 rounded-2xl hover:border-gold/30 transition-all duration-300 group">
+                  <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+                    <div className="flex items-center gap-4 lg:w-72 flex-shrink-0">
+                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${layer.color} flex items-center justify-center`}>
+                        <layer.icon className="w-7 h-7 text-charcoal" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-lg text-charcoal">{layer.title}</h3>
+                        <p className="font-accent text-xs text-charcoal-medium tracking-wider uppercase">{layer.subtitle}</p>
+                      </div>
+                    </div>
+                    <div className="flex-1 flex flex-wrap gap-2">
+                      {layer.services.map((service, si) => (
+                        <span 
+                          key={si} 
+                          className="px-3 py-1.5 bg-white/50 rounded-full text-xs font-accent text-charcoal-medium border border-gold/10"
+                        >
+                          {service}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="text-[#6b7b3a] font-bold tracking-wider uppercase text-sm">{stat.label}</div>
-                  {stat.subtext && <div className="text-gray-400 text-xs mt-1">{stat.subtext}</div>}
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Connection lines indicator */}
+          <div className="flex justify-center">
+            <div className="flex flex-col items-center gap-2 text-gold/50">
+              <ArrowDown className="w-5 h-5 animate-pulse" />
+              <span className="font-accent text-xs tracking-wider">FULLY CONNECTED</span>
+              <ArrowUp className="w-5 h-5 animate-pulse" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Value Props / Stats Section */}
+      <section className="py-24 bg-white relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-5 gap-16 items-center">
+            {/* Left content */}
+            <div className="lg:col-span-3">
+              <ScrollReveal>
+                <div className="w-px h-8 bg-gold mb-6"></div>
+                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">THE UNIFIED ADVANTAGE</p>
+                <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
+                  When Everything Connects,<br />
+                  <span className="text-gradient">Everything Compounds.</span>
+                </h2>
+                <p className="text-charcoal-medium text-lg leading-relaxed mb-6">
+                  Most businesses operate in silos. Marketing doesn't talk to sales. Sales doesn't inform product. Data sits unused. Opportunities slip through cracks.
+                </p>
+                <p className="text-charcoal-medium text-lg leading-relaxed">
+                  SPIDXR NETWORK eliminates these gaps. We build one integrated system where every action informs every other. Your ad data improves your sales scripts. Your sales calls improve your targeting. Your customer feedback improves your product.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            {/* Right stats */}
+            <div className="lg:col-span-2 grid grid-cols-2 gap-4">
+              {[
+                { value: 73, prefix: "↓", suffix: "%", label: "Reduction in vendor management time" },
+                { value: 3.2, suffix: "x", label: "Faster speed to market" },
+                { value: 47, prefix: "↑", suffix: "%", label: "Improvement in lead-to-close rate" },
+                { value: 40, prefix: "↓", suffix: "%", label: "Reduction in tech stack costs" },
+              ].map((stat, i) => (
+                <ScrollReveal key={i} delay={i * 1}>
+                  <div className="glass p-6 rounded-2xl text-center card-3d">
+                    <div className="text-3xl font-display text-charcoal mb-2">
+                      {stat.prefix}<AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                    </div>
+                    <p className="text-xs text-charcoal-medium leading-tight">{stat.label}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-24 bg-cream relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <div className="w-px h-8 bg-gold mx-auto mb-6"></div>
+              <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">HOW WE WORK</p>
+              <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-4">
+                From Audit to Empire.
+              </h2>
+              <p className="text-charcoal-medium text-lg">A proven process. Typical timeline: 8-12 weeks.</p>
+            </div>
+          </ScrollReveal>
+
+          {/* Timeline */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {processSteps.map((step, i) => (
+              <ScrollReveal key={i} delay={i * 1}>
+                <div className="relative h-full">
+                  {/* Connection line */}
+                  {i < processSteps.length - 1 && (
+                    <div className="hidden lg:block absolute top-12 left-full w-full h-px bg-gold/30 z-0"></div>
+                  )}
+                  
+                  <div className="glass p-8 rounded-2xl h-full card-3d relative z-10">
+                    <div className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center mb-6">
+                      <span className="font-display text-charcoal text-lg">{step.num}</span>
+                    </div>
+                    <p className="font-accent text-xs text-gold tracking-wider uppercase mb-2">{step.week}</p>
+                    <h3 className="font-display text-xl text-charcoal mb-3">{step.title}</h3>
+                    <p className="text-charcoal-medium text-sm leading-relaxed">{step.desc}</p>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
@@ -264,49 +299,26 @@ export default function Home() {
         </div>
       </section>
 
-
-      {/* Roadmap */}
-      <section className="py-24 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* CTA Section */}
+      <section className="py-32 bg-cream-dark relative z-10">
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl text-center text-white mb-16">
-              <span className="text-gradient">Implementation</span> Roadmap
+            <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">READY TO UNIFY?</p>
+            <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6">
+              Let's Build Your<br />
+              <span className="text-gradient">Growth Engine</span>
             </h2>
-          </ScrollReveal>
-          
-          <div className="grid md:grid-cols-3 gap-8 relative">
-             <div className="hidden md:block absolute top-12 left-0 right-0 h-1 bg-gradient-to-r from-primary via-[#6b7b3a] to-primary opacity-30"></div>
-             
-             {[
-               { num: "01", title: "Audit", icon: Target, desc: "We tear down your current process to find the leaks." },
-               { num: "02", title: "Rebuild", icon: Settings, desc: "We engineer your new offer and acquisition assets." },
-               { num: "03", title: "Rollout", icon: Rocket, desc: "We launch, gather data, and optimize for scale." }
-             ].map((step, i) => (
-               <ScrollReveal key={i} delay={i * 2} className="relative z-10 text-center">
-                 <div className="w-24 h-24 mx-auto bg-background border-4 border-white/10 rounded-full flex items-center justify-center text-3xl font-bold text-primary mb-6 shadow-xl">
-                   {step.num}
-                 </div>
-                 <div className="bg-background border border-white/10 p-8 rounded-2xl">
-                   <step.icon className="w-8 h-8 text-[#6b7b3a] mx-auto mb-4" />
-                   <h3 className="text-2xl font-bold text-white mb-2">{step.title}</h3>
-                   <p className="text-gray-400">{step.desc}</p>
-                 </div>
-               </ScrollReveal>
-             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-32 relative overflow-hidden text-center z-10">
-        <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <ScrollReveal>
-            <h2 className="text-5xl font-display font-bold text-white mb-8">
-              Ready to Build Your <span className="text-[#6b7b3a]">Growth Machine</span>?
-            </h2>
-            <Button size="lg" variant="khaki" className="text-xl px-12 py-8 rounded-2xl shadow-2xl hover:shadow-[#6b7b3a]/40" onClick={handleBookCall}>
+            <p className="text-charcoal-medium text-lg mb-10 max-w-xl mx-auto">
+              Book a strategy call. We'll audit your current setup, identify your biggest opportunities, and show you exactly how a unified system would transform your business.
+            </p>
+            <Button 
+              size="lg" 
+              className="font-accent gold-gradient text-charcoal border-0 text-xl px-12 py-8 rounded-2xl shimmer"
+              onClick={handleBookCall}
+            >
               Book Your Strategy Call <ArrowRight className="ml-2" />
             </Button>
+            <p className="text-charcoal-medium text-sm mt-6">30 minutes. No obligation. Pure value.</p>
           </ScrollReveal>
         </div>
       </section>
