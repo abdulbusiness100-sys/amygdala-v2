@@ -212,21 +212,21 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Calendly - Blue and Gold Theme */}
-      <section id="book-call" className="py-24 bg-gradient-to-br from-[#0A1628] via-[#1A2744] to-[#0D1B2A] relative z-10 overflow-hidden">
-        {/* Decorative gold accents */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
+      {/* Calendly - Khaki Gold Theme */}
+      <section id="book-call" className="py-24 bg-[#B8A04A] relative z-10 overflow-hidden">
+        {/* Subtle metallic gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-[#8B7635]/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#A8923E]/40 to-transparent"></div>
         
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <ScrollReveal>
-            <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">SCHEDULE A CALL</p>
-            <h2 className="font-display text-4xl text-white mb-6">Book Your Strategy Call</h2>
-            <p className="text-white/70 mb-12">Select a time that works for you. 30 minutes. Pure value.</p>
+            <p className="font-accent text-charcoal text-sm tracking-[0.15em] uppercase mb-4">SCHEDULE A CALL</p>
+            <h2 className="font-display text-4xl text-charcoal mb-6">Book Your Strategy Call</h2>
+            <p className="text-charcoal/80 mb-12">Select a time that works for you. 30 minutes. Pure value.</p>
           </ScrollReveal>
-          <div className="bg-white rounded-2xl overflow-hidden shadow-2xl">
+          <div className="bg-white rounded-2xl overflow-hidden shadow-2xl border-2 border-charcoal/20">
             <iframe 
-              src="https://calendly.com/spidxrnetwork/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=d0c26a&primary_color=065bb2"
+              src="https://calendly.com/spidxrnetwork/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=B8A04A&primary_color=1a1a1a"
               width="100%"
               height="700"
               frameBorder="0"

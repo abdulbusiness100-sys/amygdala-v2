@@ -89,7 +89,7 @@ Major visual overhaul with centered hero layout and scroll effects:
 #### Homepage Layout Changes
 - **Hero Section**: Centered layout (was split left-to-right) with Framer Motion scroll parallax effect
 - **Hero Image**: Using AMYGDALA_ACQUISITIONS_(1) brain visualization
-- **Metrics Updated**: 60+ Businesses Impacted, $10M+ Client Portfolio, 100% Satisfaction Rate, $1M+ Generated in 2025
+- **Metrics Updated**: 60+ Businesses Impacted, $10M+ Client Portfolio, 100% Satisfaction Rate, $2.6M+ Generated in 2025
 - **Testimonials Section REMOVED**: Will be added as separate "Client Success & Results" page later
 
 #### Scroll Effects
@@ -140,6 +140,14 @@ All elements have proper data-testid attributes for QA automation:
 - Pricing Tiers: `cylinder-tier-{i}`
 - Globe: `globe-container`, `globe-fallback`, `phase-legend`
 - Buttons: `button-hero-cta`, `button-cta-book-call`
+
+### January 2026 Updates (Latest)
+- **Logo Replacement**: "SPIDXR NETWORK" text replaced with inline logo (blue version) sized to match font, in Home.tsx metrics section and Footer.tsx copyright
+- **Calendly Background**: Changed to solid khaki gold (#B8A04A) with subtle metallic gradient overlays for professional look
+- **What Drives Us Section**: Core values pillars now have border-2 border-charcoal
+- **Globe Initial View**: Changed to face America (lat: 39.8, lng: -98.5, altitude: 2.5)
+- **6 Phases Grid**: Changed from horizontal flex wrap to responsive 3×2 grid (grid-cols-2 sm:grid-cols-3)
+- **Dashboard Timeline**: Added horizontal timeline visual below dashboard features showing 4-step journey (Audit → Architect → Build → Scale)
 
 ### Performance Notes
 - Large images (700KB+) in attached_assets should be optimized for production

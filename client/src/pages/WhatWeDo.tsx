@@ -75,7 +75,7 @@ export default function WhatWeDo() {
       try {
         globeEl.current.controls().autoRotate = true;
         globeEl.current.controls().autoRotateSpeed = 0.5;
-        globeEl.current.pointOfView({ altitude: 2.5 });
+        globeEl.current.pointOfView({ lat: 39.8, lng: -98.5, altitude: 2.5 });
       } catch (e) {
         setWebGLSupported(false);
       }
@@ -218,7 +218,7 @@ export default function WhatWeDo() {
           <div className="grid md:grid-cols-3 gap-8">
             {coreValues.map((value, i) => (
               <ScrollReveal key={i} delay={i * 1}>
-                <div className="glass p-8 rounded-2xl text-center h-full card-3d">
+                <div className="glass p-8 rounded-2xl text-center h-full card-3d border-2 border-charcoal">
                   <div className="w-14 h-14 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6">
                     <value.icon className="w-7 h-7 text-charcoal" />
                   </div>
@@ -315,14 +315,18 @@ export default function WhatWeDo() {
               )}
             </GlobeErrorBoundary>
             
-            {/* Phase Legend */}
-            <div className="absolute bottom-4 left-4 right-4 flex flex-wrap justify-center gap-3" data-testid="phase-legend">
-              {phasePoints.map((point, i) => (
-                <div key={i} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                  <div className="w-2 h-2 rounded-full bg-gold"></div>
-                  <span className="text-white text-xs font-accent">{point.phase}</span>
-                </div>
-              ))}
+            {/* 3x2 Phase Grid */}
+            <div className="absolute bottom-4 left-4 right-4" data-testid="phase-legend">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 max-w-3xl mx-auto">
+                {phasePoints.map((point, i) => (
+                  <div key={i} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg" data-testid={`phase-item-${i}`}>
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full gold-gradient flex items-center justify-center flex-shrink-0">
+                      <span className="text-charcoal font-bold text-[10px] sm:text-xs">{i + 1}</span>
+                    </div>
+                    <span className="text-white text-[10px] sm:text-xs font-accent truncate">{point.title}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

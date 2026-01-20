@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import logo from "@assets/AMYGDALA_ACQUISITIONS_(3)_1768832874297.png";
+import logo from "@assets/AMYGDALA_ACQUISITIONS_(6)_1768919980907.png";
 
 export default function Footer() {
   return (
@@ -41,8 +41,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-cream/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-sm text-cream/50">
-            © {new Date().getFullYear()} SPIDXR NETWORK. All rights reserved.
+          <div className="text-sm text-cream/50 flex items-center gap-1">
+            <span>© {new Date().getFullYear()}</span>
+            <img src={logo} alt="SPIDXR NETWORK" className="h-3 w-auto brightness-0 invert opacity-70" style={{ imageRendering: 'crisp-edges' }} data-testid="logo-footer-copyright" />
+            <span>. All rights reserved.</span>
           </div>
           <div className="flex items-center gap-6 text-sm text-cream/50">
             <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>
