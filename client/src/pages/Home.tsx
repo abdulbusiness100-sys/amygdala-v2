@@ -129,7 +129,7 @@ export default function Home() {
                 ))}
               </div>
               <div className="text-left">
-                <p className="font-display text-charcoal">100+ Businesses</p>
+                <p className="font-display text-charcoal">60+ Businesses</p>
                 <p className="text-sm text-charcoal-medium">Trust our unified approach</p>
               </div>
             </motion.div>
@@ -140,52 +140,47 @@ export default function Home() {
       {/* Logo Carousel */}
       <LogoCarousel />
 
-      {/* The Problem Section */}
+      {/* The Problem Section - Centered */}
       <section className="py-24 bg-white relative z-10" data-testid="section-problem">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left - Image */}
-            <FadeIn direction="right">
-              <div className="relative">
-                <img 
-                  src={fragmentationImage}
-                  alt="Fragmented systems bleeding money"
-                  className="rounded-2xl shadow-xl"
-                  data-testid="img-fragmentation"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent rounded-2xl"></div>
-              </div>
-            </FadeIn>
-
-            {/* Right - Content */}
-            <div>
-              <FadeIn>
-                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-problem-label">THE FRAGMENTATION PROBLEM</p>
-                <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight" data-testid="text-problem-heading">
-                  Your Growth Stack<br />
-                  <span className="text-gradient">Is Bleeding Money</span>
-                </h2>
-                <p className="text-charcoal-medium text-lg leading-relaxed mb-8">
-                  The average scaling business juggles 7+ vendors, 12+ tools, and countless handoffs. Each gap is a leak.
-                </p>
-              </FadeIn>
-
-              <div className="space-y-4">
-                {problemCards.map((card, i) => (
-                  <FadeIn key={i} delay={0.1 + i * 0.1}>
-                    <div className="flex items-start gap-4 p-4 rounded-xl bg-cream border border-gold/10 hover:border-gold/30 transition-colors" data-testid={`card-problem-${i}`}>
-                      <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
-                        <card.icon className="w-5 h-5 text-gold" />
-                      </div>
-                      <div>
-                        <h3 className="font-display text-lg text-charcoal mb-1">{card.title}</h3>
-                        <p className="text-charcoal-medium text-sm">{card.desc}</p>
-                      </div>
-                    </div>
-                  </FadeIn>
-                ))}
-              </div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-problem-label">THE FRAGMENTATION PROBLEM</p>
+              <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight" data-testid="text-problem-heading">
+                Your Growth Stack <span className="text-gradient">Is Bleeding Money</span>
+              </h2>
+              <p className="text-charcoal-medium text-lg leading-relaxed max-w-2xl mx-auto">
+                The average scaling business juggles 7+ vendors, 12+ tools, and countless handoffs. Each gap is a leak.
+              </p>
             </div>
+          </FadeIn>
+
+          {/* Centered Image */}
+          <FadeIn delay={0.1}>
+            <div className="relative mb-12">
+              <img 
+                src={fragmentationImage}
+                alt="Fragmented systems bleeding money"
+                className="rounded-2xl shadow-xl mx-auto max-w-3xl w-full"
+                data-testid="img-fragmentation"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent rounded-2xl"></div>
+            </div>
+          </FadeIn>
+
+          {/* Problem Cards - Grid */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {problemCards.map((card, i) => (
+              <FadeIn key={i} delay={0.1 + i * 0.1}>
+                <div className="p-6 rounded-xl bg-cream border border-gold/10 hover:border-gold/30 transition-colors text-center" data-testid={`card-problem-${i}`}>
+                  <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center mx-auto mb-4">
+                    <card.icon className="w-6 h-6 text-gold" />
+                  </div>
+                  <h3 className="font-display text-lg text-charcoal mb-2">{card.title}</h3>
+                  <p className="text-charcoal-medium text-sm">{card.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
@@ -291,89 +286,90 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Metrics Section */}
+      {/* Metrics Section - Centered */}
       <section className="py-24 bg-cream relative z-10" data-testid="section-metrics">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <FadeIn>
-              <div>
-                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-metrics-label">THE UNIFIED ADVANTAGE</p>
-                <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
-                  When Everything Connects,<br />
-                  <span className="text-gradient">Everything Compounds.</span>
-                </h2>
-                <p className="text-charcoal-medium text-lg leading-relaxed mb-8">
-                  SPIDXR NETWORK eliminates gaps. We build one integrated system where every action informs every other.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { value: 100, suffix: "+", label: "Businesses Impacted" },
-                    { value: 10, prefix: "$", suffix: "M+", label: "Client Portfolio" },
-                    { value: 100, suffix: "%", label: "Satisfaction Rate" },
-                    { value: 1, prefix: "$", suffix: "M+", label: "Generated in 2025" },
-                  ].map((stat, i) => (
-                    <FadeIn key={i} delay={0.1 + i * 0.1}>
-                      <div className="bg-white p-6 rounded-2xl border-2 border-gold text-center hover:border-gold-dark transition-colors" data-testid={`card-metric-${i}`}>
-                        <div className="text-3xl font-display text-charcoal mb-1" data-testid={`text-metric-value-${i}`}>
-                          {stat.prefix}<AnimatedCounter end={stat.value} suffix={stat.suffix} />
-                        </div>
-                        <p className="text-xs text-charcoal-medium" data-testid={`text-metric-label-${i}`}>{stat.label}</p>
-                      </div>
-                    </FadeIn>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-metrics-label">THE UNIFIED ADVANTAGE</p>
+              <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
+                When Everything Connects, <span className="text-gradient">Everything Compounds.</span>
+              </h2>
+              <p className="text-charcoal-medium text-lg leading-relaxed max-w-2xl mx-auto">
+                SPIDXR NETWORK eliminates gaps. We build one integrated system where every action informs every other.
+              </p>
+            </div>
+          </FadeIn>
 
-            <FadeIn delay={0.2} direction="left">
-              <div className="relative">
-                <img 
-                  src={metricsImage}
-                  alt="Unified metrics dashboard"
-                  className="rounded-2xl shadow-xl"
-                />
-              </div>
-            </FadeIn>
+          {/* Centered Image */}
+          <FadeIn delay={0.1}>
+            <div className="relative mb-12">
+              <img 
+                src={metricsImage}
+                alt="Unified metrics dashboard"
+                className="rounded-2xl shadow-xl mx-auto max-w-3xl w-full"
+              />
+            </div>
+          </FadeIn>
+          
+          {/* Metrics Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { value: 60, suffix: "+", label: "Businesses Impacted" },
+              { value: 10, prefix: "$", suffix: "M+", label: "Client Portfolio" },
+              { value: 100, suffix: "%", label: "Satisfaction Rate" },
+              { value: 1, prefix: "$", suffix: "M+", label: "Generated in 2025" },
+            ].map((stat, i) => (
+              <FadeIn key={i} delay={0.1 + i * 0.1}>
+                <div className="bg-white p-6 rounded-2xl border-2 border-gold text-center hover:border-gold-dark transition-colors" data-testid={`card-metric-${i}`}>
+                  <div className="text-3xl font-display text-charcoal mb-1" data-testid={`text-metric-value-${i}`}>
+                    {stat.prefix}<AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                  </div>
+                  <p className="text-xs text-charcoal-medium" data-testid={`text-metric-label-${i}`}>{stat.label}</p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Dashboard Section */}
+      {/* Dashboard Section - Centered */}
       <section className="py-24 bg-white relative z-10" data-testid="section-dashboard">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <FadeIn direction="right">
-              <img 
-                src={dashboardImage}
-                alt="Integrated dashboard - single source of truth"
-                className="rounded-2xl shadow-xl"
-                data-testid="img-dashboard"
-              />
-            </FadeIn>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-dashboard-label">SINGLE SOURCE OF TRUTH</p>
+              <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
+                One Dashboard. <span className="text-gradient">Complete Visibility.</span>
+              </h2>
+              <p className="text-charcoal-medium text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+                No more logging into 12 different tools. No more piecing together reports from 5 vendors. Everything you need to see in one place.
+              </p>
+            </div>
+          </FadeIn>
 
-            <FadeIn delay={0.2}>
-              <div>
-                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-dashboard-label">SINGLE SOURCE OF TRUTH</p>
-                <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
-                  One Dashboard.<br />
-                  <span className="text-gradient">Complete Visibility.</span>
-                </h2>
-                <p className="text-charcoal-medium text-lg leading-relaxed mb-6">
-                  No more logging into 12 different tools. No more piecing together reports from 5 vendors. Everything you need to see—in one place.
-                </p>
-                <ul className="space-y-3">
-                  {["Real-time performance metrics", "Cross-channel attribution", "Pipeline visibility", "Revenue forecasting"].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-charcoal">
-                      <div className="w-5 h-5 rounded-full gold-gradient flex items-center justify-center">
-                        <ArrowRight className="w-3 h-3 text-charcoal" />
-                      </div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </FadeIn>
+          {/* Centered Dashboard Image */}
+          <FadeIn delay={0.1}>
+            <img 
+              src={dashboardImage}
+              alt="Integrated dashboard - single source of truth"
+              className="rounded-2xl shadow-xl mx-auto max-w-4xl w-full mb-12"
+              data-testid="img-dashboard"
+            />
+          </FadeIn>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {["Real-time performance metrics", "Cross-channel attribution", "Pipeline visibility", "Revenue forecasting"].map((item, i) => (
+              <FadeIn key={i} delay={0.1 + i * 0.1}>
+                <div className="bg-cream p-4 rounded-xl text-center border border-gold/10 hover:border-gold/30 transition-colors">
+                  <div className="w-8 h-8 rounded-full gold-gradient flex items-center justify-center mx-auto mb-3">
+                    <ArrowRight className="w-4 h-4 text-charcoal" />
+                  </div>
+                  <p className="text-charcoal text-sm font-medium">{item}</p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>

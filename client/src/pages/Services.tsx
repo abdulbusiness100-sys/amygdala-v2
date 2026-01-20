@@ -212,17 +212,21 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Calendly */}
-      <section id="book-call" className="py-24 bg-white relative z-10">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      {/* Calendly - Blue and Gold Theme */}
+      <section id="book-call" className="py-24 bg-gradient-to-br from-[#0A1628] via-[#1A2744] to-[#0D1B2A] relative z-10 overflow-hidden">
+        {/* Decorative gold accents */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <ScrollReveal>
             <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">SCHEDULE A CALL</p>
-            <h2 className="font-display text-4xl text-charcoal mb-6">Book Your Strategy Call</h2>
-            <p className="text-charcoal-medium mb-12">Select a time that works for you. 30 minutes. Pure value.</p>
+            <h2 className="font-display text-4xl text-white mb-6">Book Your Strategy Call</h2>
+            <p className="text-white/70 mb-12">Select a time that works for you. 30 minutes. Pure value.</p>
           </ScrollReveal>
-          <div className="glass rounded-2xl overflow-hidden p-4">
+          <div className="bg-white/5 backdrop-blur-xl border border-gold/30 rounded-2xl overflow-hidden p-4 shadow-2xl">
              <iframe 
-               src="https://calendly.com/spidxr253/30min?hide_gdpr_banner=1&background_color=fafaf8&text_color=1a1a1a&primary_color=c4a052"
+               src="https://calendly.com/spidxr253/30min?hide_gdpr_banner=1&background_color=0A1628&text_color=ffffff&primary_color=c4a052"
                width="100%"
                height="700"
                frameBorder="0"

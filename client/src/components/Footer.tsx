@@ -1,5 +1,4 @@
 import { Link } from "wouter";
-import { SiLinkedin, SiX, SiInstagram } from "react-icons/si";
 import logo from "@assets/AMYGDALA_ACQUISITIONS_(3)_1768832874297.png";
 
 export default function Footer() {
@@ -12,20 +11,9 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-6">
               <img src={logo} alt="SPIDXR NETWORK" className="h-10 w-auto brightness-0 invert opacity-90" />
             </Link>
-            <p className="text-cream/70 text-sm leading-relaxed mb-6">
+            <p className="text-cream/70 text-sm leading-relaxed">
               The unified growth engine for ambitious businesses ready to scale without the chaos.
             </p>
-            <div className="flex items-center gap-4">
-              <a href="#" className="text-gold hover:text-gold-light transition-colors">
-                <SiLinkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gold hover:text-gold-light transition-colors">
-                <SiX className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gold hover:text-gold-light transition-colors">
-                <SiInstagram className="w-5 h-5" />
-              </a>
-            </div>
           </div>
           
           {/* Column 2 - Navigate */}
