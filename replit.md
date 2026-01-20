@@ -78,48 +78,60 @@ This pattern ensures type safety across the full stack.
 
 ## Recent Changes (January 2026)
 
-### Homepage Redesign
-Major visual overhaul implementing a premium design based on detailed requirements:
+### Homepage Redesign (Latest Update)
+Major visual overhaul with centered hero layout and scroll effects:
+
+#### Homepage Layout Changes
+- **Hero Section**: Centered layout (was split left-to-right) with Framer Motion scroll parallax effect
+- **Hero Image**: Using AMYGDALA_ACQUISITIONS_(1) brain visualization
+- **Metrics Updated**: 100+ Businesses Impacted, $10M+ Client Portfolio, 100% Satisfaction Rate, $1M+ Generated in 2025
+- **Testimonials Section REMOVED**: Will be added as separate "Client Success & Results" page later
+
+#### Scroll Effects
+- Hero section uses `useScroll` and `useTransform` from Framer Motion
+- Hero image has parallax Y movement, scaling, and opacity transitions on scroll
+
+### Services Page Redesign
+- **Service Layers**: Black borders (border-2 border-charcoal) with rounded-3xl
+- **Inner Boxes**: Darker gradient backgrounds (from-white to-cream/80)
+- **Individual Cards**: Charcoal/20 borders for visual separation
+- **Pricing Tiers**: Replaced with side-by-side cylinder-style design (rounded tops/bottoms)
+- **Request Audit Section**: REMOVED
+
+### Process Page (What We Do) Additions
+- **3D Globe Visualization**: Using `react-globe.gl` library
+- **Globe Features**: 6 phase points with gold markers, animated arc connections, auto-rotation
+- **WebGL Fallback**: GlobeErrorBoundary catches WebGL errors and shows fallback grid of 6 phase cards
+- **Lazy Loading**: Globe component lazy loaded with Suspense for performance
+- **Phase Legend**: Always visible at bottom of globe container
 
 #### New Components Created
-- **LogoCarousel** (`client/src/components/LogoCarousel.tsx`): Infinite scrolling client logo marquee with configurable logos, fade edge effects, and grayscale-to-color hover effect
-- **TestimonialSection** (`client/src/components/TestimonialCard.tsx`): Testimonial cards with star ratings, client photos, quotes, and specific metrics
-- **TextReveal** (`client/src/components/TextReveal.tsx`): Premium word-by-word text reveal animation using Framer Motion
-- **FadeIn** (in TextReveal): Directional fade-in animation component (supports up/down/left/right)
+- **LogoCarousel** (`client/src/components/LogoCarousel.tsx`): Infinite scrolling client logo marquee
+- **TextReveal** (`client/src/components/TextReveal.tsx`): Premium word-by-word text reveal animation
+- **FadeIn** (in TextReveal): Directional fade-in animation component
 - **AnimatedCounter** (in Home.tsx): Counter animation for metrics section
+- **GlobeErrorBoundary** (in WhatWeDo.tsx): Error boundary for WebGL fallback
 
 #### Homepage Sections (in order)
-1. **Hero Section**: Split layout with hero image on right, single CTA button, social proof badges (50+ companies avatar row), floating ROI badge
+1. **Hero Section**: Centered layout with hero image, single CTA button, scroll parallax effect
 2. **Logo Carousel**: Infinite scrolling client logos with fade edges
-3. **Problem Section**: "Your Growth Stack Is Bleeding Money" with fragmentation image and problem cards
-4. **Three Layers Bento Grid**: Stacked system infographic, Top/Middle funnel cards with images
+3. **Problem Section**: "Your Growth Stack Is Bleeding Money" with fragmentation image
+4. **Three Layers Bento Grid**: Stacked system infographic, Top/Middle funnel cards
 5. **Infrastructure Card**: Full-width backend services with tags
-6. **Testimonials**: 3 client testimonial cards with star ratings and metrics
-7. **Metrics Section**: 4 animated counters (50+ clients, $12M+ revenue, 847% ROI, 89% retention)
-8. **Dashboard Section**: Integrated dashboard mockup image
-9. **Process Timeline**: Simplified 4-step (Audit → Architect → Build → Scale)
-10. **CTA Section**: Full-bleed portal image with dark gradient overlay
-
-#### Custom Images Integrated
-Located in `attached_assets/`:
-- Hero network visualization
-- Fragmentation problem illustration
-- Stacked layers system infographic
-- Acquisition funnel visual
-- Conversion pipeline visual
-- Infrastructure illustration
-- Metrics cards visual
-- Dashboard mockup
-- Process timeline visual
-- CTA portal concept
+6. **Metrics Section**: 4 animated counters with updated values
+7. **Dashboard Section**: Integrated dashboard mockup image
+8. **Process Timeline**: Simplified 4-step (Audit → Architect → Build → Scale)
+9. **CTA Section**: Full-bleed portal image with dark gradient overlay
 
 #### Data-testid Attributes
-All interactive and display elements have proper data-testid attributes for QA automation:
-- Section: `section-hero`, `section-problem`, `section-three-layers`, etc.
-- Cards: `card-testimonial-{i}`, `card-metric-{i}`, `card-process-{i}`
-- Text: `text-testimonial-quote-{i}`, `text-metric-value-{i}`, etc.
+All elements have proper data-testid attributes for QA automation:
+- Sections: `section-hero`, `section-metrics`, `section-globe`, `section-timeline`, etc.
+- Service Layers: `section-service-layer-{i}`
+- Pricing Tiers: `cylinder-tier-{i}`
+- Globe: `globe-container`, `globe-fallback`, `phase-legend`
 - Buttons: `button-hero-cta`, `button-cta-book-call`
 
 ### Performance Notes
 - Large images (700KB+) in attached_assets should be optimized for production
 - LogoCarousel is ready for real client logos via props: `<LogoCarousel logos={[{name: "Client", logoUrl: "/path/to/logo.png"}]} />`
+- Globe component lazy loaded to reduce initial bundle size
