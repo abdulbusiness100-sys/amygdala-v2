@@ -185,9 +185,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Three Layers Section with Bento Grid */}
+      {/* Three Layers Section - Centered */}
       <section className="py-24 bg-cream relative z-10" data-testid="section-three-layers">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-16">
               <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-layers-label">THE UNIFIED GROWTH STACK</p>
@@ -200,35 +200,24 @@ export default function Home() {
             </div>
           </FadeIn>
 
-          {/* Bento Grid */}
-          <div className="grid lg:grid-cols-3 gap-6 mb-12">
-            {/* Large card - Stack visualization */}
-            <FadeIn className="lg:col-span-2 lg:row-span-2">
-              <div className="bg-white rounded-3xl p-8 h-full border border-gold/10 hover:border-gold/30 transition-all duration-300 overflow-hidden relative group">
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-2xl gold-gradient flex items-center justify-center">
-                      <Server className="w-6 h-6 text-charcoal" />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-xl text-charcoal">Complete Integration</h3>
-                      <p className="text-sm text-charcoal-medium">All three layers, connected</p>
-                    </div>
-                  </div>
-                  <img 
-                    src={stackedSystemImage} 
-                    alt="Three-layer stacked system"
-                    className="rounded-2xl group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                </div>
-              </div>
-            </FadeIn>
+          {/* Central Stack Image */}
+          <FadeIn delay={0.1}>
+            <div className="mb-12">
+              <img 
+                src={stackedSystemImage} 
+                alt="Three-layer stacked system"
+                className="rounded-2xl shadow-xl mx-auto max-w-3xl w-full"
+              />
+            </div>
+          </FadeIn>
 
+          {/* Three Cards Grid */}
+          <div className="grid md:grid-cols-3 gap-6">
             {/* Top of Funnel Card */}
             <FadeIn delay={0.1}>
-              <div className="bg-white rounded-3xl p-6 border border-gold/10 hover:border-gold/30 transition-all duration-300 group">
-                <div className="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center mb-4">
-                  <Radar className="w-5 h-5 text-charcoal" />
+              <div className="bg-white rounded-3xl p-6 border border-gold/10 hover:border-gold/30 transition-all duration-300 group text-center">
+                <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center mb-4 mx-auto">
+                  <Radar className="w-6 h-6 text-charcoal" />
                 </div>
                 <h3 className="font-display text-lg text-charcoal mb-2">Top of Funnel</h3>
                 <p className="text-charcoal-medium text-sm mb-4">Visibility & Acquisition</p>
@@ -242,9 +231,9 @@ export default function Home() {
 
             {/* Middle Funnel Card */}
             <FadeIn delay={0.2}>
-              <div className="bg-white rounded-3xl p-6 border border-gold/10 hover:border-gold/30 transition-all duration-300 group">
-                <div className="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center mb-4">
-                  <Handshake className="w-5 h-5 text-charcoal" />
+              <div className="bg-white rounded-3xl p-6 border border-gold/10 hover:border-gold/30 transition-all duration-300 group text-center">
+                <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center mb-4 mx-auto">
+                  <Handshake className="w-6 h-6 text-charcoal" />
                 </div>
                 <h3 className="font-display text-lg text-charcoal mb-2">Middle Funnel</h3>
                 <p className="text-charcoal-medium text-sm mb-4">Conversion & Sales</p>
@@ -255,34 +244,23 @@ export default function Home() {
                 />
               </div>
             </FadeIn>
-          </div>
 
-          {/* Infrastructure Card - Full Width */}
-          <FadeIn delay={0.3}>
-            <div className="bg-white rounded-3xl p-8 border border-gold/10 hover:border-gold/30 transition-all duration-300 group">
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl gold-gradient flex items-center justify-center mb-6">
-                    <Server className="w-6 h-6 text-charcoal" />
-                  </div>
-                  <h3 className="font-display text-2xl text-charcoal mb-3">Back End: Infrastructure & Scale</h3>
-                  <p className="text-charcoal-medium mb-6">Custom CRM, AI integration, full application development. The foundation that lets you scale without the growing pains.</p>
-                  <div className="flex flex-wrap gap-2">
-                    {["Custom CRM", "AI Integration", "App Development", "Automation"].map((tag, i) => (
-                      <span key={i} className="px-3 py-1.5 bg-gold/10 rounded-full text-xs font-accent text-gold">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+            {/* Backend Infrastructure Card */}
+            <FadeIn delay={0.3}>
+              <div className="bg-white rounded-3xl p-6 border border-gold/10 hover:border-gold/30 transition-all duration-300 group text-center">
+                <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center mb-4 mx-auto">
+                  <Server className="w-6 h-6 text-charcoal" />
                 </div>
+                <h3 className="font-display text-lg text-charcoal mb-2">Back End</h3>
+                <p className="text-charcoal-medium text-sm mb-4">Infrastructure & Scale</p>
                 <img 
                   src={infrastructureImage} 
                   alt="Infrastructure and scale"
-                  className="rounded-2xl group-hover:scale-[1.02] transition-transform duration-500"
+                  className="rounded-xl h-32 w-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                 />
               </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          </div>
         </div>
       </section>
 

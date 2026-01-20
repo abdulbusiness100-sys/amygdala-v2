@@ -120,7 +120,7 @@ export default function Services() {
                   </div>
                   <div>
                     <h2 className="font-display text-2xl text-charcoal">{layer.title}</h2>
-                    <p className="font-accent text-sm text-charcoal-medium">{layer.subtitle} — {layer.tagline}</p>
+                    <p className="font-accent text-sm text-charcoal-medium">{layer.subtitle} | {layer.tagline}</p>
                   </div>
                 </div>
 

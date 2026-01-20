@@ -361,8 +361,8 @@ export default function WhatWeDo() {
             </div>
           </div>
 
-          {/* Phase Cards */}
-          <div className="grid lg:grid-cols-2 gap-8">
+          {/* Phase Cards - 2x3 Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {timelinePhases.map((phase, i) => (
               <ScrollReveal key={i} delay={i * 0.5}>
                 <div className="glass p-8 rounded-3xl h-full card-3d hover:border-gold/30">
