@@ -1,8 +1,23 @@
 import { useLocation } from "wouter";
-import { ArrowRight, Link2Off, Clock, Compass, Radar, Handshake, Server, ChevronDown, ArrowDown, ArrowUp, Search, Settings, Rocket, TrendingUp } from "lucide-react";
+import { ArrowRight, Link2Off, Clock, Compass, Radar, Handshake, Server, Search, Settings, Rocket, TrendingUp, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ScrollReveal from "@/components/ScrollReveal";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import LogoCarousel from "@/components/LogoCarousel";
+import TestimonialSection from "@/components/TestimonialCard";
+import { FadeIn } from "@/components/TextReveal";
+
+import heroImage from "@assets/download_1768908354245.webp";
+import fragmentationImage from "@assets/download_(1)_1768908363471.webp";
+import stackedSystemImage from "@assets/download_(23)_1768908363470.png";
+import acquisitionImage from "@assets/download_(24)_1768908363470.png";
+import conversionImage from "@assets/download_(2)_1768908363470.webp";
+import infrastructureImage from "@assets/download_(25)_1768908363470.png";
+import metricsImage from "@assets/download_(26)_1768908363470.png";
+import processImage from "@assets/download_(27)_1768908363469.png";
+import ctaImage from "@assets/download_(3)_1768908363469.webp";
+import dashboardImage from "@assets/download_(28)_1768908363468.png";
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -10,316 +25,463 @@ export default function Home() {
   const handleBookCall = () => {
     setLocation("/services");
     setTimeout(() => {
-      const element = document.getElementById("book-call");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      document.getElementById("book-call")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   };
 
   const problemCards = [
-    { icon: Link2Off, title: "Disconnected Systems", desc: "Your website doesn't talk to your CRM. Your ads don't inform your sales team. Your data lives in 15 different places." },
-    { icon: Clock, title: "Wasted Time & Budget", desc: "You're paying 5 agencies to do what one integrated team could do better. Each handoff adds 2 weeks. Each miscommunication costs $10K." },
-    { icon: Compass, title: "No Single Source of Truth", desc: "When something breaks, you play telephone between vendors. When something works, nobody knows why." },
-  ];
-
-  const stackLayers = [
-    {
-      title: "VISIBILITY & ACQUISITION",
-      subtitle: "Top of Funnel • Front End",
-      icon: Radar,
-      services: ["Website Development", "Branding", "Social Media Automation", "E-commerce Growth", "Lead Generation", "Funnel Creation", "Landing Pages", "Paid & Organic Acquisition"],
-      color: "from-gold to-gold-dark"
-    },
-    {
-      title: "CONVERSION & SALES",
-      subtitle: "Middle Funnel • Mid-Backend",
-      icon: Handshake,
-      services: ["Lead Nurturing", "Email Automation", "Full Sales Cycle", "Setter → Closer Pipeline", "CSM & Client Relations", "Sales Automation", "CRM Management", "Revenue Operations"],
-      color: "from-gold-dark to-gold"
-    },
-    {
-      title: "INFRASTRUCTURE & SCALE",
-      subtitle: "Back End • Enterprise",
-      icon: Server,
-      services: ["Full App Development", "Custom CRM Build", "Digital Products", "Go-To-Market Strategy", "AI Integration", "Technical Setup", "Social Media Team Deployment", "Enterprise Operations"],
-      color: "from-gold to-gold-dark"
-    }
+    { icon: Link2Off, title: "Disconnected Systems", desc: "Your website doesn't talk to your CRM. Your ads don't inform your sales team." },
+    { icon: Clock, title: "Wasted Time & Budget", desc: "You're paying 5 agencies to do what one integrated team could do better." },
+    { icon: Compass, title: "No Single Source of Truth", desc: "When something breaks, you play telephone between vendors." },
   ];
 
   const processSteps = [
-    { num: "01", title: "Deep Dive Audit", week: "Week 1-2", desc: "We dissect your entire operation. Every system. Every metric. Every opportunity." },
-    { num: "02", title: "Unified Architecture", week: "Week 2-3", desc: "We design your custom growth system. Every component connected. Every workflow optimized." },
-    { num: "03", title: "Systematic Build", week: "Week 3-8", desc: "We construct your unified stack. Piece by piece. Test by test. Until it's bulletproof." },
-    { num: "04", title: "Growth Activation", week: "Week 8+", desc: "We turn on the engine. Optimize in real-time. Scale what works. Compound your returns." },
+    { num: "01", title: "Audit", icon: Search, desc: "Deep dive analysis" },
+    { num: "02", title: "Architect", icon: Settings, desc: "Custom blueprint" },
+    { num: "03", title: "Build", icon: Rocket, desc: "Systematic execution" },
+    { num: "04", title: "Scale", icon: TrendingUp, desc: "Growth activation" },
   ];
 
   return (
-    <div className="overflow-hidden relative min-h-screen grain">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        {/* Background subtle pattern */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-cream via-white to-cream-dark"></div>
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gold/5 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gold/5 rounded-full blur-[100px]"></div>
-        </div>
+    <div className="overflow-hidden relative min-h-screen">
+      {/* Hero Section - Split Layout */}
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-cream via-white to-cream" data-testid="section-hero">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, #1a1a1a 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }}></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <ScrollReveal>
-            <div className="w-px h-12 bg-gold mx-auto mb-8"></div>
-            
-            <p className="font-accent text-gold text-sm tracking-[0.2em] uppercase mb-6">SPIDXR NETWORK</p>
-            
-            <h1 className="font-display text-5xl md:text-7xl text-charcoal mb-6 leading-tight">
-              The Unified<br />
-              <span className="text-gradient">Growth Engine</span>
-            </h1>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column */}
+            <FadeIn delay={0.1}>
+              <div className="max-w-xl">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-8"
+                >
+                  <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                  <span className="font-accent text-xs text-gold tracking-wider uppercase">Full-Stack Growth Operator</span>
+                </motion.div>
 
-            <p className="text-charcoal-medium text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-              Full-stack business development. From first click to enterprise scale.<br />
-              One partner. One system. Zero fragmentation.
-            </p>
+                <motion.h1 
+                  className="font-display text-5xl md:text-6xl lg:text-7xl text-charcoal mb-6 leading-[1.1]"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                >
+                  We Build Systems<br />
+                  <span className="text-gradient">That Scale Businesses</span>
+                </motion.h1>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                variant="outline"
-                size="lg" 
-                className="font-accent text-charcoal border-charcoal/20 hover:bg-charcoal/5 text-lg px-8 py-6"
-                onClick={() => setLocation("/what-we-do")}
-              >
-                See How It Works
-              </Button>
-              <Button 
-                size="lg" 
-                className="font-accent gold-gradient text-charcoal border-0 text-lg px-8 py-6 shimmer"
-                onClick={handleBookCall}
-              >
-                Book Strategy Call <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
-          </ScrollReveal>
+                <motion.p 
+                  className="text-charcoal-medium text-lg md:text-xl mb-8 leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                >
+                  One unified partner replacing your fragmented agency stack.<br />
+                  Marketing. Sales. Technology. Connected.
+                </motion.p>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <ChevronDown className="w-6 h-6 text-gold" />
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                >
+                  <Button 
+                    size="lg" 
+                    className="font-accent gold-gradient text-charcoal border-0 text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-shadow"
+                    onClick={handleBookCall}
+                    data-testid="button-hero-cta"
+                  >
+                    Book Strategy Call <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </motion.div>
+
+                {/* Social proof badges */}
+                <motion.div 
+                  className="mt-12 flex items-center gap-6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                >
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-charcoal to-charcoal-medium border-2 border-white flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">{i}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <p className="font-display text-charcoal">50+ Companies</p>
+                    <p className="text-sm text-charcoal-medium">Trust our unified approach</p>
+                  </div>
+                </motion.div>
+              </div>
+            </FadeIn>
+
+            {/* Right Column - Hero Image */}
+            <FadeIn delay={0.4} direction="left">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent rounded-3xl blur-3xl"></div>
+                <motion.img 
+                  src={heroImage}
+                  alt="Unified Growth Network"
+                  className="relative rounded-3xl shadow-2xl w-full"
+                  initial={{ scale: 0.95 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                />
+                
+                {/* Floating badge */}
+                <motion.div 
+                  className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-gold/10"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-charcoal" />
+                    </div>
+                    <div>
+                      <p className="font-display text-2xl text-charcoal">847%</p>
+                      <p className="text-xs text-charcoal-medium">Avg. ROI</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
+      {/* Logo Carousel */}
+      <LogoCarousel />
+
       {/* The Problem Section */}
-      <section className="py-24 bg-white relative z-10">
+      <section className="py-24 bg-white relative z-10" data-testid="section-problem">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Left - Sticky headline */}
-            <div className="lg:sticky lg:top-32 lg:self-start">
-              <ScrollReveal>
-                <div className="w-px h-8 bg-gold mb-6"></div>
-                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">THE FRAGMENTATION PROBLEM</p>
-                <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left - Image */}
+            <FadeIn direction="right">
+              <div className="relative">
+                <img 
+                  src={fragmentationImage}
+                  alt="Fragmented systems bleeding money"
+                  className="rounded-2xl shadow-xl"
+                  data-testid="img-fragmentation"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent rounded-2xl"></div>
+              </div>
+            </FadeIn>
+
+            {/* Right - Content */}
+            <div>
+              <FadeIn>
+                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-problem-label">THE FRAGMENTATION PROBLEM</p>
+                <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight" data-testid="text-problem-heading">
                   Your Growth Stack<br />
                   <span className="text-gradient">Is Bleeding Money</span>
                 </h2>
-                <p className="text-charcoal-medium text-lg leading-relaxed">
-                  The average scaling business juggles 7+ vendors, 12+ tools, and countless handoffs. Each gap is a leak. Each silo is a bottleneck. Each miscommunication costs you customers.
+                <p className="text-charcoal-medium text-lg leading-relaxed mb-8">
+                  The average scaling business juggles 7+ vendors, 12+ tools, and countless handoffs. Each gap is a leak.
                 </p>
-              </ScrollReveal>
-            </div>
+              </FadeIn>
 
-            {/* Right - Problem cards */}
-            <div className="space-y-6">
-              {problemCards.map((card, i) => (
-                <ScrollReveal key={i} delay={i * 1}>
-                  <div className="glass p-8 rounded-2xl card-3d">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0">
-                        <card.icon className="w-6 h-6 text-gold" />
+              <div className="space-y-4">
+                {problemCards.map((card, i) => (
+                  <FadeIn key={i} delay={0.1 + i * 0.1}>
+                    <div className="flex items-start gap-4 p-4 rounded-xl bg-cream border border-gold/10 hover:border-gold/30 transition-colors" data-testid={`card-problem-${i}`}>
+                      <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
+                        <card.icon className="w-5 h-5 text-gold" />
                       </div>
                       <div>
-                        <h3 className="font-display text-xl text-charcoal mb-2">{card.title}</h3>
-                        <p className="text-charcoal-medium text-sm leading-relaxed">{card.desc}</p>
+                        <h3 className="font-display text-lg text-charcoal mb-1">{card.title}</h3>
+                        <p className="text-charcoal-medium text-sm">{card.desc}</p>
                       </div>
                     </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-              
-              {/* Solution card */}
-              <ScrollReveal delay={4}>
-                <div className="gold-gradient p-8 rounded-2xl">
-                  <h3 className="font-display text-xl text-charcoal mb-2">The SPIDXR Solution</h3>
-                  <p className="text-charcoal/80 text-sm leading-relaxed">
-                    One unified system. Every strand connected. Marketing, sales, and technology moving as one organism.
-                  </p>
-                </div>
-              </ScrollReveal>
+                  </FadeIn>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Unified Stack Section */}
-      <section className="py-24 bg-cream relative z-10">
+      {/* Three Layers Section with Bento Grid */}
+      <section className="py-24 bg-cream relative z-10" data-testid="section-three-layers">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
+          <FadeIn>
             <div className="text-center mb-16">
-              <div className="w-px h-8 bg-gold mx-auto mb-6"></div>
-              <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">THE UNIFIED GROWTH STACK</p>
-              <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-4">
+              <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-layers-label">THE UNIFIED GROWTH STACK</p>
+              <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-4" data-testid="text-layers-heading">
                 Three Layers. One System.
               </h2>
               <p className="text-charcoal-medium text-lg max-w-2xl mx-auto">
-                Every service interconnected. Every action informed by data. Every result compounding on the last.
+                Every service interconnected. Every action informed by data.
               </p>
             </div>
-          </ScrollReveal>
+          </FadeIn>
 
-          {/* Stack visualization */}
-          <div className="space-y-6 mb-16">
-            {stackLayers.map((layer, i) => (
-              <ScrollReveal key={i} delay={i * 1.5}>
-                <div className="glass p-8 rounded-2xl hover:border-gold/30 transition-all duration-300 group">
-                  <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-                    <div className="flex items-center gap-4 lg:w-72 flex-shrink-0">
-                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${layer.color} flex items-center justify-center`}>
-                        <layer.icon className="w-7 h-7 text-charcoal" />
-                      </div>
-                      <div>
-                        <h3 className="font-display text-lg text-charcoal">{layer.title}</h3>
-                        <p className="font-accent text-xs text-charcoal-medium tracking-wider uppercase">{layer.subtitle}</p>
-                      </div>
+          {/* Bento Grid */}
+          <div className="grid lg:grid-cols-3 gap-6 mb-12">
+            {/* Large card - Stack visualization */}
+            <FadeIn className="lg:col-span-2 lg:row-span-2">
+              <div className="bg-white rounded-3xl p-8 h-full border border-gold/10 hover:border-gold/30 transition-all duration-300 overflow-hidden relative group">
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-2xl gold-gradient flex items-center justify-center">
+                      <Server className="w-6 h-6 text-charcoal" />
                     </div>
-                    <div className="flex-1 flex flex-wrap gap-2">
-                      {layer.services.map((service, si) => (
-                        <span 
-                          key={si} 
-                          className="px-3 py-1.5 bg-white/50 rounded-full text-xs font-accent text-charcoal-medium border border-gold/10"
-                        >
-                          {service}
-                        </span>
-                      ))}
+                    <div>
+                      <h3 className="font-display text-xl text-charcoal">Complete Integration</h3>
+                      <p className="text-sm text-charcoal-medium">All three layers, connected</p>
                     </div>
                   </div>
+                  <img 
+                    src={stackedSystemImage} 
+                    alt="Three-layer stacked system"
+                    className="rounded-2xl group-hover:scale-[1.02] transition-transform duration-500"
+                  />
                 </div>
-              </ScrollReveal>
-            ))}
+              </div>
+            </FadeIn>
+
+            {/* Top of Funnel Card */}
+            <FadeIn delay={0.1}>
+              <div className="bg-white rounded-3xl p-6 border border-gold/10 hover:border-gold/30 transition-all duration-300 group">
+                <div className="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center mb-4">
+                  <Radar className="w-5 h-5 text-charcoal" />
+                </div>
+                <h3 className="font-display text-lg text-charcoal mb-2">Top of Funnel</h3>
+                <p className="text-charcoal-medium text-sm mb-4">Visibility & Acquisition</p>
+                <img 
+                  src={acquisitionImage} 
+                  alt="Acquisition funnel"
+                  className="rounded-xl h-32 w-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                />
+              </div>
+            </FadeIn>
+
+            {/* Middle Funnel Card */}
+            <FadeIn delay={0.2}>
+              <div className="bg-white rounded-3xl p-6 border border-gold/10 hover:border-gold/30 transition-all duration-300 group">
+                <div className="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center mb-4">
+                  <Handshake className="w-5 h-5 text-charcoal" />
+                </div>
+                <h3 className="font-display text-lg text-charcoal mb-2">Middle Funnel</h3>
+                <p className="text-charcoal-medium text-sm mb-4">Conversion & Sales</p>
+                <img 
+                  src={conversionImage} 
+                  alt="Conversion pipeline"
+                  className="rounded-xl h-32 w-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                />
+              </div>
+            </FadeIn>
           </div>
 
-          {/* Connection lines indicator */}
-          <div className="flex justify-center">
-            <div className="flex flex-col items-center gap-2 text-gold/50">
-              <ArrowDown className="w-5 h-5 animate-pulse" />
-              <span className="font-accent text-xs tracking-wider">FULLY CONNECTED</span>
-              <ArrowUp className="w-5 h-5 animate-pulse" />
+          {/* Infrastructure Card - Full Width */}
+          <FadeIn delay={0.3}>
+            <div className="bg-white rounded-3xl p-8 border border-gold/10 hover:border-gold/30 transition-all duration-300 group">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl gold-gradient flex items-center justify-center mb-6">
+                    <Server className="w-6 h-6 text-charcoal" />
+                  </div>
+                  <h3 className="font-display text-2xl text-charcoal mb-3">Back End: Infrastructure & Scale</h3>
+                  <p className="text-charcoal-medium mb-6">Custom CRM, AI integration, full application development. The foundation that lets you scale without the growing pains.</p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Custom CRM", "AI Integration", "App Development", "Automation"].map((tag, i) => (
+                      <span key={i} className="px-3 py-1.5 bg-gold/10 rounded-full text-xs font-accent text-gold">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <img 
+                  src={infrastructureImage} 
+                  alt="Infrastructure and scale"
+                  className="rounded-2xl group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* Value Props / Stats Section */}
-      <section className="py-24 bg-white relative z-10">
+      {/* Testimonials */}
+      <TestimonialSection />
+
+      {/* Metrics Section */}
+      <section className="py-24 bg-cream relative z-10" data-testid="section-metrics">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-16 items-center">
-            {/* Left content */}
-            <div className="lg:col-span-3">
-              <ScrollReveal>
-                <div className="w-px h-8 bg-gold mb-6"></div>
-                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">THE UNIFIED ADVANTAGE</p>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <FadeIn>
+              <div>
+                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-metrics-label">THE UNIFIED ADVANTAGE</p>
                 <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
                   When Everything Connects,<br />
                   <span className="text-gradient">Everything Compounds.</span>
                 </h2>
-                <p className="text-charcoal-medium text-lg leading-relaxed mb-6">
-                  Most businesses operate in silos. Marketing doesn't talk to sales. Sales doesn't inform product. Data sits unused. Opportunities slip through cracks.
+                <p className="text-charcoal-medium text-lg leading-relaxed mb-8">
+                  SPIDXR NETWORK eliminates gaps. We build one integrated system where every action informs every other.
                 </p>
-                <p className="text-charcoal-medium text-lg leading-relaxed">
-                  SPIDXR NETWORK eliminates these gaps. We build one integrated system where every action informs every other. Your ad data improves your sales scripts. Your sales calls improve your targeting. Your customer feedback improves your product.
-                </p>
-              </ScrollReveal>
-            </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { value: 50, suffix: "+", label: "Clients Served" },
+                    { value: 12, prefix: "$", suffix: "M+", label: "Revenue Generated" },
+                    { value: 847, suffix: "%", label: "Avg. ROI Delivered" },
+                    { value: 89, suffix: "%", label: "Client Retention" },
+                  ].map((stat, i) => (
+                    <FadeIn key={i} delay={0.1 + i * 0.1}>
+                      <div className="bg-white p-6 rounded-2xl border border-gold/10 text-center hover:border-gold/30 transition-colors" data-testid={`card-metric-${i}`}>
+                        <div className="text-3xl font-display text-charcoal mb-1" data-testid={`text-metric-value-${i}`}>
+                          {stat.prefix}<AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                        </div>
+                        <p className="text-xs text-charcoal-medium" data-testid={`text-metric-label-${i}`}>{stat.label}</p>
+                      </div>
+                    </FadeIn>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
 
-            {/* Right stats */}
-            <div className="lg:col-span-2 grid grid-cols-2 gap-4">
-              {[
-                { value: 73, prefix: "↓", suffix: "%", label: "Reduction in vendor management time" },
-                { value: 3.2, suffix: "x", label: "Faster speed to market" },
-                { value: 47, prefix: "↑", suffix: "%", label: "Improvement in lead-to-close rate" },
-                { value: 40, prefix: "↓", suffix: "%", label: "Reduction in tech stack costs" },
-              ].map((stat, i) => (
-                <ScrollReveal key={i} delay={i * 1}>
-                  <div className="glass p-6 rounded-2xl text-center card-3d">
-                    <div className="text-3xl font-display text-charcoal mb-2">
-                      {stat.prefix}<AnimatedCounter end={stat.value} suffix={stat.suffix} />
-                    </div>
-                    <p className="text-xs text-charcoal-medium leading-tight">{stat.label}</p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
+            <FadeIn delay={0.2} direction="left">
+              <div className="relative">
+                <img 
+                  src={metricsImage}
+                  alt="Unified metrics dashboard"
+                  className="rounded-2xl shadow-xl"
+                />
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-24 bg-cream relative z-10">
+      {/* Dashboard Section */}
+      <section className="py-24 bg-white relative z-10" data-testid="section-dashboard">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <FadeIn direction="right">
+              <img 
+                src={dashboardImage}
+                alt="Integrated dashboard - single source of truth"
+                className="rounded-2xl shadow-xl"
+                data-testid="img-dashboard"
+              />
+            </FadeIn>
+
+            <FadeIn delay={0.2}>
+              <div>
+                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-dashboard-label">SINGLE SOURCE OF TRUTH</p>
+                <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
+                  One Dashboard.<br />
+                  <span className="text-gradient">Complete Visibility.</span>
+                </h2>
+                <p className="text-charcoal-medium text-lg leading-relaxed mb-6">
+                  No more logging into 12 different tools. No more piecing together reports from 5 vendors. Everything you need to see—in one place.
+                </p>
+                <ul className="space-y-3">
+                  {["Real-time performance metrics", "Cross-channel attribution", "Pipeline visibility", "Revenue forecasting"].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-charcoal">
+                      <div className="w-5 h-5 rounded-full gold-gradient flex items-center justify-center">
+                        <ArrowRight className="w-3 h-3 text-charcoal" />
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section - Simplified 4 Steps */}
+      <section className="py-24 bg-cream relative z-10" data-testid="section-process">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
             <div className="text-center mb-16">
-              <div className="w-px h-8 bg-gold mx-auto mb-6"></div>
-              <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">HOW WE WORK</p>
+              <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-process-label">HOW WE WORK</p>
               <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-4">
                 From Audit to Empire.
               </h2>
-              <p className="text-charcoal-medium text-lg">A proven process. Typical timeline: 8-12 weeks.</p>
+              <p className="text-charcoal-medium text-lg">A proven 8-12 week process.</p>
             </div>
-          </ScrollReveal>
+          </FadeIn>
 
-          {/* Timeline */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Process Image */}
+          <FadeIn>
+            <div className="mb-16">
+              <img 
+                src={processImage}
+                alt="4-step process: Audit, Architect, Build, Scale"
+                className="rounded-2xl shadow-xl mx-auto max-w-4xl w-full"
+              />
+            </div>
+          </FadeIn>
+
+          {/* Process Steps */}
+          <div className="grid md:grid-cols-4 gap-6">
             {processSteps.map((step, i) => (
-              <ScrollReveal key={i} delay={i * 1}>
-                <div className="relative h-full">
-                  {/* Connection line */}
+              <FadeIn key={i} delay={i * 0.1}>
+                <div className="relative">
                   {i < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-12 left-full w-full h-px bg-gold/30 z-0"></div>
+                    <div className="hidden md:block absolute top-8 left-[calc(50%+24px)] w-[calc(100%-48px)] h-px bg-gold/30"></div>
                   )}
                   
-                  <div className="glass p-8 rounded-2xl h-full card-3d relative z-10">
-                    <div className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center mb-6">
-                      <span className="font-display text-charcoal text-lg">{step.num}</span>
+                  <div className="bg-white p-6 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-300 text-center relative z-10" data-testid={`card-process-${i}`}>
+                    <div className="w-16 h-16 rounded-full gold-gradient flex items-center justify-center mx-auto mb-4">
+                      <step.icon className="w-7 h-7 text-charcoal" />
                     </div>
-                    <p className="font-accent text-xs text-gold tracking-wider uppercase mb-2">{step.week}</p>
-                    <h3 className="font-display text-xl text-charcoal mb-3">{step.title}</h3>
-                    <p className="text-charcoal-medium text-sm leading-relaxed">{step.desc}</p>
+                    <span className="font-accent text-xs text-gold tracking-wider uppercase">{step.num}</span>
+                    <h3 className="font-display text-xl text-charcoal mt-1 mb-2" data-testid={`text-process-title-${i}`}>{step.title}</h3>
+                    <p className="text-charcoal-medium text-sm">{step.desc}</p>
                   </div>
                 </div>
-              </ScrollReveal>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-cream-dark relative z-10">
+      <section className="py-32 relative z-10 overflow-hidden" data-testid="section-cta">
+        <div className="absolute inset-0">
+          <img 
+            src={ctaImage}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/80 to-charcoal/70"></div>
+        </div>
+        
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <ScrollReveal>
-            <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">READY TO UNIFY?</p>
-            <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6">
+          <FadeIn>
+            <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4" data-testid="text-cta-label">READY TO UNIFY?</p>
+            <h2 className="font-display text-4xl md:text-5xl text-white mb-6">
               Let's Build Your<br />
-              <span className="text-gradient">Growth Engine</span>
+              <span className="text-gold">Growth Engine</span>
             </h2>
-            <p className="text-charcoal-medium text-lg mb-10 max-w-xl mx-auto">
+            <p className="text-white/80 text-lg mb-10 max-w-xl mx-auto">
               Book a strategy call. We'll audit your current setup, identify your biggest opportunities, and show you exactly how a unified system would transform your business.
             </p>
             <Button 
               size="lg" 
-              className="font-accent gold-gradient text-charcoal border-0 text-xl px-12 py-8 rounded-2xl shimmer"
+              className="font-accent gold-gradient text-charcoal border-0 text-xl px-12 py-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow"
               onClick={handleBookCall}
+              data-testid="button-cta-book-call"
             >
               Book Your Strategy Call <ArrowRight className="ml-2" />
             </Button>
-            <p className="text-charcoal-medium text-sm mt-6">30 minutes. No obligation. Pure value.</p>
-          </ScrollReveal>
+            <p className="text-white/60 text-sm mt-6">30 minutes. No obligation. Pure value.</p>
+          </FadeIn>
         </div>
       </section>
     </div>
