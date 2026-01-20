@@ -225,14 +225,11 @@ export default function Services() {
             <p className="text-white/70 mb-12">Select a time that works for you. 30 minutes. Pure value.</p>
           </ScrollReveal>
           <div className="bg-white/5 backdrop-blur-xl border border-gold/30 rounded-2xl overflow-hidden p-4 shadow-2xl">
-             <iframe 
-               src="https://calendly.com/spidxr253/30min?hide_gdpr_banner=1&background_color=0A1628&text_color=ffffff&primary_color=c4a052"
-               width="100%"
-               height="700"
-               frameBorder="0"
-               title="Schedule a call"
-               className="rounded-xl"
-             />
+            <div 
+              className="calendly-inline-widget rounded-xl" 
+              data-url="https://calendly.com/spidxrnetwork/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=d0c26a&primary_color=065bb2"
+              style={{ minWidth: '320px', height: '700px' }}
+            />
           </div>
         </div>
       </section>
