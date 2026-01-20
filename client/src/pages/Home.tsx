@@ -7,7 +7,7 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import LogoCarousel from "@/components/LogoCarousel";
 import { FadeIn } from "@/components/TextReveal";
 
-import heroImage from "@assets/AMYGDALA_ACQUISITIONS_(1)_1767539284082.png";
+import heroBackgroundImage from "@assets/download_1768911427525.webp";
 import fragmentationImage from "@assets/download_(1)_1768908363471.webp";
 import stackedSystemImage from "@assets/download_(23)_1768908363470.png";
 import acquisitionImage from "@assets/download_(24)_1768908363470.png";
@@ -46,18 +46,25 @@ export default function Home() {
     target: heroRef,
     offset: ["start start", "end start"]
   });
-  const heroImageY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const heroImageY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
     <div className="overflow-hidden relative min-h-screen">
-      {/* Hero Section - Centered Layout with Scroll Effect */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-cream via-white to-cream" data-testid="section-hero">
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #1a1a1a 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }}></div>
+      {/* Hero Section - Centered Layout with Background Image */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden" data-testid="section-hero">
+        {/* Background Image */}
+        <motion.div 
+          className="absolute inset-0"
+          style={{ y: heroImageY, scale: heroImageScale }}
+        >
+          <img 
+            src={heroBackgroundImage}
+            alt=""
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-cream/90 via-cream/70 to-cream"></div>
+        </motion.div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <FadeIn delay={0.1}>
@@ -105,22 +112,6 @@ export default function Home() {
               >
                 Book Strategy Call <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-            </motion.div>
-
-            {/* Hero Image with Scroll Effect */}
-            <motion.div 
-              className="relative max-w-4xl mx-auto"
-              style={{ y: heroImageY, scale: heroImageScale, opacity: heroOpacity }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent rounded-3xl blur-3xl"></div>
-              <motion.img 
-                src={heroImage}
-                alt="SPIDXR Network - Unified Growth System"
-                className="relative rounded-3xl shadow-2xl w-full"
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-              />
             </motion.div>
 
             {/* Social proof badges - centered */}
