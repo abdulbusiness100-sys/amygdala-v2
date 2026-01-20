@@ -1,14 +1,13 @@
 import { useLocation } from "wouter";
 import { ArrowRight, Link2Off, Clock, Compass, Radar, Handshake, Server, Search, Settings, Rocket, TrendingUp, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import LogoCarousel from "@/components/LogoCarousel";
-import TestimonialSection from "@/components/TestimonialCard";
 import { FadeIn } from "@/components/TextReveal";
 
-import heroImage from "@assets/download_1768908354245.webp";
+import heroImage from "@assets/AMYGDALA_ACQUISITIONS_(1)_1767539284082.png";
 import fragmentationImage from "@assets/download_(1)_1768908363471.webp";
 import stackedSystemImage from "@assets/download_(23)_1768908363470.png";
 import acquisitionImage from "@assets/download_(24)_1768908363470.png";
@@ -42,120 +41,108 @@ export default function Home() {
     { num: "04", title: "Scale", icon: TrendingUp, desc: "Growth activation" },
   ];
 
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  const heroImageY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
     <div className="overflow-hidden relative min-h-screen">
-      {/* Hero Section - Split Layout */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-cream via-white to-cream" data-testid="section-hero">
+      {/* Hero Section - Centered Layout with Scroll Effect */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-cream via-white to-cream" data-testid="section-hero">
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, #1a1a1a 1px, transparent 0)`,
           backgroundSize: '40px 40px'
         }}></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column */}
-            <FadeIn delay={0.1}>
-              <div className="max-w-xl">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-8"
-                >
-                  <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-                  <span className="font-accent text-xs text-gold tracking-wider uppercase">Full-Stack Growth Operator</span>
-                </motion.div>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+          <FadeIn delay={0.1}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-8"
+            >
+              <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <span className="font-accent text-xs text-gold tracking-wider uppercase">Full-Stack Growth Operator</span>
+            </motion.div>
 
-                <motion.h1 
-                  className="font-display text-5xl md:text-6xl lg:text-7xl text-charcoal mb-6 leading-[1.1]"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
-                >
-                  We Build Systems<br />
-                  <span className="text-gradient">That Scale Businesses</span>
-                </motion.h1>
+            <motion.h1 
+              className="font-display text-5xl md:text-6xl lg:text-7xl text-charcoal mb-6 leading-[1.1]"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              We Build Systems{" "}
+              <span className="text-gradient">That Scale Businesses</span>
+            </motion.h1>
 
-                <motion.p 
-                  className="text-charcoal-medium text-lg md:text-xl mb-8 leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                >
-                  One unified partner replacing your fragmented agency stack.<br />
-                  Marketing. Sales. Technology. Connected.
-                </motion.p>
+            <motion.p 
+              className="text-charcoal-medium text-lg md:text-xl mb-8 leading-relaxed max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              One unified partner replacing your fragmented agency stack.<br />
+              Marketing. Sales. Technology. Connected.
+            </motion.p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                >
-                  <Button 
-                    size="lg" 
-                    className="font-accent gold-gradient text-charcoal border-0 text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-shadow"
-                    onClick={handleBookCall}
-                    data-testid="button-hero-cta"
-                  >
-                    Book Strategy Call <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="mb-12"
+            >
+              <Button 
+                size="lg" 
+                className="font-accent gold-gradient text-charcoal border-0 text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-shadow"
+                onClick={handleBookCall}
+                data-testid="button-hero-cta"
+              >
+                Book Strategy Call <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </motion.div>
 
-                {/* Social proof badges */}
-                <motion.div 
-                  className="mt-12 flex items-center gap-6"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-charcoal to-charcoal-medium border-2 border-white flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">{i}</span>
-                      </div>
-                    ))}
+            {/* Hero Image with Scroll Effect */}
+            <motion.div 
+              className="relative max-w-4xl mx-auto"
+              style={{ y: heroImageY, scale: heroImageScale, opacity: heroOpacity }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent rounded-3xl blur-3xl"></div>
+              <motion.img 
+                src={heroImage}
+                alt="SPIDXR Network - Unified Growth System"
+                className="relative rounded-3xl shadow-2xl w-full"
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+              />
+            </motion.div>
+
+            {/* Social proof badges - centered */}
+            <motion.div 
+              className="mt-16 flex items-center justify-center gap-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              <div className="flex -space-x-2">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-charcoal to-charcoal-medium border-2 border-white flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">{i}</span>
                   </div>
-                  <div>
-                    <p className="font-display text-charcoal">50+ Companies</p>
-                    <p className="text-sm text-charcoal-medium">Trust our unified approach</p>
-                  </div>
-                </motion.div>
+                ))}
               </div>
-            </FadeIn>
-
-            {/* Right Column - Hero Image */}
-            <FadeIn delay={0.4} direction="left">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent rounded-3xl blur-3xl"></div>
-                <motion.img 
-                  src={heroImage}
-                  alt="Unified Growth Network"
-                  className="relative rounded-3xl shadow-2xl w-full"
-                  initial={{ scale: 0.95 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                />
-                
-                {/* Floating badge */}
-                <motion.div 
-                  className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-gold/10"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center">
-                      <TrendingUp className="w-6 h-6 text-charcoal" />
-                    </div>
-                    <div>
-                      <p className="font-display text-2xl text-charcoal">847%</p>
-                      <p className="text-xs text-charcoal-medium">Avg. ROI</p>
-                    </div>
-                  </div>
-                </motion.div>
+              <div className="text-left">
+                <p className="font-display text-charcoal">100+ Businesses</p>
+                <p className="text-sm text-charcoal-medium">Trust our unified approach</p>
               </div>
-            </FadeIn>
-          </div>
+            </motion.div>
+          </FadeIn>
         </div>
       </section>
 
@@ -313,9 +300,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <TestimonialSection />
-
       {/* Metrics Section */}
       <section className="py-24 bg-cream relative z-10" data-testid="section-metrics">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -333,10 +317,10 @@ export default function Home() {
                 
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { value: 50, suffix: "+", label: "Clients Served" },
-                    { value: 12, prefix: "$", suffix: "M+", label: "Revenue Generated" },
-                    { value: 847, suffix: "%", label: "Avg. ROI Delivered" },
-                    { value: 89, suffix: "%", label: "Client Retention" },
+                    { value: 100, suffix: "+", label: "Businesses Impacted" },
+                    { value: 10, prefix: "$", suffix: "M+", label: "Client Portfolio" },
+                    { value: 100, suffix: "%", label: "Satisfaction Rate" },
+                    { value: 1, prefix: "$", suffix: "M+", label: "Generated in 2025" },
                   ].map((stat, i) => (
                     <FadeIn key={i} delay={0.1 + i * 0.1}>
                       <div className="bg-white p-6 rounded-2xl border border-gold/10 text-center hover:border-gold/30 transition-colors" data-testid={`card-metric-${i}`}>

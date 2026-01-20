@@ -1,6 +1,5 @@
-import { CheckCircle2, Sparkles, X, Radar, Handshake, Server, ArrowRight, Globe, Palette, Share2, ShoppingBag, Target, Mail, Users, Headphones, Settings, Building, BrainCircuit, Rocket } from "lucide-react";
+import { CheckCircle2, Sparkles, Radar, Handshake, Server, Globe, Palette, Share2, ShoppingBag, Target, Mail, Users, Headphones, Settings, Building, BrainCircuit, Rocket } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import LeadForm from "@/components/LeadForm";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Button } from "@/components/ui/button";
 
@@ -111,11 +110,11 @@ export default function Services() {
 
       {/* Service Layers */}
       <section className="py-24 bg-cream relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {serviceLayers.map((layer, li) => (
-            <div key={li} className="mb-24 last:mb-0">
-              <ScrollReveal>
-                <div className="flex items-center gap-4 mb-8">
+            <ScrollReveal key={li}>
+              <div className="border-2 border-charcoal rounded-3xl p-8 bg-gradient-to-br from-white to-cream/80" data-testid={`section-service-layer-${li}`}>
+                <div className="flex items-center gap-4 mb-8 pb-6 border-b border-charcoal/10">
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${layer.color} flex items-center justify-center`}>
                     <layer.icon className="w-7 h-7 text-charcoal" />
                   </div>
@@ -124,31 +123,33 @@ export default function Services() {
                     <p className="font-accent text-sm text-charcoal-medium">{layer.subtitle} — {layer.tagline}</p>
                   </div>
                 </div>
-              </ScrollReveal>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {layer.services.map((service, si) => (
-                  <ScrollReveal key={si} delay={si * 0.5}>
-                    <div className="glass p-6 rounded-2xl h-full card-3d">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0">
-                          <service.icon className="w-5 h-5 text-gold" />
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {layer.services.map((service, si) => (
+                    <div 
+                      key={si} 
+                      className="border border-charcoal/20 bg-gradient-to-b from-white to-cream/50 p-5 rounded-xl h-full hover:border-charcoal/40 transition-colors"
+                      data-testid={`card-service-${li}-${si}`}
+                    >
+                      <div className="flex items-start gap-3 mb-3">
+                        <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
+                          <service.icon className="w-4 h-4 text-gold" />
                         </div>
-                        <h3 className="font-display text-lg text-charcoal">{service.name}</h3>
+                        <h3 className="font-display text-base text-charcoal leading-tight">{service.name}</h3>
                       </div>
-                      <div className="bg-gold/5 px-3 py-2 rounded-lg">
+                      <div className="bg-gold/5 px-3 py-2 rounded-lg border border-gold/10">
                         <p className="font-accent text-xs text-gold">{service.result}</p>
                       </div>
                     </div>
-                  </ScrollReveal>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
-      {/* Pricing Tiers */}
+      {/* Service Tiers - Cylinders Side by Side */}
       <section className="py-24 bg-white relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -160,78 +161,53 @@ export default function Services() {
 
           <div className="grid lg:grid-cols-3 gap-8">
             {pricingTiers.map((tier, i) => (
-              <ScrollReveal key={i} delay={i * 1}>
-                <div className={`relative h-full rounded-3xl p-8 transition-all duration-300 flex flex-col card-3d
-                  ${tier.popular 
-                    ? 'glass border-2 border-gold shadow-xl' 
-                    : 'glass'
-                  }`}
+              <ScrollReveal key={i} delay={i * 0.2}>
+                <div 
+                  className={`relative h-full flex flex-col items-center transition-all duration-300 group`}
+                  data-testid={`cylinder-tier-${i}`}
                 >
-                  {tier.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 gold-gradient text-charcoal px-4 py-1 rounded-full text-xs font-accent font-bold flex items-center gap-2 shadow-lg">
-                      <Sparkles className="w-3 h-3" /> MOST POPULAR
-                    </div>
-                  )}
+                  {/* Cylinder Top */}
+                  <div className={`w-full h-8 rounded-t-full border-2 border-charcoal ${tier.popular ? 'bg-gradient-to-r from-gold to-gold-dark' : 'bg-gradient-to-b from-cream to-white'}`}></div>
                   
-                  <div className="mb-6">
-                    <h3 className="font-display text-3xl text-charcoal mb-2">{tier.name}</h3>
-                    <p className="text-sm text-charcoal-medium">{tier.tagline}</p>
-                  </div>
-
-                  <div className="mb-8">
-                    <span className="font-display text-2xl text-charcoal">{tier.price}</span>
-                    <span className="text-charcoal-medium text-sm">{tier.period}</span>
-                  </div>
-
-                  <div className="space-y-4 mb-8 flex-1">
-                    {tier.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 mt-0.5 text-gold flex-shrink-0" />
-                        <span className="text-charcoal-medium text-sm">{feat}</span>
+                  {/* Cylinder Body */}
+                  <div className={`w-full flex-1 border-l-2 border-r-2 border-charcoal p-8 bg-gradient-to-b from-white to-cream/80 ${tier.popular ? 'border-gold' : ''}`}>
+                    {tier.popular && (
+                      <div className="text-center mb-4">
+                        <span className="inline-flex items-center gap-2 gold-gradient text-charcoal px-4 py-1 rounded-full text-xs font-accent font-bold">
+                          <Sparkles className="w-3 h-3" /> MOST POPULAR
+                        </span>
                       </div>
-                    ))}
-                  </div>
+                    )}
+                    
+                    <div className="text-center mb-6">
+                      <h3 className="font-display text-3xl text-charcoal mb-2">{tier.name}</h3>
+                      <p className="text-sm text-charcoal-medium">{tier.tagline}</p>
+                    </div>
 
-                  <Button 
-                    className={`w-full py-6 text-lg font-accent ${tier.popular ? 'gold-gradient text-charcoal border-0' : ''}`}
-                    variant={tier.popular ? "default" : "outline"}
-                    onClick={() => document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })}
-                  >
-                    {tier.cta}
-                  </Button>
+                    <div className="space-y-3 mb-6">
+                      {tier.features.map((feat, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-4 h-4 mt-0.5 text-gold flex-shrink-0" />
+                          <span className="text-charcoal-medium text-sm">{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Button 
+                      className={`w-full py-5 text-base font-accent ${tier.popular ? 'gold-gradient text-charcoal border-0' : ''}`}
+                      variant={tier.popular ? "default" : "outline"}
+                      onClick={() => document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })}
+                      data-testid={`button-tier-${i}`}
+                    >
+                      {tier.cta}
+                    </Button>
+                  </div>
+                  
+                  {/* Cylinder Bottom */}
+                  <div className={`w-full h-8 rounded-b-full border-2 border-charcoal ${tier.popular ? 'bg-gradient-to-r from-gold-dark to-gold' : 'bg-gradient-to-b from-cream/80 to-cream'}`}></div>
                 </div>
               </ScrollReveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Lead Form */}
-      <section id="audit" className="py-24 bg-cream relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <ScrollReveal>
-               <div className="w-px h-8 bg-gold mb-6"></div>
-               <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-6">
-                 Get Your Free <span className="text-gradient">Growth Audit</span>
-               </h2>
-               <p className="text-charcoal-medium text-lg mb-8">
-                 Tell us about your business and we'll identify the biggest opportunities to unify your growth stack. No obligation.
-               </p>
-               <ul className="space-y-4 mb-8">
-                 {['Identify leaks in your funnel', 'Discover quick wins', 'Custom integration roadmap'].map((item, i) => (
-                   <li key={i} className="flex items-center gap-3 text-charcoal">
-                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center">
-                       <CheckCircle2 className="w-4 h-4 text-gold" />
-                     </div>
-                     {item}
-                   </li>
-                 ))}
-               </ul>
-            </ScrollReveal>
-            <ScrollReveal delay={2}>
-              <LeadForm />
-            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -275,8 +251,3 @@ export default function Services() {
   );
 }
 
-function renderCheck(val: boolean | string) {
-  if (val === true) return <CheckCircle2 className="w-5 h-5 text-gold" />;
-  if (val === false) return <X className="w-5 h-5 text-charcoal-medium" />;
-  return val;
-}

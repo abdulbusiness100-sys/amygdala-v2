@@ -1,9 +1,86 @@
 import { useLocation } from "wouter";
+import { useEffect, useRef, useState, Component, Suspense, lazy } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { CheckCircle2, Clock, Search, Compass, Palette, Code, Rocket, TrendingUp, ArrowRight, Users, Lightbulb, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Lazy load Globe component to handle WebGL errors gracefully
+const Globe = lazy(() => import("react-globe.gl"));
+
+// Check if WebGL is supported
+function isWebGLSupported() {
+  try {
+    const canvas = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext && 
+      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+  } catch (e) {
+    return false;
+  }
+}
+
+// Error boundary for Globe component
+class GlobeErrorBoundary extends Component<{children: React.ReactNode, fallback: React.ReactNode}, {hasError: boolean}> {
+  constructor(props: {children: React.ReactNode, fallback: React.ReactNode}) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  
+  componentDidCatch(error: any) {
+    console.log('Globe rendering error (WebGL may not be supported):', error);
+  }
+  
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
+
 export default function WhatWeDo() {
+  const globeEl = useRef<any>(null);
+  const [globeReady, setGlobeReady] = useState(false);
+  const [webGLSupported, setWebGLSupported] = useState(true);
+  
+  // Phase locations on the globe (spread around the world)
+  const phasePoints = [
+    { lat: 40.7128, lng: -74.006, phase: "Phase 1", title: "Deep Dive Audit", color: "#C4A052" },
+    { lat: 51.5074, lng: -0.1278, phase: "Phase 2", title: "Unified Architecture", color: "#C4A052" },
+    { lat: 35.6762, lng: 139.6503, phase: "Phase 3", title: "Creative & Content", color: "#C4A052" },
+    { lat: -33.8688, lng: 151.2093, phase: "Phase 4", title: "Systematic Build", color: "#C4A052" },
+    { lat: 25.2048, lng: 55.2708, phase: "Phase 5", title: "Launch & Calibrate", color: "#C4A052" },
+    { lat: -22.9068, lng: -43.1729, phase: "Phase 6", title: "Growth Activation", color: "#C4A052" },
+  ];
+  
+  // Arc connections between phases
+  const arcsData = [
+    { startLat: 40.7128, startLng: -74.006, endLat: 51.5074, endLng: -0.1278, color: "#C4A052" },
+    { startLat: 51.5074, startLng: -0.1278, endLat: 35.6762, endLng: 139.6503, color: "#C4A052" },
+    { startLat: 35.6762, startLng: 139.6503, endLat: -33.8688, endLng: 151.2093, color: "#C4A052" },
+    { startLat: -33.8688, startLng: 151.2093, endLat: 25.2048, endLng: 55.2708, color: "#C4A052" },
+    { startLat: 25.2048, startLng: 55.2708, endLat: -22.9068, endLng: -43.1729, color: "#C4A052" },
+  ];
+
+  // Check WebGL on mount
+  useEffect(() => {
+    setWebGLSupported(isWebGLSupported());
+  }, []);
+
+  useEffect(() => {
+    if (globeEl.current && webGLSupported) {
+      try {
+        globeEl.current.controls().autoRotate = true;
+        globeEl.current.controls().autoRotateSpeed = 0.5;
+        globeEl.current.pointOfView({ altitude: 2.5 });
+      } catch (e) {
+        setWebGLSupported(false);
+      }
+    }
+  }, [globeReady, webGLSupported]);
   const [, setLocation] = useLocation();
 
   const handleBookCall = () => {
@@ -154,8 +231,105 @@ export default function WhatWeDo() {
         </div>
       </section>
 
+      {/* 3D Globe Section */}
+      <section className="py-24 bg-white relative z-10" data-testid="section-globe">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 mb-6">
+                <Clock className="w-4 h-4 text-gold" />
+                <span className="text-gold font-accent text-sm tracking-wider uppercase">Global Methodology</span>
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl text-charcoal mb-4">
+                6 Phases. <span className="text-gradient">One System.</span>
+              </h2>
+              <p className="text-charcoal-medium text-lg max-w-2xl mx-auto">
+                Our proven methodology connects every phase of your growth journey into a unified system.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Globe Visualization */}
+          <div className="relative h-[500px] rounded-3xl overflow-hidden bg-gradient-to-b from-charcoal to-charcoal-medium" data-testid="globe-container">
+            <GlobeErrorBoundary fallback={
+              <div className="flex flex-col items-center justify-center h-full" data-testid="globe-fallback">
+                <div className="w-32 h-32 rounded-full gold-gradient flex items-center justify-center mb-6">
+                  <Target className="w-16 h-16 text-charcoal" />
+                </div>
+                <h3 className="text-2xl font-display text-white mb-4">Global Methodology</h3>
+                <div className="grid grid-cols-3 gap-4 max-w-2xl">
+                  {phasePoints.map((point, i) => (
+                    <div key={i} className="text-center p-4 bg-white/5 rounded-xl">
+                      <div className="w-8 h-8 rounded-full gold-gradient mx-auto mb-2 flex items-center justify-center">
+                        <span className="text-charcoal font-bold text-sm">{i + 1}</span>
+                      </div>
+                      <p className="text-white text-sm font-display">{point.title}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            }>
+              {webGLSupported ? (
+                <Suspense fallback={
+                  <div className="flex items-center justify-center h-full">
+                    <div className="w-16 h-16 border-4 border-gold border-t-transparent rounded-full animate-spin"></div>
+                  </div>
+                }>
+                  <Globe
+                    ref={globeEl}
+                    globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+                    backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+                    pointsData={phasePoints}
+                    pointAltitude={0.1}
+                    pointRadius={0.5}
+                    pointColor={() => "#C4A052"}
+                    pointLabel={(d: any) => `<div class="bg-charcoal/90 text-white px-3 py-2 rounded-lg text-sm"><strong class="text-gold">${d.phase}</strong><br/>${d.title}</div>`}
+                    arcsData={arcsData}
+                    arcColor={() => "#C4A052"}
+                    arcDashLength={0.4}
+                    arcDashGap={0.2}
+                    arcDashAnimateTime={2000}
+                    arcStroke={0.5}
+                    width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 32, 1200) : 800}
+                    height={500}
+                    onGlobeReady={() => setGlobeReady(true)}
+                  />
+                </Suspense>
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full" data-testid="globe-fallback">
+                  <div className="w-32 h-32 rounded-full gold-gradient flex items-center justify-center mb-6">
+                    <Target className="w-16 h-16 text-charcoal" />
+                  </div>
+                  <h3 className="text-2xl font-display text-white mb-4">Global Methodology</h3>
+                  <div className="grid grid-cols-3 gap-4 max-w-2xl">
+                    {phasePoints.map((point, i) => (
+                      <div key={i} className="text-center p-4 bg-white/5 rounded-xl">
+                        <div className="w-8 h-8 rounded-full gold-gradient mx-auto mb-2 flex items-center justify-center">
+                          <span className="text-charcoal font-bold text-sm">{i + 1}</span>
+                        </div>
+                        <p className="text-white text-sm font-display">{point.title}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </GlobeErrorBoundary>
+            
+            {/* Phase Legend */}
+            <div className="absolute bottom-4 left-4 right-4 flex flex-wrap justify-center gap-3" data-testid="phase-legend">
+              {phasePoints.map((point, i) => (
+                <div key={i} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                  <div className="w-2 h-2 rounded-full bg-gold"></div>
+                  <span className="text-white text-xs font-accent">{point.phase}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Timeline */}
-      <section className="py-24 bg-white relative z-10">
+      <section className="py-24 bg-cream relative z-10" data-testid="section-timeline">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-20">
