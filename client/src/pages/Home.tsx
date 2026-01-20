@@ -314,7 +314,7 @@ export default function Home() {
                     { value: 1, prefix: "$", suffix: "M+", label: "Generated in 2025" },
                   ].map((stat, i) => (
                     <FadeIn key={i} delay={0.1 + i * 0.1}>
-                      <div className="bg-white p-6 rounded-2xl border border-gold/10 text-center hover:border-gold/30 transition-colors" data-testid={`card-metric-${i}`}>
+                      <div className="bg-white p-6 rounded-2xl border-2 border-gold text-center hover:border-gold-dark transition-colors" data-testid={`card-metric-${i}`}>
                         <div className="text-3xl font-display text-charcoal mb-1" data-testid={`text-metric-value-${i}`}>
                           {stat.prefix}<AnimatedCounter end={stat.value} suffix={stat.suffix} />
                         </div>
