@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -35,9 +35,9 @@
 
   --radius: 0.75rem;
 
-  --font-sans: 'Orbitron', 'Inter', sans-serif;
+  --font-sans: 'Be Vietnam Pro', 'Inter', sans-serif;
   --font-display: 'Orbitron', 'Playfair Display', serif;
-  --font-accent: 'Orbitron', 'Space Grotesk', sans-serif;
+  --font-accent: 'Be Vietnam Pro', 'Space Grotesk', sans-serif;
 
   /* Gold gradient */
   --gold-gradient: linear-gradient(135deg, #C4A052 0%, #D4AF37 50%, #F5E6C8 100%);

@@ -328,11 +328,11 @@ export default function WhatWeDo() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Visual Timeline Mindmap */}
       <section className="py-24 bg-cream relative z-10" data-testid="section-timeline">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-20">
+            <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 mb-6">
                 <Clock className="w-4 h-4 text-gold" />
                 <span className="text-gold font-accent text-sm tracking-wider uppercase">Your Journey</span>
@@ -346,71 +346,93 @@ export default function WhatWeDo() {
             </div>
           </ScrollReveal>
 
-          {/* Progress Bar */}
-          <div className="hidden lg:block mb-16">
-            <div className="relative h-2 bg-gold/10 rounded-full overflow-hidden">
-              <div className="absolute inset-y-0 left-0 w-full gold-gradient rounded-full"></div>
-            </div>
-            <div className="flex justify-between mt-4">
-              {timelinePhases.map((phase, i) => (
-                <div key={i} className="text-center">
-                  <div className="w-4 h-4 rounded-full gold-gradient mx-auto mb-2 ring-4 ring-white"></div>
-                  <span className="text-xs text-charcoal-medium font-accent">{phase.week}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Phase Cards - 2x3 Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {timelinePhases.map((phase, i) => (
-              <ScrollReveal key={i} delay={i * 0.5}>
-                <div className="glass p-8 rounded-3xl h-full card-3d hover:border-gold/30">
-                  {/* Phase Header */}
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-2xl gold-gradient flex items-center justify-center shadow-lg">
-                      <phase.icon className="w-7 h-7 text-charcoal" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-accent font-bold text-gold uppercase tracking-wider">{phase.phase}</span>
-                        <span className="text-xs text-charcoal-medium">|</span>
-                        <span className="text-xs text-charcoal-medium flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> {phase.week}
-                        </span>
-                      </div>
-                      <h3 className="font-display text-xl text-charcoal">{phase.title}</h3>
-                    </div>
-                  </div>
-
-                  {/* Subtitle */}
-                  <p className="text-gold text-sm font-accent mb-6">{phase.subtitle}</p>
-
-                  {/* Tasks */}
-                  <div className="space-y-4 mb-6">
-                    {phase.tasks.map((item, ti) => (
-                      <div key={ti} className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <CheckCircle2 className="w-3 h-3 text-gold" />
-                        </div>
-                        <div>
-                          <p className="text-charcoal text-sm font-medium">{item.task}</p>
-                          <p className="text-charcoal-medium text-xs mt-0.5">{item.detail}</p>
+          {/* Visual Mindmap Timeline */}
+          <div className="relative mb-16">
+            {/* Central connecting line */}
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-gold via-gold to-gold/30 transform -translate-x-1/2 rounded-full"></div>
+            
+            {/* Timeline nodes */}
+            <div className="space-y-8 lg:space-y-0">
+              {timelinePhases.map((phase, i) => {
+                const isLeft = i % 2 === 0;
+                return (
+                  <ScrollReveal key={i} delay={i * 0.15}>
+                    <div className={`relative lg:flex items-center ${isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'} lg:mb-12`}>
+                      {/* Connector dot on timeline */}
+                      <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 z-20">
+                        <div className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center shadow-lg ring-4 ring-cream">
+                          <span className="text-charcoal font-display font-bold">{i + 1}</span>
                         </div>
                       </div>
-                    ))}
-                  </div>
-
-                  {/* Deliverable */}
-                  <div className="flex items-center gap-3 pt-4 border-t border-gold/10">
-                    <div className="px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-accent font-bold uppercase tracking-wider">
-                      Deliverable
+                      
+                      {/* Horizontal connector line */}
+                      <div className={`hidden lg:block absolute top-1/2 h-0.5 bg-gold/30 w-16 ${isLeft ? 'right-1/2 mr-6' : 'left-1/2 ml-6'}`}></div>
+                      
+                      {/* Phase Card */}
+                      <div className={`lg:w-[calc(50%-4rem)] ${isLeft ? 'lg:pr-8 lg:text-right' : 'lg:pl-8 lg:ml-auto'}`}>
+                        <div className="bg-white border-2 border-charcoal rounded-2xl p-6 shadow-lg hover:border-gold transition-colors duration-300">
+                          {/* Mobile phase number */}
+                          <div className="lg:hidden flex items-center gap-3 mb-4">
+                            <div className="w-10 h-10 rounded-full gold-gradient flex items-center justify-center">
+                              <span className="text-charcoal font-display font-bold text-sm">{i + 1}</span>
+                            </div>
+                            <div>
+                              <span className="text-xs font-accent font-bold text-gold uppercase tracking-wider">{phase.phase}</span>
+                              <span className="text-xs text-charcoal-medium ml-2">{phase.week}</span>
+                            </div>
+                          </div>
+                          
+                          {/* Phase Header */}
+                          <div className={`flex items-center gap-4 mb-4 ${isLeft ? 'lg:flex-row-reverse lg:justify-start' : ''}`}>
+                            <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-md flex-shrink-0">
+                              <phase.icon className="w-6 h-6 text-charcoal" />
+                            </div>
+                            <div className={isLeft ? 'lg:text-right' : ''}>
+                              <div className={`hidden lg:flex items-center gap-2 mb-1 ${isLeft ? 'lg:justify-end' : ''}`}>
+                                <span className="text-xs font-accent font-bold text-gold uppercase tracking-wider">{phase.phase}</span>
+                                <span className="text-xs text-charcoal-medium">|</span>
+                                <span className="text-xs text-charcoal-medium flex items-center gap-1">
+                                  <Clock className="w-3 h-3" /> {phase.week}
+                                </span>
+                              </div>
+                              <h3 className="font-display text-xl text-charcoal">{phase.title}</h3>
+                            </div>
+                          </div>
+                          
+                          {/* Subtitle */}
+                          <p className={`text-gold text-sm font-accent mb-4 ${isLeft ? 'lg:text-right' : ''}`}>{phase.subtitle}</p>
+                          
+                          {/* Key Tasks */}
+                          <div className={`space-y-2 mb-4 ${isLeft ? 'lg:text-right' : ''}`}>
+                            {phase.tasks.slice(0, 2).map((item, ti) => (
+                              <div key={ti} className={`flex items-center gap-2 ${isLeft ? 'lg:flex-row-reverse lg:justify-start' : ''}`}>
+                                <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0" />
+                                <span className="text-charcoal-medium text-sm">{item.task}</span>
+                              </div>
+                            ))}
+                          </div>
+                          
+                          {/* Deliverable */}
+                          <div className={`flex items-center gap-2 pt-4 border-t border-charcoal/10 ${isLeft ? 'lg:flex-row-reverse lg:justify-start' : ''}`}>
+                            <div className="px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-accent font-bold uppercase tracking-wider">
+                              Deliverable
+                            </div>
+                            <span className="text-charcoal text-sm font-medium">{phase.deliverable}</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <span className="text-charcoal text-sm font-medium">{phase.deliverable}</span>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+            
+            {/* End node */}
+            <div className="hidden lg:flex justify-center mt-8">
+              <div className="w-16 h-16 rounded-full gold-gradient flex items-center justify-center shadow-xl ring-4 ring-cream">
+                <Rocket className="w-8 h-8 text-charcoal" />
+              </div>
+            </div>
           </div>
 
           {/* Bottom CTA */}

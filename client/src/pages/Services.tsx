@@ -224,11 +224,14 @@ export default function Services() {
             <h2 className="font-display text-4xl text-white mb-6">Book Your Strategy Call</h2>
             <p className="text-white/70 mb-12">Select a time that works for you. 30 minutes. Pure value.</p>
           </ScrollReveal>
-          <div className="bg-white/5 backdrop-blur-xl border border-gold/30 rounded-2xl overflow-hidden p-4 shadow-2xl">
-            <div 
-              className="calendly-inline-widget rounded-xl" 
-              data-url="https://calendly.com/spidxrnetwork/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=d0c26a&primary_color=065bb2"
-              style={{ minWidth: '320px', height: '700px' }}
+          <div className="bg-white rounded-2xl overflow-hidden shadow-2xl">
+            <iframe 
+              src="https://calendly.com/spidxrnetwork/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=d0c26a&primary_color=065bb2"
+              width="100%"
+              height="700"
+              frameBorder="0"
+              title="Schedule a call"
+              className="w-full"
             />
           </div>
         </div>
