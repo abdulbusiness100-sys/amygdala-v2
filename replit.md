@@ -76,6 +76,11 @@ This pattern ensures type safety across the full stack.
 - External images hosted on `cdn.abacus.ai`
 - Local assets in `attached_assets/` directory
 
+## Typography
+- **Titles/Headings**: Orbitron (font-display) - futuristic, geometric style
+- **Body Text**: Be Vietnam Pro (font-sans, font-accent) - clean, readable
+- Logos excluded from Orbitron styling
+
 ## Recent Changes (January 2026)
 
 ### Homepage Redesign (Latest Update)
@@ -84,7 +89,7 @@ Major visual overhaul with centered hero layout and scroll effects:
 #### Homepage Layout Changes
 - **Hero Section**: Centered layout (was split left-to-right) with Framer Motion scroll parallax effect
 - **Hero Image**: Using AMYGDALA_ACQUISITIONS_(1) brain visualization
-- **Metrics Updated**: 100+ Businesses Impacted, $10M+ Client Portfolio, 100% Satisfaction Rate, $1M+ Generated in 2025
+- **Metrics Updated**: 60+ Businesses Impacted, $10M+ Client Portfolio, 100% Satisfaction Rate, $1M+ Generated in 2025
 - **Testimonials Section REMOVED**: Will be added as separate "Client Success & Results" page later
 
 #### Scroll Effects
@@ -104,6 +109,11 @@ Major visual overhaul with centered hero layout and scroll effects:
 - **WebGL Fallback**: GlobeErrorBoundary catches WebGL errors and shows fallback grid of 6 phase cards
 - **Lazy Loading**: Globe component lazy loaded with Suspense for performance
 - **Phase Legend**: Always visible at bottom of globe container
+- **Visual Timeline Mindmap**: Alternating left/right layout with central gold connecting line
+  - Numbered nodes (1-6) on central timeline
+  - Horizontal connectors to phase cards
+  - Phase cards with border-2 border-charcoal styling
+  - Responsive: vertical stack on mobile, alternating layout on desktop
 
 #### New Components Created
 - **LogoCarousel** (`client/src/components/LogoCarousel.tsx`): Infinite scrolling client logo marquee
