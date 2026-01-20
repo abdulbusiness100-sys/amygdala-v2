@@ -315,15 +315,25 @@ export default function WhatWeDo() {
               )}
             </GlobeErrorBoundary>
             
-            {/* 3x2 Phase Grid */}
+            {/* Phase Mindmap with Arrows */}
             <div className="absolute bottom-4 left-4 right-4" data-testid="phase-legend">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 max-w-3xl mx-auto">
+              <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2 max-w-4xl mx-auto">
                 {phasePoints.map((point, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg" data-testid={`phase-item-${i}`}>
-                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full gold-gradient flex items-center justify-center flex-shrink-0">
-                      <span className="text-charcoal font-bold text-[10px] sm:text-xs">{i + 1}</span>
+                  <div key={i} className="flex items-center" data-testid={`phase-item-${i}`}>
+                    {/* Phase Node */}
+                    <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm px-3 py-2 rounded-lg border border-gold/30">
+                      <div className="w-6 h-6 rounded-full gold-gradient flex items-center justify-center flex-shrink-0">
+                        <span className="text-charcoal font-bold text-xs">{i + 1}</span>
+                      </div>
+                      <span className="text-white text-xs font-accent whitespace-nowrap">{point.title}</span>
                     </div>
-                    <span className="text-white text-[10px] sm:text-xs font-accent truncate">{point.title}</span>
+                    {/* Arrow to next phase */}
+                    {i < phasePoints.length - 1 && (
+                      <div className="hidden sm:flex items-center mx-1">
+                        <div className="w-4 h-0.5 bg-gold"></div>
+                        <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[6px] border-l-gold"></div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

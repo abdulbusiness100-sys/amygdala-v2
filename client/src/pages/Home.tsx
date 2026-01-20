@@ -341,7 +341,7 @@ export default function Home() {
           </FadeIn>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {["Real-time performance metrics", "Cross-channel attribution", "Pipeline visibility", "Revenue forecasting"].map((item, i) => (
               <FadeIn key={i} delay={0.1 + i * 0.1}>
                 <div className="bg-cream p-4 rounded-xl text-center border border-gold/10 hover:border-gold/30 transition-colors">
@@ -353,44 +353,6 @@ export default function Home() {
               </FadeIn>
             ))}
           </div>
-
-          {/* Timeline Visual */}
-          <FadeIn delay={0.2}>
-            <div className="relative">
-              <div className="text-center mb-8">
-                <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-2">FROM CHAOS TO CLARITY</p>
-                <h3 className="font-display text-2xl text-charcoal">Your Journey With Us</h3>
-              </div>
-              
-              {/* Horizontal Timeline */}
-              <div className="relative">
-                {/* Timeline Line */}
-                <div className="absolute top-8 left-0 right-0 h-1 bg-gradient-to-r from-gold/20 via-gold to-gold/20 rounded-full"></div>
-                
-                {/* Timeline Steps */}
-                <div className="grid grid-cols-4 gap-4 relative">
-                  {[
-                    { num: "01", title: "Audit", desc: "Deep-dive analysis of your current systems" },
-                    { num: "02", title: "Architect", desc: "Custom blueprint for your growth engine" },
-                    { num: "03", title: "Build", desc: "Systematic implementation phase" },
-                    { num: "04", title: "Scale", desc: "Continuous optimization & growth" },
-                  ].map((step, i) => (
-                    <div key={i} className="flex flex-col items-center">
-                      {/* Node */}
-                      <div className="w-16 h-16 rounded-full gold-gradient flex items-center justify-center shadow-lg border-4 border-white z-10 mb-4">
-                        <span className="font-display text-charcoal font-bold">{step.num}</span>
-                      </div>
-                      {/* Content */}
-                      <div className="text-center">
-                        <h4 className="font-display text-lg text-charcoal mb-1">{step.title}</h4>
-                        <p className="text-charcoal-medium text-xs">{step.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </FadeIn>
         </div>
       </section>
 

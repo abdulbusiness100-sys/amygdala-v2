@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Column 1 - Logo & About */}
           <div>
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <img src={logo} alt="SPIDXR NETWORK" className="h-10 w-auto brightness-0 invert opacity-90" />
+              <img src={logo} alt="SPIDXR NETWORK" className="h-5 w-auto brightness-0 invert opacity-90" />
             </Link>
             <p className="text-cream/70 text-sm leading-relaxed">
               The unified growth engine for ambitious businesses ready to scale without the chaos.
@@ -31,7 +31,7 @@ export default function Footer() {
           <div>
             <h4 className="font-accent font-semibold text-gold text-sm tracking-wider uppercase mb-6">Get In Touch</h4>
             <ul className="space-y-4 text-cream/70 text-sm">
-              <li>strategy@spidxrnetwork.com</li>
+              <li>growth@spidxr.co.uk</li>
               <li className="pt-2">London, UK</li>
               <li>Los Angeles, CA</li>
               <li>Dubai, UAE</li>
