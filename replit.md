@@ -75,3 +75,51 @@ This pattern ensures type safety across the full stack.
 ### Asset Hosting
 - External images hosted on `cdn.abacus.ai`
 - Local assets in `attached_assets/` directory
+
+## Recent Changes (January 2026)
+
+### Homepage Redesign
+Major visual overhaul implementing a premium design based on detailed requirements:
+
+#### New Components Created
+- **LogoCarousel** (`client/src/components/LogoCarousel.tsx`): Infinite scrolling client logo marquee with configurable logos, fade edge effects, and grayscale-to-color hover effect
+- **TestimonialSection** (`client/src/components/TestimonialCard.tsx`): Testimonial cards with star ratings, client photos, quotes, and specific metrics
+- **TextReveal** (`client/src/components/TextReveal.tsx`): Premium word-by-word text reveal animation using Framer Motion
+- **FadeIn** (in TextReveal): Directional fade-in animation component (supports up/down/left/right)
+- **AnimatedCounter** (in Home.tsx): Counter animation for metrics section
+
+#### Homepage Sections (in order)
+1. **Hero Section**: Split layout with hero image on right, single CTA button, social proof badges (50+ companies avatar row), floating ROI badge
+2. **Logo Carousel**: Infinite scrolling client logos with fade edges
+3. **Problem Section**: "Your Growth Stack Is Bleeding Money" with fragmentation image and problem cards
+4. **Three Layers Bento Grid**: Stacked system infographic, Top/Middle funnel cards with images
+5. **Infrastructure Card**: Full-width backend services with tags
+6. **Testimonials**: 3 client testimonial cards with star ratings and metrics
+7. **Metrics Section**: 4 animated counters (50+ clients, $12M+ revenue, 847% ROI, 89% retention)
+8. **Dashboard Section**: Integrated dashboard mockup image
+9. **Process Timeline**: Simplified 4-step (Audit → Architect → Build → Scale)
+10. **CTA Section**: Full-bleed portal image with dark gradient overlay
+
+#### Custom Images Integrated
+Located in `attached_assets/`:
+- Hero network visualization
+- Fragmentation problem illustration
+- Stacked layers system infographic
+- Acquisition funnel visual
+- Conversion pipeline visual
+- Infrastructure illustration
+- Metrics cards visual
+- Dashboard mockup
+- Process timeline visual
+- CTA portal concept
+
+#### Data-testid Attributes
+All interactive and display elements have proper data-testid attributes for QA automation:
+- Section: `section-hero`, `section-problem`, `section-three-layers`, etc.
+- Cards: `card-testimonial-{i}`, `card-metric-{i}`, `card-process-{i}`
+- Text: `text-testimonial-quote-{i}`, `text-metric-value-{i}`, etc.
+- Buttons: `button-hero-cta`, `button-cta-book-call`
+
+### Performance Notes
+- Large images (700KB+) in attached_assets should be optimized for production
+- LogoCarousel is ready for real client logos via props: `<LogoCarousel logos={[{name: "Client", logoUrl: "/path/to/logo.png"}]} />`
