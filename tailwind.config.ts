@@ -99,11 +99,19 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        display: ["Playfair Display", "serif"],
-        accent: ["Space Grotesk", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
-        mono: ["var(--font-mono)"],
+        sans: ["-apple-system", "system-ui", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"],
+        display: ["-apple-system", "system-ui", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        accent: ["-apple-system", "system-ui", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        serif: ["Georgia", "Times New Roman", "serif"],
+        mono: ["SF Mono", "Menlo", "Monaco", "Consolas", "monospace"],
+      },
+      transitionTimingFunction: {
+        'apple': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+        'apple-bounce': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      },
+      transitionDuration: {
+        '400': '400ms',
+        '600': '600ms',
       },
       keyframes: {
         "accordion-down": {
