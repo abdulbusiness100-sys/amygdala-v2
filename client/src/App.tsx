@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import WhatWeDo from "@/pages/WhatWeDo";
+import ClientResults from "@/pages/ClientResults";
 import NotFound from "@/pages/not-found";
 import { useScrollBehavior } from "@/hooks/useScrollBehavior";
 
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/services" component={Services} />
       <Route path="/what-we-do" component={WhatWeDo} />
+      <Route path="/client-results" component={ClientResults} />
       <Route component={NotFound} />
     </Switch>
   );

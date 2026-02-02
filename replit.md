@@ -149,7 +149,49 @@ All elements have proper data-testid attributes for QA automation:
 - **6 Phases Grid**: Changed from horizontal flex wrap to responsive 3×2 grid (grid-cols-2 sm:grid-cols-3)
 - **Dashboard Timeline**: Added horizontal timeline visual below dashboard features showing 4-step journey (Audit → Architect → Build → Scale)
 
+### Client Results Page (February 2026)
+New page showcasing case studies with data visualizations:
+- **Route**: `/client-results`
+- **Navigation**: Added "Results" link to Navbar
+- **Charts Library**: Recharts for data visualizations
+
+#### Case Studies Featured:
+1. **Genflow** - Sales Growth Consulting
+   - Revenue growth from <$100K to $400K+ in Q4
+   - 45% close rate, first $100K month achieved
+   - Bar chart: Monthly revenue growth
+   - Pie chart: Lead sources distribution
+
+2. **Faseeha Institute** - Full Stack Build
+   - 50% traffic increase, 700+ leads in 30 days
+   - Complete website rebuild + AI automations
+   - Area chart: Website traffic growth
+   - Line chart: Sales performance over 3 months
+
+3. **Nur Cafe** - Operations & Growth
+   - £1.1M → £1.7M revenue (55% growth)
+   - Profit margin: 2% → 8% (300% increase)
+   - Expanded to 4 locations
+   - Custom dashboard + loyalty app built
+   - Bar chart: Revenue & profit trajectory
+
+4. **Ad Campaign Performance** (Aggregate Data)
+   - MBA, Playbook, Book-a-Call campaigns
+   - 40.7% close rate, £74K total revenue
+   - Bar chart: Campaign ROAS comparison
+   - Pie chart: Call outcome distribution
+
+#### Industries Served Section:
+- Clinics, Dental Practices, Cafes & Restaurants
+- SMMA Agencies, Law Firms, Marketing Agencies, Educational Institutes
+
+#### Data-testid Attributes:
+- `section-results-hero`, `section-genflow`, `section-faseeha`
+- `section-nurcafe`, `section-ads`, `section-industries`
+- `button-results-cta`
+
 ### Performance Notes
 - Large images (700KB+) in attached_assets should be optimized for production
 - LogoCarousel is ready for real client logos via props: `<LogoCarousel logos={[{name: "Client", logoUrl: "/path/to/logo.png"}]} />`
 - Globe component lazy loaded to reduce initial bundle size
+- Recharts lazy loads chart components for better performance
