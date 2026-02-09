@@ -12,7 +12,9 @@ import {
   Globe,
   Smartphone,
   LineChart,
-  ExternalLink
+  ExternalLink,
+  MapPin,
+  Leaf
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { 
@@ -37,6 +39,11 @@ import nurCafeDashboardImg from "@assets/download_(40)_1770653498371.png";
 import adsPerformanceImg from "@assets/download_(41)_1770653504146.png";
 import oraSuitesImg from "@assets/download_(42)_1770653508684.png";
 import nurCafeAppImg from "@assets/download_(44)_1770653516446.png";
+import genflowReportImg from "@assets/genflow_performance_report_1770653993352.png";
+import nurCafePerformanceImg from "@assets/nur_cafe_performance_report_1770653989283.png";
+import nurCafeExpansionImg from "@assets/nur_cafe_green_expansion_report_1770654247235.png";
+import nurCafeGreenMockupImg from "@assets/download_(46)_1770654251178.png";
+import faseehaWebsiteImg from "@assets/download_(47)_1770654687462.png";
 
 const ScrollReveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
   <motion.div
@@ -51,7 +58,7 @@ const ScrollReveal = ({ children, delay = 0 }: { children: React.ReactNode; dela
 
 const genflowSalesData = [
   { month: 'Aug', revenue: 47100, deals: 11 },
-  { month: 'Sep', revenue: 95300, deals: 16 },
+  { month: 'Sep', revenue: 60000, deals: 14 },
   { month: 'Oct', revenue: 54800, deals: 11 },
   { month: 'Nov', revenue: 55000, deals: 10 },
   { month: 'Dec', revenue: 69300, deals: 11 },
@@ -60,7 +67,7 @@ const genflowSalesData = [
 
 const genflowSourceData = [
   { name: 'Meta Ads', value: 45, color: '#C4A052' },
-  { name: 'Organic', value: 35, color: '#2C2C2C' },
+  { name: 'Organic', value: 35, color: '#1e3a5f' },
   { name: 'Email', value: 12, color: '#A8935F' },
   { name: 'Referral', value: 8, color: '#D4C494' },
 ];
@@ -75,20 +82,20 @@ const faseehaSalesData = [
 ];
 
 const faseehaTrafficData = [
-  { week: 'Week 1', visitors: 1200, sessions: 1450, bounceRate: 55 },
-  { week: 'Week 2', visitors: 1800, sessions: 2100, bounceRate: 50 },
-  { week: 'Week 3', visitors: 2400, sessions: 2900, bounceRate: 48 },
-  { week: 'Week 4', visitors: 2100, sessions: 2600, bounceRate: 45 },
-  { week: 'Week 5', visitors: 1600, sessions: 2000, bounceRate: 52 },
-  { week: 'Week 6', visitors: 1450, sessions: 1800, bounceRate: 54 },
-  { week: 'Week 7', visitors: 1300, sessions: 1650, bounceRate: 58 },
-  { week: 'Week 8', visitors: 1150, sessions: 1450, bounceRate: 60 },
+  { week: 'Week 1', visitors: 1200, sessions: 1450 },
+  { week: 'Week 2', visitors: 1800, sessions: 2100 },
+  { week: 'Week 3', visitors: 2400, sessions: 2900 },
+  { week: 'Week 4', visitors: 2100, sessions: 2600 },
+  { week: 'Week 5', visitors: 1600, sessions: 2000 },
+  { week: 'Week 6', visitors: 1450, sessions: 1800 },
+  { week: 'Week 7', visitors: 1300, sessions: 1650 },
+  { week: 'Week 8', visitors: 1150, sessions: 1450 },
 ];
 
 const nurCafeRevenueData = [
-  { year: '2024', revenue: 1100000, profit: 22000, profitMargin: 2 },
-  { year: '2025', revenue: 1700000, profit: 136000, profitMargin: 8 },
-  { year: '2026 (Proj)', revenue: 2100000, profit: 315000, profitMargin: 15 },
+  { year: '2024', revenue: 1100000, profit: 22000 },
+  { year: '2025', revenue: 1700000, profit: 136000 },
+  { year: '2026 (Proj)', revenue: 2100000, profit: 315000 },
 ];
 
 const adCampaignData = [
@@ -164,22 +171,20 @@ export default function ClientResults() {
         </div>
       </section>
 
-      {/* ===== CASE STUDY 1: GENFLOW ===== */}
-      {/* Navy blue & gold - reflecting the SPIDXR ads dashboard brand */}
-      <section className="py-24 bg-[#0a1628] relative overflow-hidden" data-testid="section-genflow">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#C4A052]/5 via-transparent to-[#C4A052]/3"></div>
+      {/* ===== GENFLOW ===== */}
+      <section 
+        className="py-24 relative overflow-hidden" 
+        style={{ background: 'linear-gradient(180deg, rgba(10,22,40,0.95) 0%, rgba(15,30,55,0.9) 50%, rgba(20,35,60,0.85) 100%)' }}
+        data-testid="section-genflow"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1e3a5f]/20 via-transparent to-[#C4A052]/5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/15 w-fit">
-                <span className="text-gold text-xs tracking-wider uppercase font-medium">Case Study 01</span>
-              </div>
-            </div>
-            <h2 className="text-3xl md:text-5xl text-white mb-3 font-bold tracking-tight" data-testid="text-genflow-heading">
+            <p className="text-[#C4A052]/80 text-sm tracking-wider uppercase mb-3 font-medium">Sales Growth Consulting</p>
+            <h2 className="text-4xl md:text-6xl text-white mb-4 font-bold tracking-tight" style={{ fontFamily: "'Georgia', serif", fontStyle: "italic", letterSpacing: "-0.02em" }} data-testid="text-genflow-heading">
               Genflow
             </h2>
-            <p className="text-[#C4A052] text-lg font-medium mb-2">Sales Growth Consulting</p>
-            <p className="text-white/50 text-base max-w-2xl mb-12">
+            <p className="text-white/45 text-base max-w-2xl mb-12">
               From under $100K quarterly to $400K+ through rigorous sales structuring, 
               lead nurturing optimization, and full sales cycle systemization.
             </p>
@@ -266,38 +271,48 @@ export default function ClientResults() {
             </ScrollReveal>
           </div>
 
-          {/* Ads Performance Showcase Image */}
           <ScrollReveal delay={0.3}>
             <div className="rounded-2xl overflow-hidden border border-gold/20">
               <img 
-                src={adsPerformanceImg} 
-                alt="SPIDXR Ads Performance Dashboard showing ROAS 2.35 and 700+ leads" 
+                src={genflowReportImg} 
+                alt="Genflow Sales Performance Report - Revenue vs Cash and Close Rate by Closer" 
                 className="w-full object-cover"
-                data-testid="img-genflow-ads"
+                data-testid="img-genflow-report"
               />
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ===== CASE STUDY 2: FASEEHA INSTITUTE ===== */}
-      {/* Warm cream/beige - educational, clean feel */}
-      <section className="py-24 bg-gradient-to-b from-[#f5f0e8] to-[#ebe4d6] relative" data-testid="section-faseeha">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ===== FASEEHA INSTITUTE ===== */}
+      <section 
+        className="py-24 relative" 
+        style={{ background: 'linear-gradient(180deg, rgba(245,240,232,0.95) 0%, rgba(240,235,225,0.9) 40%, rgba(235,228,214,0.85) 100%)' }}
+        data-testid="section-faseeha"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#8B7D3C]/3 via-transparent to-[#C4A052]/5"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-charcoal/10 w-fit">
-                <span className="text-charcoal text-xs tracking-wider uppercase font-medium">Case Study 02</span>
-              </div>
-            </div>
-            <h2 className="text-3xl md:text-5xl text-charcoal mb-3 font-bold tracking-tight" data-testid="text-faseeha-heading">
+            <p className="text-gold text-sm tracking-wider uppercase mb-3 font-medium">Full Stack Build</p>
+            <h2 className="text-4xl md:text-6xl text-charcoal mb-4 font-bold tracking-tight" style={{ fontFamily: "'Georgia', serif", letterSpacing: "-0.02em" }} data-testid="text-faseeha-heading">
               Faseeha Institute
             </h2>
-            <p className="text-gold text-lg font-medium mb-2">Full Stack Build</p>
-            <p className="text-charcoal/60 text-base max-w-2xl mb-12">
+            <p className="text-charcoal/50 text-base max-w-2xl mb-12">
               Complete digital transformation: website rebuild, AI automations, and targeted lead 
               generation campaigns delivering 700+ leads in just 30 days.
             </p>
+          </ScrollReveal>
+
+          {/* Website Showcase */}
+          <ScrollReveal delay={0.1}>
+            <div className="rounded-2xl overflow-hidden border border-charcoal/10 shadow-lg mb-12">
+              <img 
+                src={faseehaWebsiteImg} 
+                alt="Faseeha Institute website across laptop, tablet, and mobile devices" 
+                className="w-full object-cover"
+                data-testid="img-faseeha-website"
+              />
+            </div>
           </ScrollReveal>
 
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
@@ -307,13 +322,13 @@ export default function ClientResults() {
               { icon: Sparkles, title: "AI Automations", desc: "Integrated AI systems for client nurturing, data tracking, and internal process optimization.", stat: "100%", statLabel: "Unified Stack" },
             ].map((card, i) => (
               <ScrollReveal key={i} delay={0.1 * (i + 1)}>
-                <div className="bg-white rounded-2xl p-6 border border-charcoal/10 h-full shadow-sm" data-testid={`card-faseeha-${i}`}>
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-charcoal/8 h-full shadow-sm" data-testid={`card-faseeha-${i}`}>
                   <card.icon className="w-10 h-10 text-gold mb-4" />
                   <h3 className="text-xl text-charcoal mb-3 font-semibold">{card.title}</h3>
-                  <p className="text-charcoal/60 text-sm mb-4">{card.desc}</p>
+                  <p className="text-charcoal/55 text-sm mb-4">{card.desc}</p>
                   <div className="bg-gold/8 rounded-xl p-4 text-center">
                     <p className="text-3xl text-gold font-bold">{card.stat}</p>
-                    <p className="text-charcoal/60 text-sm">{card.statLabel}</p>
+                    <p className="text-charcoal/55 text-sm">{card.statLabel}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -322,7 +337,7 @@ export default function ClientResults() {
 
           <div className="grid lg:grid-cols-2 gap-8">
             <ScrollReveal delay={0.1}>
-              <div className="bg-white rounded-2xl p-6 border border-charcoal/10 shadow-sm">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-charcoal/8 shadow-sm">
                 <h4 className="text-lg text-charcoal mb-4 font-medium">Website Traffic Growth</h4>
                 <ResponsiveContainer width="100%" height={280}>
                   <AreaChart data={faseehaTrafficData}>
@@ -341,7 +356,7 @@ export default function ClientResults() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
-              <div className="bg-white rounded-2xl p-6 border border-charcoal/10 shadow-sm">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-charcoal/8 shadow-sm">
                 <h4 className="text-lg text-charcoal mb-4 font-medium">Sales Performance (3 Months)</h4>
                 <ResponsiveContainer width="100%" height={280}>
                   <RechartsLineChart data={faseehaSalesData}>
@@ -362,22 +377,20 @@ export default function ClientResults() {
         </div>
       </section>
 
-      {/* ===== CASE STUDY 3: ORA SUITES ===== */}
-      {/* Warm rose/blush tones - matching the Ora Suites branding */}
-      <section className="py-24 bg-gradient-to-b from-[#c4a68a] to-[#b8977e] relative overflow-hidden" data-testid="section-orasuites">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10"></div>
+      {/* ===== ORA SUITES ===== */}
+      <section 
+        className="py-24 relative overflow-hidden" 
+        style={{ background: 'linear-gradient(180deg, rgba(196,166,138,0.85) 0%, rgba(190,155,125,0.8) 50%, rgba(184,151,126,0.75) 100%)' }}
+        data-testid="section-orasuites"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-transparent to-black/5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 w-fit">
-                <span className="text-white text-xs tracking-wider uppercase font-medium">Case Study 03</span>
-              </div>
-            </div>
-            <h2 className="text-3xl md:text-5xl text-white mb-3 font-bold tracking-tight" data-testid="text-orasuites-heading">
+            <p className="text-white/70 text-sm tracking-wider uppercase mb-3 font-medium">Complete Brand Build & Launch</p>
+            <h2 className="text-4xl md:text-6xl text-white mb-4 font-bold tracking-tight" style={{ fontFamily: "'Georgia', serif", letterSpacing: "-0.02em" }} data-testid="text-orasuites-heading">
               Ora Suites
             </h2>
-            <p className="text-white/80 text-lg font-medium mb-2">Complete Brand Build & Launch</p>
-            <p className="text-white/60 text-base max-w-2xl mb-6">
+            <p className="text-white/55 text-base max-w-2xl mb-4">
               Built the entire brand identity, website, and digital presence from the ground up for this 
               premium women-only wellness sanctuary. From concept to live at orasuites.com.
             </p>
@@ -442,22 +455,20 @@ export default function ClientResults() {
         </div>
       </section>
 
-      {/* ===== CASE STUDY 4: NUR CAFE ===== */}
-      {/* Dark brown/coffee tones - matching Nur Cafe brand */}
-      <section className="py-24 bg-gradient-to-b from-[#2c1f14] to-[#1a1209] relative overflow-hidden" data-testid="section-nurcafe">
+      {/* ===== NUR CAFE ===== */}
+      <section 
+        className="py-24 relative overflow-hidden" 
+        style={{ background: 'linear-gradient(180deg, rgba(44,31,20,0.92) 0%, rgba(35,25,16,0.88) 50%, rgba(26,18,9,0.95) 100%)' }}
+        data-testid="section-nurcafe"
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-[#C4A052]/5 via-transparent to-[#C4A052]/3"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#C4A052]/15 w-fit">
-                <span className="text-gold text-xs tracking-wider uppercase font-medium">Case Study 04</span>
-              </div>
-            </div>
-            <h2 className="text-3xl md:text-5xl text-white mb-3 font-bold tracking-tight" data-testid="text-nurcafe-heading">
-              Nur Cafe
+            <p className="text-[#C4A052]/80 text-sm tracking-wider uppercase mb-3 font-medium">Operations, Growth & App Build</p>
+            <h2 className="text-4xl md:text-6xl text-white mb-4 font-bold tracking-tight" style={{ fontFamily: "'Georgia', serif", letterSpacing: "-0.02em" }} data-testid="text-nurcafe-heading">
+              N&#363;r Caf&#233;
             </h2>
-            <p className="text-[#C4A052] text-lg font-medium mb-2">Operations, Growth & App Build</p>
-            <p className="text-white/50 text-base max-w-2xl mb-12">
+            <p className="text-white/45 text-base max-w-2xl mb-12">
               Complete business transformation: operations overhaul, custom AI dashboard, mobile ordering app, 
               and growth strategy taking revenue from £1.1M to £1.7M with expansion to 4 locations.
             </p>
@@ -489,7 +500,7 @@ export default function ClientResults() {
             <ScrollReveal delay={0.15}>
               <div>
                 <h3 className="text-xl text-white mb-4 font-semibold">Custom AI Dashboard</h3>
-                <p className="text-white/50 text-sm mb-6">
+                <p className="text-white/45 text-sm mb-6">
                   AI-powered sales manager showing real-time performance, revenue tracking, 
                   profit analysis, team management, and customer insights.
                 </p>
@@ -507,7 +518,7 @@ export default function ClientResults() {
             <ScrollReveal delay={0.2}>
               <div>
                 <h3 className="text-xl text-white mb-4 font-semibold">Mobile Ordering App</h3>
-                <p className="text-white/50 text-sm mb-6">
+                <p className="text-white/45 text-sm mb-6">
                   Custom-built mobile app with online ordering, checkout system, loyalty points, 
                   and the full Nur Cafe menu experience.
                 </p>
@@ -523,9 +534,21 @@ export default function ClientResults() {
             </ScrollReveal>
           </div>
 
-          {/* Revenue Chart */}
+          {/* Performance Report */}
+          <ScrollReveal delay={0.25}>
+            <div className="rounded-2xl overflow-hidden border border-white/10 mb-12">
+              <img 
+                src={nurCafePerformanceImg} 
+                alt="Nur Cafe Digital Ordering and Web Performance Report - £61,084 total sales across 1,136 orders" 
+                className="w-full object-cover"
+                data-testid="img-nurcafe-performance"
+              />
+            </div>
+          </ScrollReveal>
+
+          {/* Revenue Chart + What We Built */}
           <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            <ScrollReveal delay={0.25}>
+            <ScrollReveal delay={0.3}>
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                 <h4 className="text-lg text-white mb-4 font-medium">Revenue & Profit Trajectory</h4>
                 <ResponsiveContainer width="100%" height={300}>
@@ -548,7 +571,7 @@ export default function ClientResults() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.3}>
+            <ScrollReveal delay={0.35}>
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                 <h4 className="text-lg text-white mb-4 font-medium">What We Built</h4>
                 <div className="space-y-4">
@@ -561,7 +584,7 @@ export default function ClientResults() {
                       <item.icon className="w-8 h-8 text-gold flex-shrink-0" />
                       <div>
                         <h5 className="text-white font-medium text-sm">{item.title}</h5>
-                        <p className="text-white/45 text-sm">{item.desc}</p>
+                        <p className="text-white/40 text-sm">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -576,28 +599,122 @@ export default function ClientResults() {
         </div>
       </section>
 
-      {/* ===== CASE STUDY 5: AD CAMPAIGN PERFORMANCE ===== */}
-      {/* SPIDXR branded - dark navy with gold */}
-      <section className="py-24 bg-charcoal relative overflow-hidden" data-testid="section-ads">
+      {/* ===== NUR CAFE GREEN REBRAND & EXPANSION ===== */}
+      <section 
+        className="py-24 relative overflow-hidden"
+        style={{ background: 'linear-gradient(180deg, rgba(26,50,30,0.92) 0%, rgba(20,45,25,0.88) 50%, rgba(15,38,18,0.95) 100%)' }}
+        data-testid="section-nurcafe-expansion"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#2d5a27]/10 via-transparent to-[#C4A052]/5"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <ScrollReveal>
+            <div className="flex items-center gap-3 mb-3">
+              <Leaf className="w-5 h-5 text-[#4CAF50]" />
+              <p className="text-[#4CAF50]/80 text-sm tracking-wider uppercase font-medium">Green Rebrand & Expansion</p>
+            </div>
+            <h2 className="text-4xl md:text-6xl text-white mb-4 font-bold tracking-tight" style={{ fontFamily: "'Georgia', serif", letterSpacing: "-0.02em" }} data-testid="text-nurcafe-expansion-heading">
+              N&#363;r Caf&#233; <span className="text-[#4CAF50]">Expansion</span>
+            </h2>
+            <p className="text-white/45 text-base max-w-2xl mb-12">
+              We rebranded Nur Cafe with a fresh green identity for their expansion phase, 
+              building new location pages, a multi-location finder app, and the visual 
+              identity to support growth across Manchester.
+            </p>
+          </ScrollReveal>
+
+          {/* Green Rebrand Mockup */}
+          <ScrollReveal delay={0.1}>
+            <div className="rounded-2xl overflow-hidden border border-[#4CAF50]/20 shadow-2xl mb-12">
+              <img 
+                src={nurCafeGreenMockupImg} 
+                alt="Nur Cafe green rebrand - expansion website, new brand identity, and location finder app across devices" 
+                className="w-full object-cover"
+                data-testid="img-nurcafe-green-mockup"
+              />
+            </div>
+          </ScrollReveal>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <ScrollReveal delay={0.15}>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-[#4CAF50]/15">
+                <h3 className="text-xl text-white mb-6 font-semibold">Expansion Deliverables</h3>
+                <ul className="space-y-4">
+                  {[
+                    { icon: Leaf, text: "Complete green brand identity redesign" },
+                    { icon: Globe, text: "New expansion-focused website with location pages" },
+                    { icon: MapPin, text: "Multi-location finder app with interactive map" },
+                    { icon: Store, text: "Oxford Road, Manchester location launch" },
+                    { icon: Smartphone, text: "Updated mobile app with location switching" },
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <item.icon className="w-5 h-5 text-[#4CAF50] flex-shrink-0 mt-0.5" />
+                      <span className="text-white/80">{item.text}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="grid grid-cols-3 gap-4 mt-8">
+                  {[
+                    { value: "3", label: "Locations" },
+                    { value: "£61K", label: "Digital Sales" },
+                    { value: "1,136", label: "Orders" },
+                  ].map((stat, i) => (
+                    <div key={i} className="bg-[#4CAF50]/10 rounded-xl p-4 text-center border border-[#4CAF50]/15" data-testid={`stat-expansion-${i}`}>
+                      <p className="text-2xl text-[#4CAF50] font-bold">{stat.value}</p>
+                      <p className="text-white/50 text-sm">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <div className="rounded-2xl overflow-hidden border border-[#4CAF50]/15">
+                <img 
+                  src={nurCafeExpansionImg} 
+                  alt="Nur Cafe Expansion & Digital Performance Audit - Revenue growth post-expansion launch" 
+                  className="w-full object-cover"
+                  data-testid="img-nurcafe-expansion-report"
+                />
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== AD CAMPAIGN PERFORMANCE ===== */}
+      <section 
+        className="py-24 relative overflow-hidden" 
+        style={{ background: 'linear-gradient(180deg, rgba(44,44,44,0.92) 0%, rgba(35,35,35,0.88) 50%, rgba(28,28,28,0.95) 100%)' }}
+        data-testid="section-ads"
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-gold/3 via-transparent to-gold/5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/15 w-fit">
-                <span className="text-gold text-xs tracking-wider uppercase font-medium">Aggregate Data</span>
-              </div>
-            </div>
-            <h2 className="text-3xl md:text-5xl text-white mb-3 font-bold tracking-tight" data-testid="text-ads-heading">
+            <p className="text-gold/80 text-sm tracking-wider uppercase mb-3 font-medium">Aggregate Data</p>
+            <h2 className="text-3xl md:text-5xl text-white mb-4 font-bold tracking-tight" data-testid="text-ads-heading">
               Ad Campaign Performance
             </h2>
-            <p className="text-white/50 text-base max-w-2xl mb-12">
+            <p className="text-white/45 text-base max-w-2xl mb-12">
               Cross-client advertising results showcasing our ability to drive qualified leads, 
               maximize ROAS, and convert at industry-leading rates.
             </p>
           </ScrollReveal>
 
+          {/* Ads Dashboard Image */}
+          <ScrollReveal delay={0.1}>
+            <div className="rounded-2xl overflow-hidden border border-gold/15 mb-12">
+              <img 
+                src={adsPerformanceImg} 
+                alt="SPIDXR Ads Performance Dashboard showing campaign metrics and ROAS" 
+                className="w-full object-cover"
+                data-testid="img-ads-dashboard"
+              />
+            </div>
+          </ScrollReveal>
+
           <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            <ScrollReveal delay={0.1}>
+            <ScrollReveal delay={0.15}>
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                 <h4 className="text-lg text-white mb-4 font-medium">Campaign ROAS Comparison</h4>
                 <ResponsiveContainer width="100%" height={280}>
