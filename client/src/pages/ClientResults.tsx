@@ -780,9 +780,9 @@ export default function ClientResults() {
                       <img
                         src={study.logo}
                         alt={study.name}
-                        className={`max-w-[80%] max-h-[60%] object-contain transition-all duration-300 ${
-                          study.bgColor === '#f5f0e8' ? '' : 'brightness-0 invert'
-                        } ${selectedStudy === study.id ? 'opacity-100' : 'opacity-70 group-hover:opacity-90'}`}
+                        className={`max-w-[85%] max-h-[65%] object-contain transition-all duration-300 ${
+                          selectedStudy === study.id ? 'opacity-100' : 'opacity-70 group-hover:opacity-90'
+                        }`}
                       />
                       {selectedStudy === study.id && (
                         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gold"></div>
