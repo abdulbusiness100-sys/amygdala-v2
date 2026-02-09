@@ -3,7 +3,7 @@ import { ArrowRight, Play, Search, Settings, Rocket, TrendingUp, Radar, Handshak
 import logo from "@assets/AMYGDALA_ACQUISITIONS_(6)_1768919980907.png";
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import LogoCarousel from "@/components/LogoCarousel";
 import { FadeIn } from "@/components/TextReveal";
@@ -97,11 +97,23 @@ export default function Home() {
   const [videoModal, setVideoModal] = useState<number | null>(null);
   const [activeService, setActiveService] = useState<typeof serviceCategories[0] | null>(null);
 
+  useEffect(() => {
+    // Only load Calendly script once and re-initialize if widget exists
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   const handleBookCall = () => {
-    // Scroll to the bottom CTA section which has the booking intent
-    const ctaSection = document.querySelector('[data-testid="section-final-cta"]');
-    if (ctaSection) {
-      ctaSection.scrollIntoView({ behavior: "smooth" });
+    // Scroll to the anchor near the bottom CTA section
+    const anchor = document.getElementById('book-call-anchor');
+    if (anchor) {
+      anchor.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -110,6 +122,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen">
+      <div id="book-call-anchor" className="absolute bottom-0 h-0 w-0" />
       {/* HERO SECTION - Centered Layout */}
       <section className="relative min-h-screen flex items-center pt-20" data-testid="section-hero">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full text-center">
