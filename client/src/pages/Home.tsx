@@ -98,15 +98,22 @@ export default function Home() {
   const [activeService, setActiveService] = useState<typeof serviceCategories[0] | null>(null);
 
   useEffect(() => {
-    // Only load Calendly script once and re-initialize if widget exists
-    const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
+    // Re-initialize Calendly inline widget if it's available
+    const initCalendly = () => {
+      if ((window as any).Calendly) {
+        (window as any).Calendly.initInlineWidget({
+          url: 'https://calendly.com/spidxrnetwork/45min',
+          parentElement: document.querySelector('.calendly-inline-widget'),
+        });
+      }
     };
+
+    // Try immediately
+    initCalendly();
+
+    // Also try after a short delay to ensure DOM is ready
+    const timer = setTimeout(initCalendly, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleBookCall = () => {
@@ -538,11 +545,12 @@ export default function Home() {
               Book a strategy call. We'll audit your current setup, identify opportunities, and show you exactly how a unified system transforms your business.
             </p>
             
-            <div className="bg-white rounded-2xl overflow-hidden shadow-2xl mb-8">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-2xl mb-8 min-h-[700px]">
               <div 
                 className="calendly-inline-widget" 
                 data-url="https://calendly.com/spidxrnetwork/45min" 
                 style={{ minWidth: '320px', height: '700px' }}
+                data-auto-load="true"
               />
             </div>
 
