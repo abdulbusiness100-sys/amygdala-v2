@@ -77,24 +77,59 @@ This pattern ensures type safety across the full stack.
 - Local assets in `attached_assets/` directory
 
 ## Typography
-- **Titles/Headings**: Orbitron (font-display) - futuristic, geometric style
-- **Body Text**: Be Vietnam Pro (font-sans, font-accent) - clean, readable
-- Logos excluded from Orbitron styling
+- **Font Stack**: Apple system font stack (-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif)
+- **Rendering**: Antialiased, optimized legibility, smooth cubic-bezier transitions
+- **Letter Spacing**: Headings -0.025em to -0.03em, body -0.01em
+- **Weight Hierarchy**: h1 700, h2 600, body 400
 
-## Recent Changes (January 2026)
+## Recent Changes (February 2026)
 
-### Homepage Redesign (Latest Update)
-Major visual overhaul with centered hero layout and scroll effects:
+### Homepage Major Redesign (Latest)
+Complete layout overhaul following Apple-style design principles:
 
-#### Homepage Layout Changes
-- **Hero Section**: Centered layout (was split left-to-right) with Framer Motion scroll parallax effect
-- **Hero Image**: Using AMYGDALA_ACQUISITIONS_(1) brain visualization
-- **Metrics Updated**: 60+ Businesses Impacted, $10M+ Client Portfolio, 100% Satisfaction Rate, $2.6M+ Generated in 2025
-- **Testimonials Section REMOVED**: Will be added as separate "Client Success & Results" page later
+#### Hero Section - Split Layout
+- **Layout**: Two-column grid (55% text left / 45% video right) on desktop, stacked on mobile
+- **Left Column**: Gold pill badge, large headline, subtitle, single CTA button, social proof row with client logos
+- **Right Column**: Video placeholder with play button overlay and "Meet the Founder" text
+- **Animations**: Subtle fade-up reveals with Apple cubic-bezier easing, no floating orbs
 
-#### Scroll Effects
-- Hero section uses `useScroll` and `useTransform` from Framer Motion
-- Hero image has parallax Y movement, scaling, and opacity transitions on scroll
+#### Logo Carousel
+- **Real Client Logos**: 16 logos from client_logos_isolated_v2 zip file (logo_1.png through logo_16.png)
+- **Style**: Grayscale with opacity, color on hover, smooth infinite scroll
+- **Replaces**: Previous placeholder text logos
+
+#### Services - Bento Grid
+- **Layout**: 1 full-width card (Top of Funnel) + 2 side-by-side cards (Middle Funnel + Back End)
+- **Design**: Clean cream backgrounds, subtle borders, service tags as pills
+- **Replaces**: Previous 3-equal-column layout with images
+
+#### Video Testimonials Grid
+- **Layout**: 3-column grid with video thumbnail placeholders
+- **Features**: Play button overlay, click opens modal, quote + name + metric below each
+- **Modal**: Dark backdrop with close button, "Video coming soon" placeholder
+- **Testimonials**: Genflow (312% Revenue Growth), Faseeha Institute (700+ Leads), Nur Cafe (55% Revenue Growth)
+
+#### Process Timeline
+- **Desktop**: Horizontal timeline with gold numbered circles (1-4) connected by animated gold line
+- **Mobile**: Vertical timeline with connecting lines
+- **Steps**: Audit (Week 1-2) → Architect (Week 2-3) → Build (Week 3-8) → Scale (Week 8+)
+- **Animation**: Line draws on scroll, circles appear sequentially
+
+#### Pricing Preview
+- **New section**: Brief pricing overview on homepage
+- **Content**: "Starting from $3,000/month... to $20,000+/month"
+- **CTA**: Links to /services for full pricing details
+
+#### CTA Strategy (Reduced)
+- **Hero**: Single "Book Strategy Call" button
+- **After Testimonials**: "See All Client Results" link to /client-results
+- **End**: Large CTA section with dark background image
+- **Removed**: Duplicate mid-page CTAs, sticky mobile CTA bar
+
+#### Effects Reduction (70% removed)
+- **Removed**: Glass morphism (.glass), shimmer animations, card-3d hover effects, floating gradient orbs, 3D tilt, pulse animations on CTAs, excessive glow, parallax hero background
+- **Kept**: FadeIn scroll reveals (fade-up only), smooth hover transitions (border color), number counting animations, logo carousel smooth scroll, Apple cubic-bezier easing
+- **Added**: Subtle grain texture overlay (3% opacity, opt-in .grain class)
 
 ### Services Page Redesign
 - **Service Layers**: Black borders (border-2 border-charcoal) with rounded-3xl

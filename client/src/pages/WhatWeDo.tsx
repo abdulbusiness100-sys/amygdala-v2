@@ -218,7 +218,7 @@ export default function WhatWeDo() {
           <div className="grid md:grid-cols-3 gap-8">
             {coreValues.map((value, i) => (
               <ScrollReveal key={i} delay={i * 1}>
-                <div className="glass p-8 rounded-2xl text-center h-full card-3d border-2 border-charcoal">
+                <div className="bg-white p-8 rounded-2xl text-center h-full border border-charcoal/10 hover:border-gold/30 transition-colors duration-300">
                   <div className="w-14 h-14 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6">
                     <value.icon className="w-7 h-7 text-charcoal" />
                   </div>

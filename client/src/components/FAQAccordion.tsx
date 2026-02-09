@@ -19,8 +19,8 @@ export default function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
       {faqs.map((faq, index) => (
         <div
           key={index}
-          className={`glass rounded-xl overflow-hidden transition-all duration-300 ${
-            activeIndex === index ? "border-gold/50" : "hover:border-gold/30"
+          className={`bg-cream rounded-xl overflow-hidden transition-all duration-300 border border-charcoal/8 ${
+            activeIndex === index ? "border-gold/40" : "hover:border-gold/20"
           }`}
         >
           <button

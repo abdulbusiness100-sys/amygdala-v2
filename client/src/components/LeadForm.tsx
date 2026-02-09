@@ -50,7 +50,7 @@ export default function LeadForm() {
   }
 
   return (
-    <div className="glass p-6 md:p-8 rounded-2xl">
+    <div className="bg-white p-6 md:p-8 rounded-2xl border border-charcoal/10 shadow-sm">
       <h3 className="font-display text-2xl text-charcoal mb-6">Request Your Audit</h3>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">

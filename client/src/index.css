@@ -139,28 +139,6 @@
     background: linear-gradient(135deg, #C4A052 0%, #D4AF37 50%, #F5E6C8 100%);
   }
 
-  .glass {
-    @apply backdrop-blur-xl border shadow-lg;
-    background: rgba(255, 255, 255, 0.7);
-    border-color: rgba(196, 160, 82, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-  }
-
-  .dark .glass {
-    background: rgba(26, 26, 26, 0.7);
-    border-color: rgba(196, 160, 82, 0.15);
-  }
-
-  .card-3d {
-    @apply transition-all duration-300 hover:-translate-y-2;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  }
-
-  .card-3d:hover {
-    box-shadow: 0 8px 40px rgba(196, 160, 82, 0.15);
-    border-color: rgba(196, 160, 82, 0.3);
-  }
-
   .font-accent {
     font-family: var(--font-accent);
   }
@@ -177,33 +155,6 @@
     opacity: 0.03;
     pointer-events: none;
     z-index: 1;
-  }
-
-  /* Gold shimmer effect */
-  .shimmer {
-    position: relative;
-    overflow: hidden;
-  }
-  .shimmer::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(212, 175, 55, 0.1) 50%,
-      transparent 100%
-    );
-    transform: rotate(30deg);
-    animation: shimmer 3s ease-in-out infinite;
-  }
-
-  @keyframes shimmer {
-    0% { transform: translateX(-100%) rotate(30deg); }
-    100% { transform: translateX(100%) rotate(30deg); }
   }
 }
 
@@ -223,7 +174,3 @@
   background-color: #C4A052;
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
