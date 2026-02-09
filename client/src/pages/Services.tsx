@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { CheckCircle2, Sparkles, Radar, Handshake, Server, Globe, Palette, Share2, ShoppingBag, Target, Mail, Users, Headphones, Settings, Building, BrainCircuit, Rocket } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -17,6 +17,24 @@ export default function Services() {
       }
     }, 300);
   };
+  useEffect(() => {
+    // Re-initialize Calendly inline widget if it's available
+    const initCalendly = () => {
+      if ((window as any).Calendly) {
+        (window as any).Calendly.initInlineWidget({
+          url: 'https://calendly.com/spidxrnetwork/45min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=C4A052',
+          parentElement: document.querySelector('.calendly-inline-widget'),
+        });
+      }
+    };
+
+    // Try immediately
+    initCalendly();
+
+    // Also try after a short delay to ensure DOM is ready
+    const timer = setTimeout(initCalendly, 1000);
+    return () => clearTimeout(timer);
+  }, []);
   const serviceLayers = [
     {
       title: "TOP OF FUNNEL",
@@ -235,11 +253,12 @@ export default function Services() {
             <h2 className="text-4xl text-white mb-4 font-semibold tracking-tight">Book Your Strategy Call</h2>
             <p className="text-white/60 mb-12">Select a time that works for you. 45 minutes. Pure value.</p>
           </ScrollReveal>
-          <div className="rounded-2xl overflow-hidden border border-gold/20 shadow-2xl shadow-gold/5" data-testid="calendly-widget-container">
+          <div className="rounded-2xl overflow-hidden border border-gold/20 shadow-2xl shadow-gold/5 bg-[#1a1a1a] min-h-[700px]" data-testid="calendly-widget-container">
             <div 
               className="calendly-inline-widget" 
               data-url="https://calendly.com/spidxrnetwork/45min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=C4A052"
               style={{ minWidth: "320px", height: "700px" }}
+              data-auto-load="true"
             ></div>
           </div>
         </div>
