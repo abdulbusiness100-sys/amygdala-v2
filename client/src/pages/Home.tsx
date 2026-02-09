@@ -19,19 +19,19 @@ import backEndImg from "@assets/download_(51)_1770656970922.png";
 
 const testimonials = [
   {
-    name: "Sarah K.",
+    name: "",
     company: "Genflow",
     quote: "Revenue went from under $100K to $400K+ in a single quarter. The unified approach changed everything.",
     metric: "312% Revenue Growth",
   },
   {
-    name: "Ahmed R.",
-    company: "Faseeha Institute",
-    quote: "700+ leads in the first 30 days. We finally have a system that works together instead of against itself.",
-    metric: "700+ Leads in 30 Days",
+    name: "",
+    company: "Promerch",
+    quote: "Nurtured over 1600 leads in the first 30 days. We finally have a system that works together instead of against itself.",
+    metric: "Nurtured over 1600 leads",
   },
   {
-    name: "James L.",
+    name: "",
     company: "Nur Cafe",
     quote: "From £1.1M to £1.7M in revenue. The dashboard alone saved us 15 hours a week in reporting.",
     metric: "55% Revenue Growth",
@@ -290,31 +290,26 @@ export default function Home() {
             </div>
           </FadeIn>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 opacity-40 grayscale pointer-events-none select-none">
             {testimonials.map((t, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className="group" data-testid={`testimonial-card-${i}`}>
                   {/* Video Thumbnail */}
                   <div
-                    className="relative aspect-video rounded-xl overflow-hidden bg-charcoal/5 border border-charcoal/8 mb-5 cursor-pointer"
-                    onClick={() => setVideoModal(i)}
+                    className="relative aspect-video rounded-xl overflow-hidden bg-charcoal/5 border border-charcoal/8 mb-5"
                     data-testid={`testimonial-video-${i}`}
                   >
                     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-transparent to-charcoal/10">
-                      <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-md">
                         <Play className="w-5 h-5 text-charcoal ml-0.5" fill="currentColor" />
                       </div>
-                    </div>
-                    <div className="absolute bottom-3 left-3">
-                      <span className="px-2 py-1 text-xs bg-charcoal/70 text-white rounded">{t.company}</span>
                     </div>
                   </div>
                   {/* Quote */}
                   <p className="text-charcoal text-sm leading-relaxed mb-3 italic" data-testid={`text-testimonial-quote-${i}`}>"{t.quote}"</p>
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-charcoal font-medium text-sm" data-testid={`text-testimonial-name-${i}`}>{t.name}</p>
-                      <p className="text-charcoal-medium text-xs" data-testid={`text-testimonial-company-${i}`}>{t.company}</p>
+                      <p className="text-charcoal-medium text-xs font-medium" data-testid={`text-testimonial-company-${i}`}>{t.company}</p>
                     </div>
                     <span className="text-xs text-gold font-medium" data-testid={`text-testimonial-metric-${i}`}>{t.metric}</span>
                   </div>
