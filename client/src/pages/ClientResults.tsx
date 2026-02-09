@@ -47,10 +47,12 @@ import nurCafeExpansionImg from "@assets/nur_cafe_green_expansion_report_1770654
 import nurCafeGreenMockupImg from "@assets/download_(46)_1770654251178.png";
 import faseehaWebsiteImg from "@assets/download_(47)_1770654687462.png";
 
-import genflowLogo from "@assets/client_logos_v2/logo_14.png";
-import nurCafeLogo from "@assets/client_logos_v2/logo_13.png";
-import faseehaLogo from "@assets/client_logos_v2/logo_12.png";
-import oraSuitesLogo from "@assets/client_logos_v2/logo_10.png";
+import genflowLogo from "@assets/Screenshot_2026-02-09_at_17.02.15_1770656579496.png";
+import oraSuitesLogo from "@assets/WhatsApp_Image_2025-08-06_at_17.22.03_(1)_1770656281557.jpeg";
+import nurCafeRedLogo from "@assets/image_1770656434764.png";
+import nurCafeGreenLogo from "@assets/Screenshot_2026-02-09_at_16.59.20_1770656403434.png";
+import promerchLogo from "@assets/client_logos_v2/logo_16.png";
+import faseehaLogo from "@assets/Logo_(1)_1770656600139.jpeg";
 
 const ScrollReveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
   <motion.div
@@ -145,7 +147,7 @@ const caseStudies: CaseStudy[] = [
     name: 'Genflow',
     subtitle: 'Sales Growth Consulting',
     logo: genflowLogo,
-    bgColor: '#0a1628',
+    bgColor: '#2d3748',
     showcaseImage: genflowReportImg,
     headline: '312% Revenue Growth',
   },
@@ -154,7 +156,7 @@ const caseStudies: CaseStudy[] = [
     name: 'Ora Suites',
     subtitle: 'Complete Brand Build',
     logo: oraSuitesLogo,
-    bgColor: '#b8977e',
+    bgColor: '#f0e6d6',
     showcaseImage: oraSuitesImg,
     headline: 'Built from Scratch',
   },
@@ -162,8 +164,8 @@ const caseStudies: CaseStudy[] = [
     id: 'nur-cafe',
     name: 'Nūr Café',
     subtitle: 'Operations & Growth',
-    logo: nurCafeLogo,
-    bgColor: '#2c1f14',
+    logo: nurCafeRedLogo,
+    bgColor: '#9e6155',
     showcaseImage: nurCafeDashboardImg,
     headline: '55% Revenue Growth',
   },
@@ -171,8 +173,8 @@ const caseStudies: CaseStudy[] = [
     id: 'nur-cafe-expansion',
     name: 'Nūr Café',
     subtitle: 'Green Rebrand',
-    logo: nurCafeLogo,
-    bgColor: '#1a321e',
+    logo: nurCafeGreenLogo,
+    bgColor: '#6b7d65',
     showcaseImage: nurCafeGreenMockupImg,
     headline: 'Multi-Location Expansion',
   },
@@ -180,8 +182,8 @@ const caseStudies: CaseStudy[] = [
     id: 'ads',
     name: 'Ad Campaigns',
     subtitle: 'Aggregate Data',
-    logo: genflowLogo,
-    bgColor: '#2c2c2c',
+    logo: promerchLogo,
+    bgColor: '#1a1a1a',
     showcaseImage: adsPerformanceImg,
     headline: '40.7% Close Rate',
   },
@@ -190,7 +192,7 @@ const caseStudies: CaseStudy[] = [
     name: 'Faseeha Institute',
     subtitle: 'Full Stack Build',
     logo: faseehaLogo,
-    bgColor: '#f5f0e8',
+    bgColor: '#b8a98c',
     showcaseImage: faseehaWebsiteImg,
     headline: '700+ Leads in 30 Days',
   },
@@ -376,7 +378,7 @@ function NurCafeDetail() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-2">
-        <img src={nurCafeLogo} alt="Nur Cafe" className="h-10 object-contain" />
+        <img src={nurCafeRedLogo} alt="Nur Cafe" className="h-10 object-contain" />
         <span className="text-white/40 text-sm">Operations, Growth & App Build</span>
       </div>
       <p className="text-white/50 text-sm max-w-lg">
@@ -470,7 +472,7 @@ function NurCafeExpansionDetail() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-2">
-        <img src={nurCafeLogo} alt="Nur Cafe" className="h-10 object-contain" />
+        <img src={nurCafeGreenLogo} alt="Nur Cafe" className="h-10 object-contain" />
         <div className="flex items-center gap-2">
           <Leaf className="w-4 h-4 text-[#4CAF50]" />
           <span className="text-[#4CAF50]/80 text-sm">Green Rebrand & Expansion</span>
