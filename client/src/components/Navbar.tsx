@@ -10,19 +10,19 @@ export default function Navbar() {
   const [location, setLocation] = useLocation();
 
   const handleBookCall = () => {
-    if (location === "/services") {
-      const element = document.getElementById("book-call");
+    if (location === "/") {
+      const element = document.getElementById("book-call-anchor");
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      setLocation("/services");
+      setLocation("/");
       setTimeout(() => {
-        const element = document.getElementById("book-call");
+        const element = document.getElementById("book-call-anchor");
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
-      }, 100);
+      }, 300);
     }
     setMobileMenuOpen(false);
   };
