@@ -61,12 +61,12 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen">
-      {/* HERO SECTION - Split Layout */}
+      {/* HERO SECTION - Centered Layout */}
       <section className="relative min-h-screen flex items-center pt-20" data-testid="section-hero">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full text-center">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Column - 55% */}
-            <div className="lg:pr-8">
+          <div className="flex flex-col items-center">
+            {/* Centered Content */}
+            <div className="max-w-4xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -78,7 +78,7 @@ export default function Home() {
               </motion.div>
 
               <motion.h1
-                className="text-5xl md:text-6xl lg:text-[64px] text-charcoal mb-6 leading-[1.08] font-bold"
+                className="text-5xl md:text-7xl lg:text-[80px] text-charcoal mb-6 leading-[1.05] font-bold tracking-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
@@ -89,7 +89,7 @@ export default function Home() {
               </motion.h1>
 
               <motion.p
-                className="text-charcoal-medium text-lg md:text-xl mb-10 leading-relaxed max-w-lg"
+                className="text-charcoal-medium text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
@@ -107,7 +107,7 @@ export default function Home() {
               >
                 <Button
                   size="lg"
-                  className="gold-gradient text-charcoal border-0 text-base px-8 shadow-md hover:shadow-lg transition-shadow duration-300"
+                  className="gold-gradient text-charcoal border-0 text-base px-10 py-7 shadow-md hover:shadow-lg transition-all duration-300"
                   onClick={handleBookCall}
                   data-testid="button-hero-cta"
                 >
@@ -117,7 +117,7 @@ export default function Home() {
 
               {/* Social Proof Row */}
               <motion.div
-                className="flex items-center gap-4"
+                className="flex items-center justify-center gap-4 mt-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
@@ -135,23 +135,24 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Right Column - 45% - Video Placeholder */}
+            {/* Video Placeholder Below Content */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-              className="relative"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+              className="relative w-full max-w-4xl mt-16"
             >
               <div
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-charcoal/5 border border-charcoal/10 group cursor-pointer"
+                className="relative aspect-video rounded-2xl overflow-hidden bg-charcoal/5 border border-charcoal/10 group cursor-pointer shadow-2xl"
                 data-testid="hero-video-placeholder"
+                onClick={() => setVideoModal(0)}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <img src={logo} alt="SPIDXR NETWORK" className="h-8 w-auto mb-6 opacity-30" />
-                  <div className="w-16 h-16 rounded-full bg-gold/90 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-                    <Play className="w-6 h-6 text-charcoal ml-1" fill="currentColor" />
+                  <img src={logo} alt="SPIDXR NETWORK" className="h-10 w-auto mb-8 opacity-40" />
+                  <div className="w-20 h-20 rounded-full bg-gold/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <Play className="w-8 h-8 text-charcoal ml-1" fill="currentColor" />
                   </div>
-                  <p className="text-charcoal-medium text-sm mt-4">Meet the Founder</p>
+                  <p className="text-charcoal font-medium text-lg mt-6">Meet the Founder</p>
                 </div>
               </div>
             </motion.div>
