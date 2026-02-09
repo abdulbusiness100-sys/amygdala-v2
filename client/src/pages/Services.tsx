@@ -212,27 +212,22 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Calendly - Khaki Gold Theme */}
-      <section id="book-call" className="py-24 bg-[#B8A04A] relative z-10 overflow-hidden">
-        {/* Subtle metallic gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-[#8B7635]/30"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#A8923E]/40 to-transparent"></div>
+      {/* Calendly - Black & Gold Theme */}
+      <section id="book-call" className="py-24 bg-charcoal relative z-10 overflow-hidden" data-testid="section-book-call">
+        <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-gold/3"></div>
         
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <ScrollReveal>
-            <p className="font-accent text-charcoal text-sm tracking-[0.15em] uppercase mb-4">SCHEDULE A CALL</p>
-            <h2 className="font-display text-4xl text-charcoal mb-6">Book Your Strategy Call</h2>
-            <p className="text-charcoal/80 mb-12">Select a time that works for you. 30 minutes. Pure value.</p>
+            <p className="text-gold text-sm tracking-[0.15em] uppercase mb-4 font-medium">SCHEDULE A CALL</p>
+            <h2 className="text-4xl text-white mb-4 font-semibold tracking-tight">Book Your Strategy Call</h2>
+            <p className="text-white/60 mb-12">Select a time that works for you. 45 minutes. Pure value.</p>
           </ScrollReveal>
-          <div className="bg-white rounded-2xl overflow-hidden shadow-2xl border-2 border-charcoal/20">
-            <iframe 
-              src="https://calendly.com/spidxrnetwork/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=B8A04A&primary_color=1a1a1a"
-              width="100%"
-              height="700"
-              frameBorder="0"
-              title="Schedule a call"
-              className="w-full"
-            />
+          <div className="rounded-2xl overflow-hidden border border-gold/20 shadow-2xl shadow-gold/5" data-testid="calendly-widget-container">
+            <div 
+              className="calendly-inline-widget" 
+              data-url="https://calendly.com/spidxrnetwork/45min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=C4A052"
+              style={{ minWidth: "320px", height: "700px" }}
+            ></div>
           </div>
         </div>
       </section>
