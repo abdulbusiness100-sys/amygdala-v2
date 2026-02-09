@@ -547,7 +547,7 @@ function AdsDetail() {
           { value: "40.7%", label: "Close Rate" },
           { value: "£74K", label: "Total Revenue" },
           { value: "2.35x", label: "Best ROAS" },
-          { value: "700+", label: "Leads Generated" },
+          { value: "1600", label: "Leads Nurtured" },
         ].map((stat, i) => (
           <div key={i} className="bg-white/5 rounded-lg p-3 text-center border border-gold/10" data-testid={`stat-ads-${i}`}>
             <p className="text-lg text-gold font-bold">{stat.value}</p>
