@@ -17,6 +17,53 @@ import topFunnelImg from "@assets/download_(49)_1770656963246.png";
 import middleFunnelImg from "@assets/download_(50)_1770656967005.png";
 import backEndImg from "@assets/download_(51)_1770656970922.png";
 
+// Service images
+import magnetImg from "@assets/download_(56)_1770657826172.png";
+import shoppingBagImg from "@assets/download_(55)_1770657829403.png";
+import phoneGearImg from "@assets/download_(54)_1770657833620.png";
+import shieldCardImg from "@assets/download_(53)_1770657837202.png";
+import laptopArrowsImg from "@assets/download_(52)_1770657843802.png";
+import megaphoneTargetImg from "@assets/download_(57)_1770657852209.png";
+
+const serviceCategories = [
+  {
+    title: "Lead Generation",
+    image: magnetImg,
+    description: "High-intent lead acquisition systems designed to fill your pipeline with qualified prospects.",
+    details: ["Meta & Google Ads", "LinkedIn Outreach", "Lead Magnet Creation", "Email Scraping & Verification"]
+  },
+  {
+    title: "Sales Conversion",
+    image: shoppingBagImg,
+    description: "Turning interest into revenue through optimized sales funnels and automated follow-up sequences.",
+    details: ["High-Converting Landing Pages", "CRM Implementation", "Appointment Setting Systems", "Sales Script Optimization"]
+  },
+  {
+    title: "Social Growth",
+    image: phoneGearImg,
+    description: "Building authority and presence across social platforms to drive organic growth and brand equity.",
+    details: ["Content Strategy", "Short-Form Video Editing", "Engagement Automation", "Community Management"]
+  },
+  {
+    title: "Infrastructure",
+    image: shieldCardImg,
+    description: "Robust backend systems that ensure your business scales without breaking operational efficiency.",
+    details: ["Automated Workflows", "Security & Compliance", "Data Protection", "System Architecture"]
+  },
+  {
+    title: "Web Development",
+    image: laptopArrowsImg,
+    description: "Premium, high-performance websites built for speed, SEO, and maximum user conversion.",
+    details: ["Custom React/Next.js Apps", "E-commerce Solutions", "API Integrations", "Performance Optimization"]
+  },
+  {
+    title: "Marketing Strategy",
+    image: megaphoneTargetImg,
+    description: "Comprehensive growth blueprints that align your technology and sales for maximum ROAS.",
+    details: ["Multi-Channel Orchestration", "Competitor Analysis", "Brand Positioning", "Data-Driven Scaling"]
+  }
+];
+
 const testimonials = [
   {
     name: "",
@@ -48,12 +95,14 @@ const processSteps = [
 export default function Home() {
   const [, setLocation] = useLocation();
   const [videoModal, setVideoModal] = useState<number | null>(null);
+  const [activeService, setActiveService] = useState<typeof serviceCategories[0] | null>(null);
 
   const handleBookCall = () => {
-    setLocation("/services");
-    setTimeout(() => {
-      document.getElementById("book-call")?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+    // Scroll to the bottom CTA section which has the booking intent
+    const ctaSection = document.querySelector('[data-testid="section-final-cta"]');
+    if (ctaSection) {
+      ctaSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const processRef = useRef<HTMLDivElement>(null);
@@ -161,92 +210,99 @@ export default function Home() {
       </section>
       {/* Logo Carousel */}
       <LogoCarousel />
-      {/* SERVICES - Bento Grid */}
-      <section className="py-24 bg-white" data-testid="section-services-bento">
+      {/* SERVICES - Square Grid */}
+      <section className="py-24 bg-white" data-testid="section-services-grid">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-16">
               <p className="text-gold text-sm tracking-[0.15em] uppercase mb-4 font-medium">The Unified Growth Stack</p>
               <h2 className="text-4xl md:text-5xl text-charcoal mb-4 font-semibold leading-tight">
-                Three Layers. <span className="text-gradient">One System.</span>
+                Our <span className="text-gradient">Core Services</span>
               </h2>
               <p className="text-charcoal-medium text-lg max-w-xl mx-auto">
-                Every service interconnected. Every action informed by data.
+                Select a service to see how we build your growth infrastructure.
               </p>
             </div>
           </FadeIn>
 
-          {/* Bento Grid: 1 large top + 2 medium bottom */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {/* Top of Funnel - Full Width */}
-            <FadeIn className="md:col-span-2">
-              <div className="bg-cream rounded-2xl p-8 md:p-10 border border-charcoal/8 hover:border-gold/30 transition-colors duration-300 group" data-testid="bento-top-funnel">
-                <div className="flex flex-col md:flex-row md:items-center gap-8">
-                  <div className="flex-1">
-                    <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-5">
-                      <Radar className="w-5 h-5 text-gold" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {serviceCategories.map((service, i) => (
+              <FadeIn key={service.title} delay={i * 0.1}>
+                <div 
+                  className="aspect-square relative bg-cream rounded-2xl border border-charcoal/8 overflow-hidden cursor-pointer group hover-elevate transition-all duration-300"
+                  onClick={() => setActiveService(service)}
+                  data-testid={`service-card-${i}`}
+                >
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center text-center">
+                    <div className="w-full aspect-square mb-6 transform group-hover:scale-110 transition-transform duration-500 ease-out">
+                      <img src={service.image} alt={service.title} className="w-full h-full object-contain" />
                     </div>
-                    <h3 className="text-2xl text-charcoal font-semibold mb-3">Top of Funnel</h3>
-                    <p className="text-charcoal-medium mb-5 leading-relaxed">
-                      Visibility & acquisition. We build the systems that put you in front of the right people at the right time.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {["Meta Ads", "Google Ads", "SEO Strategy", "Content Systems", "Landing Pages"].map((tag) => (
-                        <span key={tag} className="px-3 py-1 text-xs bg-white rounded-full text-charcoal-medium border border-charcoal/8">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="w-full md:w-64 flex-shrink-0">
-                    <img src={topFunnelImg} alt="Top of Funnel" className="w-full h-auto object-contain" />
+                    <h3 className="text-xl text-charcoal font-semibold mb-2">{service.title}</h3>
+                    <div className="w-8 h-1 bg-gold/30 rounded-full group-hover:w-16 transition-all duration-300"></div>
                   </div>
                 </div>
-              </div>
-            </FadeIn>
-
-            {/* Middle Funnel */}
-            <FadeIn delay={0.1}>
-              <div className="bg-cream rounded-2xl p-8 border border-charcoal/8 hover:border-gold/30 transition-colors duration-300 h-full flex flex-col" data-testid="bento-middle-funnel">
-                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-5">
-                  <Handshake className="w-5 h-5 text-gold" />
-                </div>
-                <h3 className="text-xl text-charcoal font-semibold mb-3">Middle Funnel</h3>
-                <p className="text-charcoal-medium text-sm mb-5 leading-relaxed">
-                  Conversion & sales. Turn attention into revenue with systems that nurture, qualify, and close.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {["CRM Setup", "Sales Pipelines", "Email Sequences", "Booking Funnels"].map((tag) => (
-                    <span key={tag} className="px-3 py-1 text-xs bg-white rounded-full text-charcoal-medium border border-charcoal/8">{tag}</span>
-                  ))}
-                </div>
-                <div className="mt-auto flex justify-center">
-                  <img src={middleFunnelImg} alt="Middle Funnel" className="w-48 h-auto object-contain" />
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Back End */}
-            <FadeIn delay={0.2}>
-              <div className="bg-cream rounded-2xl p-8 border border-charcoal/8 hover:border-gold/30 transition-colors duration-300 h-full flex flex-col" data-testid="bento-backend">
-                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-5">
-                  <Server className="w-5 h-5 text-gold" />
-                </div>
-                <h3 className="text-xl text-charcoal font-semibold mb-3">Back End</h3>
-                <p className="text-charcoal-medium text-sm mb-5 leading-relaxed">
-                  Infrastructure & scale. The technology layer that makes everything work together seamlessly.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {["Custom Dashboards", "Automations", "API Integrations", "Data Analytics"].map((tag) => (
-                    <span key={tag} className="px-3 py-1 text-xs bg-white rounded-full text-charcoal-medium border border-charcoal/8">{tag}</span>
-                  ))}
-                </div>
-                <div className="mt-auto flex justify-center">
-                  <img src={backEndImg} alt="Back End Infrastructure" className="w-48 h-auto object-contain" />
-                </div>
-              </div>
-            </FadeIn>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* Service Modal */}
+      {activeService && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="absolute inset-0 bg-charcoal/60 backdrop-blur-sm"
+            onClick={() => setActiveService(null)}
+          />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="relative bg-white w-full max-w-lg rounded-3xl p-8 shadow-2xl overflow-hidden"
+          >
+            <button 
+              onClick={() => setActiveService(null)}
+              className="absolute top-6 right-6 p-2 rounded-full hover:bg-charcoal/5 transition-colors"
+            >
+              <X className="w-5 h-5 text-charcoal-medium" />
+            </button>
+
+            <div className="flex flex-col items-center text-center mb-8">
+              <div className="w-32 h-32 mb-6">
+                <img src={activeService.image} alt={activeService.title} className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-3xl text-charcoal font-bold mb-3">{activeService.title}</h3>
+              <p className="text-charcoal-medium leading-relaxed">
+                {activeService.description}
+              </p>
+            </div>
+
+            <div className="space-y-3 mb-8">
+              <p className="text-xs font-bold text-gold uppercase tracking-[0.1em] mb-4">What we deliver:</p>
+              <div className="grid grid-cols-1 gap-2">
+                {activeService.details.map((detail, i) => (
+                  <div key={i} className="flex items-center gap-3 p-3 bg-cream/50 rounded-xl border border-charcoal/5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold" />
+                    <span className="text-charcoal-medium text-sm font-medium">{detail}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Button 
+              className="w-full gold-gradient text-charcoal font-semibold h-12 rounded-xl"
+              onClick={() => {
+                setActiveService(null);
+                handleBookCall();
+              }}
+            >
+              Book Strategy Call
+            </Button>
+          </motion.div>
+        </div>
+      )}
+
       {/* METRICS */}
       <section className="py-24 bg-cream" data-testid="section-metrics">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
