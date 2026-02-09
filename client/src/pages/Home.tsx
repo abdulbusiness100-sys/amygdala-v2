@@ -63,7 +63,7 @@ export default function Home() {
     <div className="relative min-h-screen">
       {/* HERO SECTION - Split Layout */}
       <section className="relative min-h-screen flex items-center pt-20" data-testid="section-hero">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full text-center">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Column - 55% */}
             <div className="lg:pr-8">
@@ -158,10 +158,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Logo Carousel */}
       <LogoCarousel />
-
       {/* SERVICES - Bento Grid */}
       <section className="py-24 bg-white" data-testid="section-services-bento">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -248,7 +246,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* METRICS */}
       <section className="py-24 bg-cream" data-testid="section-metrics">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -280,7 +277,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* VIDEO TESTIMONIALS */}
       <section className="py-24 bg-white" data-testid="section-testimonials">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -341,7 +337,6 @@ export default function Home() {
           </FadeIn>
         </div>
       </section>
-
       {/* Video Modal */}
       {videoModal !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/80 backdrop-blur-sm" onClick={() => setVideoModal(null)}>
@@ -361,7 +356,6 @@ export default function Home() {
           </div>
         </div>
       )}
-
       {/* PROCESS - Horizontal Timeline */}
       <section className="py-24 bg-cream" data-testid="section-process" ref={processRef}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -435,7 +429,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* PRICING PREVIEW */}
       <section className="py-20 bg-white" data-testid="section-pricing-preview">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -459,7 +452,6 @@ export default function Home() {
           </FadeIn>
         </div>
       </section>
-
       {/* END CTA */}
       <section className="py-32 relative overflow-hidden" data-testid="section-cta">
         <div className="absolute inset-0">
