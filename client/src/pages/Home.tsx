@@ -505,7 +505,7 @@ export default function Home() {
         </div>
       </section>
       {/* END CTA */}
-      <section className="py-32 relative overflow-hidden" data-testid="section-cta">
+      <section className="py-32 relative overflow-hidden" data-testid="section-final-cta">
         <div className="absolute inset-0">
           <img
             src={ctaImage}
