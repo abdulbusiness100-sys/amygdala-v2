@@ -545,10 +545,10 @@ export default function Home() {
               Book a strategy call. We'll audit your current setup, identify opportunities, and show you exactly how a unified system transforms your business.
             </p>
             
-            <div className="bg-white rounded-2xl overflow-hidden shadow-2xl mb-8 min-h-[700px]">
+            <div className="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-2xl mb-8 min-h-[700px] border border-gold/20">
               <div 
                 className="calendly-inline-widget" 
-                data-url="https://calendly.com/spidxrnetwork/45min" 
+                data-url="https://calendly.com/spidxrnetwork/45min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=C4A052" 
                 style={{ minWidth: '320px', height: '700px' }}
                 data-auto-load="true"
               />
