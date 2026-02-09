@@ -515,7 +515,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/85 to-charcoal/75"></div>
         </div>
 
-        <div className="max-w-3xl mx-auto px-4 text-center relative z-10">
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <FadeIn>
             <p className="text-gold text-sm tracking-[0.15em] uppercase mb-4 font-medium">Ready to Unify?</p>
             <h2 className="text-4xl md:text-5xl text-white mb-6 font-semibold leading-tight">
@@ -524,15 +524,16 @@ export default function Home() {
             <p className="text-white/70 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
               Book a strategy call. We'll audit your current setup, identify opportunities, and show you exactly how a unified system transforms your business.
             </p>
-            <Button
-              size="lg"
-              className="gold-gradient text-charcoal border-0 text-lg px-10 shadow-lg hover:shadow-xl transition-shadow duration-300"
-              onClick={handleBookCall}
-              data-testid="button-cta-book-call"
-            >
-              Book Your Strategy Call <ArrowRight className="ml-2" />
-            </Button>
-            <p className="text-white/50 text-sm mt-6">30 minutes. No obligation. Pure value.</p>
+            
+            <div className="bg-white rounded-2xl overflow-hidden shadow-2xl mb-8">
+              <div 
+                className="calendly-inline-widget" 
+                data-url="https://calendly.com/spidxrnetwork/45min" 
+                style={{ minWidth: '320px', height: '700px' }}
+              />
+            </div>
+
+            <p className="text-white/50 text-sm">30 minutes. No obligation. Pure value.</p>
           </FadeIn>
         </div>
       </section>
