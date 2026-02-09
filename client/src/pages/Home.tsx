@@ -13,6 +13,9 @@ import logo2 from "@assets/logo_2.png";
 import logo3 from "@assets/logo_3.png";
 import logo4 from "@assets/logo_4.png";
 import ctaImage from "@assets/download_(3)_1768908363469.webp";
+import topFunnelImg from "@assets/download_(49)_1770656963246.png";
+import middleFunnelImg from "@assets/download_(50)_1770656967005.png";
+import backEndImg from "@assets/download_(51)_1770656970922.png";
 
 const testimonials = [
   {
@@ -194,8 +197,8 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                  <div className="w-full md:w-64 h-40 rounded-xl bg-gradient-to-br from-gold/5 to-gold/15 flex items-center justify-center">
-                    <Radar className="w-16 h-16 text-gold/30" />
+                  <div className="w-full md:w-64 flex-shrink-0">
+                    <img src={topFunnelImg} alt="Top of Funnel" className="w-full h-auto object-contain" />
                   </div>
                 </div>
               </div>
@@ -203,7 +206,7 @@ export default function Home() {
 
             {/* Middle Funnel */}
             <FadeIn delay={0.1}>
-              <div className="bg-cream rounded-2xl p-8 border border-charcoal/8 hover:border-gold/30 transition-colors duration-300 h-full" data-testid="bento-middle-funnel">
+              <div className="bg-cream rounded-2xl p-8 border border-charcoal/8 hover:border-gold/30 transition-colors duration-300 h-full flex flex-col" data-testid="bento-middle-funnel">
                 <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-5">
                   <Handshake className="w-5 h-5 text-gold" />
                 </div>
@@ -211,17 +214,20 @@ export default function Home() {
                 <p className="text-charcoal-medium text-sm mb-5 leading-relaxed">
                   Conversion & sales. Turn attention into revenue with systems that nurture, qualify, and close.
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {["CRM Setup", "Sales Pipelines", "Email Sequences", "Booking Funnels"].map((tag) => (
                     <span key={tag} className="px-3 py-1 text-xs bg-white rounded-full text-charcoal-medium border border-charcoal/8">{tag}</span>
                   ))}
+                </div>
+                <div className="mt-auto flex justify-center">
+                  <img src={middleFunnelImg} alt="Middle Funnel" className="w-48 h-auto object-contain" />
                 </div>
               </div>
             </FadeIn>
 
             {/* Back End */}
             <FadeIn delay={0.2}>
-              <div className="bg-cream rounded-2xl p-8 border border-charcoal/8 hover:border-gold/30 transition-colors duration-300 h-full" data-testid="bento-backend">
+              <div className="bg-cream rounded-2xl p-8 border border-charcoal/8 hover:border-gold/30 transition-colors duration-300 h-full flex flex-col" data-testid="bento-backend">
                 <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-5">
                   <Server className="w-5 h-5 text-gold" />
                 </div>
@@ -229,10 +235,13 @@ export default function Home() {
                 <p className="text-charcoal-medium text-sm mb-5 leading-relaxed">
                   Infrastructure & scale. The technology layer that makes everything work together seamlessly.
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {["Custom Dashboards", "Automations", "API Integrations", "Data Analytics"].map((tag) => (
                     <span key={tag} className="px-3 py-1 text-xs bg-white rounded-full text-charcoal-medium border border-charcoal/8">{tag}</span>
                   ))}
+                </div>
+                <div className="mt-auto flex justify-center">
+                  <img src={backEndImg} alt="Back End Infrastructure" className="w-48 h-auto object-contain" />
                 </div>
               </div>
             </FadeIn>
