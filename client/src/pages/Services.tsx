@@ -1,9 +1,22 @@
+import { useState } from "react";
+import { useLocation } from "wouter";
 import { CheckCircle2, Sparkles, Radar, Handshake, Server, Globe, Palette, Share2, ShoppingBag, Target, Mail, Users, Headphones, Settings, Building, BrainCircuit, Rocket } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Button } from "@/components/ui/button";
 
 export default function Services() {
+  const [, setLocation] = useLocation();
+
+  const handleBookCall = () => {
+    setLocation("/");
+    setTimeout(() => {
+      const element = document.getElementById("book-call-anchor");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 300);
+  };
   const serviceLayers = [
     {
       title: "TOP OF FUNNEL",
@@ -196,7 +209,7 @@ export default function Services() {
                     <Button 
                       className={`w-full py-5 text-base font-accent ${tier.popular ? 'gold-gradient text-charcoal border-0' : ''}`}
                       variant={tier.popular ? "default" : "outline"}
-                      onClick={() => document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={handleBookCall}
                       data-testid={`button-tier-${i}`}
                     >
                       {tier.cta}
