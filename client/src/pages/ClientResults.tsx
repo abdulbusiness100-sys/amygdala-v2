@@ -201,10 +201,10 @@ const caseStudies: CaseStudy[] = [
 function GenflowDetail() {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
-    { label: "Growth Plans", desc: "High-level inbound tailored growth plans" },
-    { label: "Sales Structure", desc: "Rigorous sales structure and execution" },
-    { label: "Lead Nurturing", desc: "Lead nurturing optimization" },
-    { label: "Systemization", desc: "Full sales cycle systemization" },
+    { icon: Target, label: "Growth Plans", desc: "High-level inbound tailored growth plans" },
+    { icon: LineChart, label: "Sales Structure", desc: "Rigorous sales structure and execution" },
+    { icon: Users, label: "Lead Nurturing", desc: "Lead nurturing optimization" },
+    { icon: BarChart3, label: "Systemization", desc: "Full sales cycle systemization" },
   ];
 
   return (
@@ -246,7 +246,7 @@ function GenflowDetail() {
               }`}
               data-testid={`tab-genflow-${i}`}
             >
-              <CheckCircle2 className={`w-4 h-4 ${activeTab === i ? 'text-gold' : 'text-white/30'}`} />
+              <tab.icon className={`w-4 h-4 ${activeTab === i ? 'text-gold' : 'text-white/30'}`} />
               <span className="text-xs font-medium leading-tight">{tab.label}</span>
             </button>
           ))}
@@ -294,12 +294,12 @@ function GenflowDetail() {
 function OraDetail() {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
-    { label: "Brand Identity", desc: "Complete brand identity & visual design system" },
-    { label: "Website", desc: "Custom website design and development" },
-    { label: "Services", desc: "Service category architecture (Aesthetics, Nails, Hair, Laser & Wellness)" },
-    { label: "Booking", desc: "Online booking system integration" },
-    { label: "SEO", desc: "SEO-optimized content strategy" },
-    { label: "Mobile UX", desc: "Mobile-responsive premium experience" },
+    { icon: Sparkles, label: "Brand Identity", desc: "Complete brand identity & visual design system" },
+    { icon: Globe, label: "Website", desc: "Custom website design and development" },
+    { icon: Building2, label: "Services", desc: "Service category architecture (Aesthetics, Nails, Hair, Laser & Wellness)" },
+    { icon: CheckCircle2, label: "Booking", desc: "Online booking system integration" },
+    { icon: Target, label: "SEO", desc: "SEO-optimized content strategy" },
+    { icon: Smartphone, label: "Mobile UX", desc: "Mobile-responsive premium experience" },
   ];
 
   return (
@@ -352,7 +352,7 @@ function OraDetail() {
               }`}
               data-testid={`tab-ora-${i}`}
             >
-              <CheckCircle2 className={`w-3 h-3 ${activeTab === i ? 'text-gold' : 'text-white/30'}`} />
+              <tab.icon className={`w-3 h-3 ${activeTab === i ? 'text-gold' : 'text-white/30'}`} />
               <span className="text-[10px] font-medium leading-tight">{tab.label}</span>
             </button>
           ))}
@@ -601,29 +601,42 @@ function AdsDetail() {
 function FaseehaDetail() {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
-    { icon: Globe, label: "Website Rebuild", desc: "Recreated their entire digital presence with optimized SEO and high-converting landing pages." },
-    { icon: Users, label: "Lead Generation", desc: "Built targeted funnels to maximize lead capture and conversion through strategic marketing." },
-    { icon: Sparkles, label: "AI Automations", desc: "Integrated AI systems for client nurturing, data tracking, and internal process optimization." },
+    { icon: Globe, label: "Website", desc: "Full website rebuild with premium aesthetic" },
+    { icon: Sparkles, label: "AI Chatbot", desc: "Custom AI chatbot for lead qualification" },
+    { icon: Target, label: "Marketing", desc: "Integrated marketing strategy & funnel" },
+    { icon: Users, label: "Lead Gen", desc: "700+ leads generated in the first month" },
   ];
 
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-2">
         <img src={faseehaLogo} alt="Faseeha Institute" className="h-10 object-contain" />
-        <span className="text-white/40 text-sm">Full Stack Build</span>
+        <div>
+          <span className="text-white/40 text-sm block">Full Stack Build & Lead Gen</span>
+          <a 
+            href="https://www.faseeha.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-gold text-xs hover:underline mt-0.5"
+            data-testid="link-faseeha"
+          >
+            faseeha.com <ExternalLink className="w-3 h-3" />
+          </a>
+        </div>
       </div>
       <p className="text-white/50 text-sm max-w-lg">
-        Complete digital transformation: website rebuild, AI automations, and targeted lead 
-        generation campaigns delivering 700+ leads in just 30 days.
+        Complete digital transformation for an educational institute, delivering a premium 
+        website and AI-powered automation that generated 700+ leads in 30 days.
       </p>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
+          { value: "700+", label: "Leads/Month" },
           { value: "50%", label: "Traffic Increase" },
-          { value: "700+", label: "Leads in 30 Days" },
-          { value: "100%", label: "Unified Stack" },
+          { value: "Live", label: "faseeha.com" },
+          { value: "Built", label: "AI Automations" },
         ].map((stat, i) => (
-          <div key={i} className="bg-white/5 rounded-lg p-3 text-center border border-gold/15" data-testid={`stat-faseeha-${i}`}>
+          <div key={i} className="bg-white/5 rounded-lg p-3 text-center border border-white/10" data-testid={`stat-faseeha-${i}`}>
             <p className="text-lg text-gold font-bold">{stat.value}</p>
             <p className="text-white/40 text-xs">{stat.label}</p>
           </div>
@@ -631,8 +644,8 @@ function FaseehaDetail() {
       </div>
 
       <div>
-        <p className="text-white/60 text-xs uppercase tracking-wider mb-3">What We Delivered</p>
-        <div className="grid grid-cols-3 gap-2">
+        <p className="text-white/60 text-xs uppercase tracking-wider mb-3">What We Built</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {tabs.map((tab, i) => (
             <button
               key={i}
