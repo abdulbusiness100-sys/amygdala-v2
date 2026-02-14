@@ -14,7 +14,8 @@ import logo3 from "@assets/logo_3.png";
 import logo4 from "@assets/logo_4.png";
 import pristinePolishLogo from "@assets/download_(60)_1771092036403.png";
 import amygdalaAcquisitionsLogo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1771092230145.png";
-import spidxrLogo4k from "@assets/Untitled_design_(1)_Medium_1771092233909.png";
+import spidxrLogo4k from "@assets/AMYGDALA_ACQUISITIONS_(6)_1771093029203.png";
+import clientLogoSpidxr from "@assets/Untitled_design_(1)_Medium_1771092233909.png";
 
 // Tech stack logos
 import { 
@@ -224,7 +225,7 @@ export default function Home() {
                 transition={{ delay: 0.6, duration: 0.5 }}
               >
                 <div className="flex -space-x-2">
-              {[logo1, logo2, logo3, logo4, pristinePolishLogo, amygdalaAcquisitionsLogo].map((src, i) => (
+              {[logo1, logo2, logo3, logo4, pristinePolishLogo, clientLogoSpidxr].map((src, i) => (
                 <div key={i} className="w-8 h-8 rounded-full bg-white border-2 border-white shadow-sm flex items-center justify-center overflow-hidden">
                   <img src={src} alt="" className="w-5 h-5 object-contain" />
                 </div>

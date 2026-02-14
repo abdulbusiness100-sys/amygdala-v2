@@ -39,7 +39,7 @@ const clientLogos = [
   { name: "Client 16", src: logo16 },
   { name: "Pristine Polish", src: pristinePolishLogo },
   { name: "Amygdala Acquisitions", src: amygdalaAcquisitionsLogo },
-  { name: "SPIDXR 4K", src: spidxrLogo4k },
+  { name: "SPIDXR Client", src: spidxrLogo4k },
 ];
 
 export default function LogoCarousel() {
