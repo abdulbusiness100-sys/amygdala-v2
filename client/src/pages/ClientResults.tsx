@@ -72,12 +72,12 @@ const ScrollReveal = ({ children, delay = 0 }: { children: React.ReactNode; dela
 );
 
 const genflowSalesData = [
-  { month: 'Aug', revenue: 47100 },
-  { month: 'Sep', revenue: 60000 },
-  { month: 'Oct', revenue: 54800 },
-  { month: 'Nov', revenue: 55000 },
-  { month: 'Dec', revenue: 69300 },
-  { month: 'Jan', revenue: 93000 },
+  { month: 'Aug', revenue: 47100, spidxr: false },
+  { month: 'Sep', revenue: 65000, spidxr: true },
+  { month: 'Oct', revenue: 69000, spidxr: true },
+  { month: 'Nov', revenue: 71000, spidxr: true },
+  { month: 'Dec', revenue: 73000, spidxr: true },
+  { month: 'Jan', revenue: 155000, spidxr: true },
 ];
 
 const genflowSourceData = [
@@ -114,9 +114,9 @@ const nurCafeRevenueData = [
 ];
 
 const adCampaignData = [
-  { campaign: 'MBA', spend: 442, revenue: 1037, roas: 2.35 },
-  { campaign: 'Playbook', spend: 7603, revenue: 5210, roas: 0.69 },
-  { campaign: 'Book-a-Call', spend: 3147, revenue: 4242, roas: 1.35 },
+  { campaign: 'Ad A', spend: 400, revenue: 13300 },
+  { campaign: 'Ad B', spend: 5000, revenue: 25450 },
+  { campaign: 'Ad C', spend: 8000, revenue: 30900 },
 ];
 
 const callPerformanceData = [
@@ -244,7 +244,25 @@ function GenflowDetail() {
                 formatter={(value: number) => [`$${value.toLocaleString()}`, 'Revenue']}
                 contentStyle={{ background: '#1a1a1a', border: '1px solid rgba(196,160,82,0.3)', borderRadius: '8px', color: '#fff', fontSize: '12px' }}
               />
-              <Bar dataKey="revenue" fill="#C4A052" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="revenue" radius={[3, 3, 0, 0]}>
+                {genflowSalesData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.spidxr ? "#C4A052" : "rgba(255,255,255,0.1)"} />
+                ))}
+              </Bar>
+              <Legend 
+                content={() => (
+                  <div className="flex items-center justify-center gap-4 mt-2 text-[10px] text-white/40 uppercase tracking-widest">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-white/10" />
+                      <span>Before SPIDXR</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-gold" />
+                      <span>With SPIDXR</span>
+                    </div>
+                  </div>
+                )}
+              />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -260,6 +278,13 @@ function GenflowDetail() {
               <Tooltip 
                 formatter={(value: number) => [`${value}%`, 'Share']}
                 contentStyle={{ background: '#1a1a1a', border: '1px solid rgba(196,160,82,0.3)', borderRadius: '8px', color: '#fff', fontSize: '12px' }}
+              />
+              <Legend 
+                verticalAlign="bottom" 
+                align="center"
+                layout="horizontal"
+                iconSize={8}
+                formatter={(value) => <span className="text-[10px] text-white/50">{value}</span>}
               />
             </PieChart>
           </ResponsiveContainer>
@@ -323,19 +348,21 @@ function OraDetail() {
             <button
               key={i}
               onClick={() => setActiveTab(i)}
-              className={`aspect-square rounded-lg p-2 text-left flex flex-col justify-between transition-all duration-200 border ${
+              className={`aspect-square rounded-lg p-2 flex items-center justify-center transition-all duration-200 border ${
                 activeTab === i
                   ? 'bg-gold/15 border-gold/40 text-gold'
                   : 'bg-white/5 border-white/10 text-white/60 hover-elevate'
               }`}
               data-testid={`tab-ora-${i}`}
             >
-              <tab.icon className={`w-3 h-3 ${activeTab === i ? 'text-gold' : 'text-white/30'}`} />
-              <span className="text-[10px] font-medium leading-tight">{tab.label}</span>
+              <tab.icon className={`w-6 h-6 ${activeTab === i ? 'text-gold' : 'text-white/30'}`} />
             </button>
           ))}
         </div>
-        <p className="text-white/50 text-sm mt-3 min-h-[2rem]">{tabs[activeTab].desc}</p>
+        <div className="mt-3 min-h-[2.5rem]">
+          <p className="text-gold text-xs font-bold uppercase tracking-tight">{tabs[activeTab].label}</p>
+          <p className="text-white/50 text-sm">{tabs[activeTab].desc}</p>
+        </div>
       </div>
 
       <div className="rounded-lg overflow-hidden border border-white/10">
@@ -451,19 +478,21 @@ function NurCafeExpansionDetail() {
             <button
               key={i}
               onClick={() => setActiveTab(i)}
-              className={`aspect-square rounded-lg p-2 text-left flex flex-col justify-between transition-all duration-200 border ${
+              className={`aspect-square rounded-lg p-2 flex items-center justify-center transition-all duration-200 border ${
                 activeTab === i
                   ? 'bg-[#4CAF50]/15 border-[#4CAF50]/40 text-[#4CAF50]'
                   : 'bg-white/5 border-white/10 text-white/60 hover-elevate'
               }`}
               data-testid={`tab-expansion-${i}`}
             >
-              <tab.icon className={`w-3 h-3 ${activeTab === i ? 'text-[#4CAF50]' : 'text-white/30'}`} />
-              <span className="text-[10px] font-medium leading-tight">{tab.label}</span>
+              <tab.icon className={`w-5 h-5 ${activeTab === i ? 'text-[#4CAF50]' : 'text-white/30'}`} />
             </button>
           ))}
         </div>
-        <p className="text-white/50 text-sm mt-3 min-h-[2rem]">{tabs[activeTab].desc}</p>
+        <div className="mt-3 min-h-[2.5rem]">
+          <p className="text-[#4CAF50] text-xs font-bold uppercase tracking-tight">{tabs[activeTab].label}</p>
+          <p className="text-white/50 text-sm">{tabs[activeTab].desc}</p>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
@@ -506,7 +535,7 @@ function AdsDetail() {
 
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-          <h4 className="text-sm text-white/70 mb-3">Campaign ROAS</h4>
+          <h4 className="text-sm text-white/70 mb-3">Campaign Performance</h4>
           <ResponsiveContainer width="100%" height={180}>
             <BarChart data={adCampaignData}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
@@ -514,8 +543,8 @@ function AdsDetail() {
               <YAxis stroke="rgba(255,255,255,0.3)" fontSize={10} />
               <Tooltip 
                 formatter={(value: number, name: string) => [
-                  name === 'roas' ? `${value}x` : `£${value.toLocaleString()}`,
-                  name === 'roas' ? 'ROAS' : name === 'spend' ? 'Ad Spend' : 'Revenue'
+                  name === 'revenue' ? `£${value.toLocaleString()}` : `£${value.toLocaleString()}`,
+                  name === 'spend' ? 'Ad Spend' : 'Revenue'
                 ]}
                 contentStyle={{ background: '#1a1a1a', border: '1px solid rgba(196,160,82,0.3)', borderRadius: '8px', color: '#fff', fontSize: '12px' }}
               />
