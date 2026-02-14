@@ -423,7 +423,7 @@ export default function Home() {
             <div className="text-center text-white/50">
               <Play className="w-12 h-12 mx-auto mb-3 opacity-40" />
               <p className="text-sm">Video coming soon</p>
-              <p className="text-xs mt-1">{testimonials[videoModal].company} testimonial</p>
+              <p className="text-xs mt-1">Founder video</p>
             </div>
           </div>
         </div>
