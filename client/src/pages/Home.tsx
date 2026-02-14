@@ -21,9 +21,11 @@ import clientLogoSpidxr from "@assets/Untitled_design_(1)_Medium_1771092233909.p
 import { 
   SiXcode, SiGoogleads, SiSlack, SiAsana, SiReplit, 
   SiOpenai, SiAnthropic, SiN8N, SiApple, SiWix, SiNotion, SiFirebase,
-  SiGooglegemini, SiHuggingface, SiGoogle, SiGooglesearchconsole
+  SiGooglegemini, SiHuggingface, SiGoogle, SiGooglesearchconsole,
+  SiMeta, SiZapier, SiDji, SiGoogledrive, SiXero, SiCalendly, SiAmericanexpress,
+  SiTelegram, SiGithubcopilot, SiCapcut, SiFiverr
 } from "react-icons/si";
-import { GraduationCap, Code2 } from "lucide-react";
+import { GraduationCap, Code2, LayoutDashboard } from "lucide-react";
 
 const techStack = [
   { name: "Xcode", icon: SiXcode },
@@ -44,6 +46,19 @@ const techStack = [
   { name: "Wix", icon: SiWix },
   { name: "Notion", icon: SiNotion },
   { name: "Firebase", icon: SiFirebase },
+  { name: "Meta Ads", icon: SiMeta },
+  { name: "Zapier", icon: SiZapier },
+  { name: "DJI", icon: SiDji },
+  { name: "Google Drive", icon: SiGoogledrive },
+  { name: "Xero", icon: SiXero },
+  { name: "Calendly", icon: SiCalendly },
+  { name: "Amex", icon: SiAmericanexpress },
+  { name: "Telegram", icon: SiTelegram },
+  { name: "Copilot", icon: SiGithubcopilot },
+  { name: "CapCut", icon: SiCapcut },
+  { name: "Fiverr", icon: SiFiverr },
+  { name: "Vibecode", icon: Code2 },
+  { name: "Business Suite", icon: LayoutDashboard },
 ];
 import ctaImage from "@assets/download_(3)_1768908363469.webp";
 import topFunnelImg from "@assets/download_(49)_1770656963246.png";

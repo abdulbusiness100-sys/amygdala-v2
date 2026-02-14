@@ -19,6 +19,7 @@ import logo16 from "@assets/logo_16.png";
 import pristinePolishLogo from "@assets/download_(60)_1771092036403.png";
 import amygdalaAcquisitionsLogo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1771092230145.png";
 import spidxrLogo4k from "@assets/Untitled_design_(1)_Medium_1771092233909.png";
+import { SiNhs, SiSumup } from "react-icons/si";
 
 const clientLogos = [
   { name: "Client 1", src: logo1 },
@@ -40,6 +41,10 @@ const clientLogos = [
   { name: "Pristine Polish", src: pristinePolishLogo },
   { name: "Amygdala Acquisitions", src: amygdalaAcquisitionsLogo },
   { name: "SPIDXR Client", src: spidxrLogo4k },
+  { name: "NHS", icon: SiNhs },
+  { name: "ADS DADDY", text: "ADS DADDY" },
+  { name: "IMA", text: "IMA" },
+  { name: "SumUp", icon: SiSumup },
 ];
 
 export default function LogoCarousel() {
@@ -65,10 +70,16 @@ export default function LogoCarousel() {
           {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 h-10 w-28 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              className="flex-shrink-0 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
               data-testid={`logo-client-${i}`}
             >
-              <img src={logo.src} alt={logo.name} className={`${logo.name === "SPIDXR 4K" ? "h-12" : "h-8"} w-auto object-contain max-w-[120px]`} />
+              {logo.src ? (
+                <img src={logo.src} alt={logo.name} className={`${logo.name === "SPIDXR Client" ? "h-12" : "h-8"} w-auto object-contain max-w-[120px]`} />
+              ) : logo.icon ? (
+                <logo.icon className="h-8 w-auto text-charcoal" />
+              ) : (
+                <span className="text-sm font-bold text-charcoal tracking-tight">{logo.text}</span>
+              )}
             </div>
           ))}
         </motion.div>
