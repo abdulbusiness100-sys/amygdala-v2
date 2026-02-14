@@ -16,7 +16,7 @@ import logo13 from "@assets/logo_13.png";
 import logo14 from "@assets/logo_14.png";
 import logo15 from "@assets/logo_15.png";
 import logo16 from "@assets/logo_16.png";
-import pristinePolishLogo from "@assets/download_(60)_1771092036403.png";
+import pristinePolishLogo from "@assets/download_(60)_1771094001612.png";
 import amygdalaAcquisitionsLogo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1771092230145.png";
 import spidxrLogo4k from "@assets/Untitled_design_(1)_Medium_1771092233909.png";
 import { Activity, Landmark } from "lucide-react";
@@ -70,11 +70,17 @@ export default function LogoCarousel() {
           {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              className={`flex-shrink-0 flex items-center justify-center grayscale transition-all duration-500 ${
+                logo.name === "Pristine Polish" ? "opacity-90 grayscale-0" : "opacity-50 hover:grayscale-0 hover:opacity-100"
+              }`}
               data-testid={`logo-client-${i}`}
             >
               {logo.src ? (
-                <img src={logo.src} alt={logo.name} className={`${logo.name === "SPIDXR Client" ? "h-12" : "h-8"} w-auto object-contain max-w-[120px]`} />
+                <img 
+                  src={logo.src} 
+                  alt={logo.name} 
+                  className={`${logo.name === "SPIDXR Client" ? "h-12" : logo.name === "Pristine Polish" ? "h-14 scale-125" : "h-8"} w-auto object-contain max-w-[120px]`} 
+                />
               ) : logo.icon ? (
                 <logo.icon className="h-8 w-auto text-charcoal" />
               ) : (
