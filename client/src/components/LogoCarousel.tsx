@@ -19,7 +19,7 @@ import logo16 from "@assets/logo_16.png";
 import pristinePolishLogo from "@assets/download_(60)_1771092036403.png";
 import amygdalaAcquisitionsLogo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1771092230145.png";
 import spidxrLogo4k from "@assets/Untitled_design_(1)_Medium_1771092233909.png";
-import { SiNhs, SiSumup } from "react-icons/si";
+import { Activity, Landmark } from "lucide-react";
 
 const clientLogos = [
   { name: "Client 1", src: logo1 },
@@ -41,10 +41,10 @@ const clientLogos = [
   { name: "Pristine Polish", src: pristinePolishLogo },
   { name: "Amygdala Acquisitions", src: amygdalaAcquisitionsLogo },
   { name: "SPIDXR Client", src: spidxrLogo4k },
-  { name: "NHS", icon: SiNhs },
+  { name: "NHS", icon: Activity },
   { name: "ADS DADDY", text: "ADS DADDY" },
   { name: "IMA", text: "IMA" },
-  { name: "SumUp", icon: SiSumup },
+  { name: "SumUp", icon: Landmark },
 ];
 
 export default function LogoCarousel() {

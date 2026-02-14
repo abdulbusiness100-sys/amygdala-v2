@@ -23,9 +23,9 @@ import {
   SiOpenai, SiAnthropic, SiN8N, SiApple, SiWix, SiNotion, SiFirebase,
   SiGooglegemini, SiHuggingface, SiGoogle, SiGooglesearchconsole,
   SiMeta, SiZapier, SiDji, SiGoogledrive, SiXero, SiCalendly, SiAmericanexpress,
-  SiTelegram, SiGithubcopilot, SiCapcut, SiFiverr
+  SiTelegram, SiFiverr
 } from "react-icons/si";
-import { GraduationCap, Code2, LayoutDashboard } from "lucide-react";
+import { GraduationCap, Code2, LayoutDashboard, Cpu, Video } from "lucide-react";
 
 const techStack = [
   { name: "Xcode", icon: SiXcode },
@@ -54,8 +54,8 @@ const techStack = [
   { name: "Calendly", icon: SiCalendly },
   { name: "Amex", icon: SiAmericanexpress },
   { name: "Telegram", icon: SiTelegram },
-  { name: "Copilot", icon: SiGithubcopilot },
-  { name: "CapCut", icon: SiCapcut },
+  { name: "Copilot", icon: Cpu },
+  { name: "CapCut", icon: Video },
   { name: "Fiverr", icon: SiFiverr },
   { name: "Vibecode", icon: Code2 },
   { name: "Business Suite", icon: LayoutDashboard },
