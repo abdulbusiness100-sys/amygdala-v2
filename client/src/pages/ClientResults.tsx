@@ -16,8 +16,14 @@ import {
   ExternalLink,
   MapPin,
   Leaf,
-  X
+  X,
+  Instagram,
+  Chrome,
+  Search,
+  Calendar,
+  Layout
 } from "lucide-react";
+import { SiApple } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { 
   BarChart, 
@@ -139,6 +145,7 @@ interface CaseStudy {
   bgColor: string;
   showcaseImage: string;
   headline: string;
+  disabled?: boolean;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -195,18 +202,11 @@ const caseStudies: CaseStudy[] = [
     bgColor: '#b8a98c',
     showcaseImage: faseehaWebsiteImg,
     headline: '700+ Leads in 30 Days',
+    disabled: true,
   },
 ];
 
 function GenflowDetail() {
-  const [activeTab, setActiveTab] = useState(0);
-  const tabs = [
-    { icon: Target, label: "Growth Plans", desc: "High-level inbound tailored growth plans" },
-    { icon: LineChart, label: "Sales Structure", desc: "Rigorous sales structure and execution" },
-    { icon: Users, label: "Lead Nurturing", desc: "Lead nurturing optimization" },
-    { icon: BarChart3, label: "Systemization", desc: "Full sales cycle systemization" },
-  ];
-
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-2">
@@ -214,7 +214,7 @@ function GenflowDetail() {
         <span className="text-white/40 text-sm">Sales Growth Consulting</span>
       </div>
       <p className="text-white/50 text-sm max-w-lg">
-        From under $100K quarterly to $400K+ through rigorous sales structuring, 
+        Sales growth and execution. From under $100K quarterly to $400K+ through rigorous sales structuring, 
         lead nurturing optimization, and full sales cycle systemization.
       </p>
 
@@ -230,28 +230,6 @@ function GenflowDetail() {
             <p className="text-white/40 text-xs">{stat.label}</p>
           </div>
         ))}
-      </div>
-
-      <div>
-        <p className="text-white/60 text-xs uppercase tracking-wider mb-3">What We Delivered</p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {tabs.map((tab, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveTab(i)}
-              className={`aspect-square rounded-lg p-3 text-left flex flex-col justify-between transition-all duration-200 border ${
-                activeTab === i
-                  ? 'bg-gold/15 border-gold/40 text-gold'
-                  : 'bg-white/5 border-white/10 text-white/60 hover-elevate'
-              }`}
-              data-testid={`tab-genflow-${i}`}
-            >
-              <tab.icon className={`w-4 h-4 ${activeTab === i ? 'text-gold' : 'text-white/30'}`} />
-              <span className="text-xs font-medium leading-tight">{tab.label}</span>
-            </button>
-          ))}
-        </div>
-        <p className="text-white/50 text-sm mt-3 min-h-[2rem]">{tabs[activeTab].desc}</p>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
@@ -294,12 +272,12 @@ function GenflowDetail() {
 function OraDetail() {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
-    { icon: Sparkles, label: "Brand Identity", desc: "Complete brand identity & visual design system" },
+    { icon: Instagram, label: "Brand Identity", desc: "Complete brand identity & visual design system" },
     { icon: Globe, label: "Website", desc: "Custom website design and development" },
-    { icon: Building2, label: "Services", desc: "Service category architecture (Aesthetics, Nails, Hair, Laser & Wellness)" },
-    { icon: CheckCircle2, label: "Booking", desc: "Online booking system integration" },
-    { icon: Target, label: "SEO", desc: "SEO-optimized content strategy" },
-    { icon: Smartphone, label: "Mobile UX", desc: "Mobile-responsive premium experience" },
+    { icon: Layout, label: "Services", desc: "Service category architecture (Aesthetics, Nails, Hair, Laser & Wellness)" },
+    { icon: Calendar, label: "Booking", desc: "Online booking system integration" },
+    { icon: Chrome, label: "SEO", desc: "SEO-optimized content strategy" },
+    { icon: SiApple, label: "Mobile UX", desc: "Mobile-responsive premium experience" },
   ];
 
   return (
@@ -368,13 +346,6 @@ function OraDetail() {
 }
 
 function NurCafeDetail() {
-  const [activeTab, setActiveTab] = useState(0);
-  const tabs = [
-    { icon: LineChart, label: "AI Dashboard", desc: "Real-time sales tracking, team management, and customer sentiment analysis" },
-    { icon: Smartphone, label: "Mobile App", desc: "Online ordering with checkout, loyalty points, and full menu experience" },
-    { icon: Store, label: "Multi-Location", desc: "Helping launch delivery service and marketing on-the-go coffee experience" },
-  ];
-
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-2">
@@ -404,28 +375,6 @@ function NurCafeDetail() {
         ))}
       </div>
 
-      <div>
-        <p className="text-white/60 text-xs uppercase tracking-wider mb-3">What We Built</p>
-        <div className="grid grid-cols-3 gap-2">
-          {tabs.map((tab, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveTab(i)}
-              className={`aspect-square rounded-lg p-3 text-left flex flex-col justify-between transition-all duration-200 border ${
-                activeTab === i
-                  ? 'bg-gold/15 border-gold/40 text-gold'
-                  : 'bg-white/5 border-white/10 text-white/60 hover-elevate'
-              }`}
-              data-testid={`tab-nurcafe-${i}`}
-            >
-              <tab.icon className={`w-4 h-4 ${activeTab === i ? 'text-gold' : 'text-white/30'}`} />
-              <span className="text-xs font-medium leading-tight">{tab.label}</span>
-            </button>
-          ))}
-        </div>
-        <p className="text-white/50 text-sm mt-3 min-h-[2rem]">{tabs[activeTab].desc}</p>
-      </div>
-
       <div className="grid grid-cols-2 gap-3">
         <div className="rounded-lg overflow-hidden border border-white/10">
           <img src={nurCafeDashboardImg} alt="Nur Cafe Dashboard" className="w-full object-cover" data-testid="img-nurcafe-dashboard" />
@@ -436,7 +385,7 @@ function NurCafeDetail() {
       </div>
 
       <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-        <h4 className="text-sm text-white/70 mb-3">Revenue & Profit Trajectory</h4>
+        <h4 className="text-sm text-white/70 mb-3">Revenue Trajectory</h4>
         <ResponsiveContainer width="100%" height={180}>
           <BarChart data={nurCafeRevenueData} barGap={0}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
@@ -444,13 +393,12 @@ function NurCafeDetail() {
             <YAxis stroke="rgba(255,255,255,0.3)" fontSize={10} tickFormatter={(v) => `£${v/1000000}M`} />
             <Tooltip 
               formatter={(value: number, name: string) => [
-                name === 'revenue' ? `£${(value/1000000).toFixed(2)}M` : `£${value.toLocaleString()}`,
-                name === 'revenue' ? 'Revenue' : 'Profit'
+                `£${(value/1000000).toFixed(2)}M`,
+                'Revenue'
               ]}
               contentStyle={{ background: '#1a1a1a', border: '1px solid rgba(196,160,82,0.3)', borderRadius: '8px', color: '#fff', fontSize: '12px' }}
             />
             <Bar dataKey="revenue" fill="#C4A052" radius={[3, 3, 0, 0]} name="Revenue" />
-            <Bar dataKey="profit" fill="#8B7635" radius={[3, 3, 0, 0]} name="Profit" />
             <Legend wrapperStyle={{ color: 'rgba(255,255,255,0.6)', fontSize: '11px' }} />
           </BarChart>
         </ResponsiveContainer>
@@ -462,11 +410,11 @@ function NurCafeDetail() {
 function NurCafeExpansionDetail() {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
-    { icon: Leaf, label: "Green Rebrand", desc: "Complete green brand identity redesign" },
+    { icon: Instagram, label: "Green Rebrand", desc: "Complete green brand identity redesign" },
     { icon: Globe, label: "New Website", desc: "Expansion-focused website with location pages" },
     { icon: MapPin, label: "Location Finder", desc: "Multi-location finder app with interactive map" },
     { icon: Store, label: "Oxford Road", desc: "Oxford Road, Manchester location launch" },
-    { icon: Smartphone, label: "App Update", desc: "Updated mobile app with location switching" },
+    { icon: SiApple, label: "App Update", desc: "Updated mobile app with location switching" },
   ];
 
   return (
@@ -778,13 +726,16 @@ export default function ClientResults() {
                 {caseStudies.map((study) => (
                   <button
                     key={study.id}
-                    onClick={() => setSelectedStudy(study.id)}
+                    onClick={() => !study.disabled && setSelectedStudy(study.id)}
                     className={`relative rounded-xl overflow-hidden transition-all duration-300 border-2 group ${
-                      selectedStudy === study.id
-                        ? 'border-gold ring-1 ring-gold/30 scale-[1.02]'
-                        : 'border-white/5'
+                      study.disabled 
+                        ? 'opacity-20 grayscale cursor-not-allowed border-transparent' 
+                        : selectedStudy === study.id
+                          ? 'border-gold ring-1 ring-gold/30 scale-[1.02]'
+                          : 'border-white/5'
                     }`}
                     data-testid={`card-client-${study.id}`}
+                    disabled={study.disabled}
                   >
                     <div 
                       className="aspect-square flex items-center justify-center p-4 relative"
