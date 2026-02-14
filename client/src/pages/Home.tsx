@@ -12,6 +12,39 @@ import logo1 from "@assets/logo_1.png";
 import logo2 from "@assets/logo_2.png";
 import logo3 from "@assets/logo_3.png";
 import logo4 from "@assets/logo_4.png";
+import pristinePolishLogo from "@assets/download_(60)_1771092036403.png";
+import amygdalaAcquisitionsLogo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1771092230145.png";
+import spidxrLogo4k from "@assets/Untitled_design_(1)_Medium_1771092233909.png";
+
+// Tech stack logos (using React Icons)
+import { 
+  SiXcode, SiVisualstudio, SiGoogleads, SiSlack, SiAsana, SiReplit, 
+  SiOpenai, SiAnthropic, SiN8N, SiApple, SiWix, SiNotion, SiFirebase,
+  SiGooglegemini, SiHuggingface, SiGoogle, SiGooglesearchconsole,
+  SiAsana as SiAsanaAlt
+} from "react-icons/si";
+import { GraduationCap } from "lucide-react";
+
+const techStack = [
+  { name: "Xcode", icon: SiXcode },
+  { name: "VS Code", icon: SiVisualstudio },
+  { name: "Google Ads", icon: SiGoogleads },
+  { name: "Slack", icon: SiSlack },
+  { name: "Asana", icon: SiAsanaAlt },
+  { name: "Replit", icon: SiReplit },
+  { name: "Gemini", icon: SiGooglegemini },
+  { name: "ChatGPT", icon: SiOpenai },
+  { name: "Claude", icon: SiAnthropic },
+  { name: "n8n", icon: SiN8N },
+  { name: "App Store", icon: SiApple },
+  { name: "Skool", icon: GraduationCap },
+  { name: "Google", icon: SiGoogle },
+  { name: "SEO", icon: SiGooglesearchconsole },
+  { name: "Hugging Face", icon: SiHuggingface },
+  { name: "Wix", icon: SiWix },
+  { name: "Notion", icon: SiNotion },
+  { name: "Firebase", icon: SiFirebase },
+];
 import ctaImage from "@assets/download_(3)_1768908363469.webp";
 import topFunnelImg from "@assets/download_(49)_1770656963246.png";
 import middleFunnelImg from "@assets/download_(50)_1770656967005.png";
@@ -192,44 +225,77 @@ export default function Home() {
                 transition={{ delay: 0.6, duration: 0.5 }}
               >
                 <div className="flex -space-x-2">
-                  {[logo1, logo2, logo3, logo4].map((src, i) => (
-                    <div key={i} className="w-8 h-8 rounded-full bg-white border-2 border-white shadow-sm flex items-center justify-center overflow-hidden">
-                      <img src={src} alt="" className="w-5 h-5 object-contain" />
-                    </div>
-                  ))}
+              {[logo1, logo2, logo3, logo4, pristinePolishLogo, amygdalaAcquisitionsLogo].map((src, i) => (
+                <div key={i} className="w-8 h-8 rounded-full bg-white border-2 border-white shadow-sm flex items-center justify-center overflow-hidden">
+                  <img src={src} alt="" className="w-5 h-5 object-contain" />
                 </div>
-                <p className="text-sm text-charcoal-medium">
-                  Trusted by <span className="text-charcoal font-medium">60+ companies</span>
-                </p>
-              </motion.div>
+              ))}
             </div>
-
-            {/* Video Placeholder Below Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-              className="relative w-full max-w-4xl mt-16"
-            >
-              <div
-                className="relative aspect-video rounded-2xl overflow-hidden bg-charcoal/5 border border-charcoal/10 group cursor-pointer shadow-2xl"
-                data-testid="hero-video-placeholder"
-                onClick={() => setVideoModal(0)}
-              >
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <img src={logo} alt="SPIDXR NETWORK" className="h-10 w-auto mb-8 opacity-40" />
-                  <div className="w-20 h-20 rounded-full bg-gold/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Play className="w-8 h-8 text-charcoal ml-1" fill="currentColor" />
-                  </div>
-                  <p className="text-charcoal font-medium text-lg mt-6">Meet the Founder</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+            <p className="text-sm text-charcoal-medium">
+              Trusted by <span className="text-charcoal font-medium">60+ companies</span>
+            </p>
+          </motion.div>
         </div>
-      </section>
-      {/* Logo Carousel */}
-      <LogoCarousel />
+
+        {/* Video Placeholder Below Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+          className="relative w-full max-w-4xl mt-16"
+        >
+          <div
+            className="relative aspect-video rounded-2xl overflow-hidden bg-charcoal/5 border border-charcoal/10 group cursor-pointer shadow-2xl"
+            data-testid="hero-video-placeholder"
+            onClick={() => setVideoModal(0)}
+          >
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <img src={spidxrLogo4k} alt="SPIDXR NETWORK" className="h-10 w-auto mb-8 opacity-40" />
+              <div className="w-20 h-20 rounded-full bg-gold/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <Play className="w-8 h-8 text-charcoal ml-1" fill="currentColor" />
+              </div>
+              <p className="text-charcoal font-medium text-lg mt-6">Meet the Founder</p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </section>
+
+  {/* Logo Carousel */}
+  <LogoCarousel />
+
+  {/* Tech Integration Carousel */}
+  <section className="py-10 bg-white overflow-hidden relative border-t border-charcoal/5" data-testid="section-tech-carousel">
+    <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+    <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+    <p className="text-center text-xs text-charcoal-medium/60 tracking-[0.2em] uppercase mb-8">
+      Experts in tech integration
+    </p>
+
+    <div className="flex overflow-hidden">
+      <motion.div
+        className="flex gap-16 items-center"
+        animate={{ x: [-2400, 0] }}
+        transition={{
+          duration: 60,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      >
+        {[...techStack, ...techStack, ...techStack].map((tech, i) => (
+          <div
+            key={i}
+            className="flex flex-col items-center gap-2 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+          >
+            <tech.icon className="w-8 h-8 text-charcoal" />
+            <span className="text-[10px] font-medium text-charcoal uppercase tracking-tighter">{tech.name}</span>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  </section>
       {/* SERVICES - Square Grid */}
       <section className="py-24 bg-white" data-testid="section-services-grid">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

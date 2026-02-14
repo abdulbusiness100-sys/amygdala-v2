@@ -114,9 +114,9 @@ const nurCafeRevenueData = [
 ];
 
 const adCampaignData = [
-  { campaign: 'Ad A', spend: 400, revenue: 13300 },
-  { campaign: 'Ad B', spend: 5000, revenue: 25450 },
-  { campaign: 'Ad C', spend: 8000, revenue: 30900 },
+  { campaign: 'Ad A', spend: 400, revenue: 13300, roas: '33.25x' },
+  { campaign: 'Ad B', spend: 5000, revenue: 25450, roas: '5.09x' },
+  { campaign: 'Ad C', spend: 8000, revenue: 30900, roas: '3.86x' },
 ];
 
 const callPerformanceData = [
@@ -355,13 +355,13 @@ function OraDetail() {
               }`}
               data-testid={`tab-ora-${i}`}
             >
-              <tab.icon className={`w-6 h-6 ${activeTab === i ? 'text-gold' : 'text-white/30'}`} />
+              <tab.icon className={`w-8 h-8 ${activeTab === i ? 'text-gold' : 'text-white/30'}`} />
             </button>
           ))}
         </div>
-        <div className="mt-3 min-h-[2.5rem]">
-          <p className="text-gold text-xs font-bold uppercase tracking-tight">{tabs[activeTab].label}</p>
-          <p className="text-white/50 text-sm">{tabs[activeTab].desc}</p>
+        <div className="mt-4 text-center min-h-[3rem]">
+          <p className="text-gold text-sm font-bold uppercase tracking-widest mb-1">{tabs[activeTab].label}</p>
+          <p className="text-white/50 text-sm max-w-md mx-auto">{tabs[activeTab].desc}</p>
         </div>
       </div>
 
@@ -485,13 +485,13 @@ function NurCafeExpansionDetail() {
               }`}
               data-testid={`tab-expansion-${i}`}
             >
-              <tab.icon className={`w-5 h-5 ${activeTab === i ? 'text-[#4CAF50]' : 'text-white/30'}`} />
+              <tab.icon className={`w-7 h-7 ${activeTab === i ? 'text-[#4CAF50]' : 'text-white/30'}`} />
             </button>
           ))}
         </div>
-        <div className="mt-3 min-h-[2.5rem]">
-          <p className="text-[#4CAF50] text-xs font-bold uppercase tracking-tight">{tabs[activeTab].label}</p>
-          <p className="text-white/50 text-sm">{tabs[activeTab].desc}</p>
+        <div className="mt-4 text-center min-h-[3rem]">
+          <p className="text-[#4CAF50] text-sm font-bold uppercase tracking-widest mb-1">{tabs[activeTab].label}</p>
+          <p className="text-white/50 text-sm max-w-md mx-auto">{tabs[activeTab].desc}</p>
         </div>
       </div>
 
@@ -542,10 +542,16 @@ function AdsDetail() {
               <XAxis dataKey="campaign" stroke="rgba(255,255,255,0.3)" fontSize={10} />
               <YAxis stroke="rgba(255,255,255,0.3)" fontSize={10} />
               <Tooltip 
-                formatter={(value: number, name: string) => [
-                  name === 'revenue' ? `£${value.toLocaleString()}` : `£${value.toLocaleString()}`,
-                  name === 'spend' ? 'Ad Spend' : 'Revenue'
+                formatter={(value: number, name: string, props: any) => [
+                  name === 'Revenue' ? `£${value.toLocaleString()}` : 
+                  name === 'Ad Spend' ? `£${value.toLocaleString()}` :
+                  `£${value.toLocaleString()}`,
+                  name
                 ]}
+                labelFormatter={(label) => {
+                  const data = adCampaignData.find(d => d.campaign === label);
+                  return `${label} ${data ? `(ROAS: ${data.roas})` : ''}`;
+                }}
                 contentStyle={{ background: '#1a1a1a', border: '1px solid rgba(196,160,82,0.3)', borderRadius: '8px', color: '#fff', fontSize: '12px' }}
               />
               <Bar dataKey="spend" fill="rgba(255,255,255,0.15)" radius={[3, 3, 0, 0]} name="Ad Spend" />

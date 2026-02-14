@@ -16,6 +16,9 @@ import logo13 from "@assets/logo_13.png";
 import logo14 from "@assets/logo_14.png";
 import logo15 from "@assets/logo_15.png";
 import logo16 from "@assets/logo_16.png";
+import pristinePolishLogo from "@assets/download_(60)_1771092036403.png";
+import amygdalaAcquisitionsLogo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1771092230145.png";
+import spidxrLogo4k from "@assets/Untitled_design_(1)_Medium_1771092233909.png";
 
 const clientLogos = [
   { name: "Client 1", src: logo1 },
@@ -34,6 +37,9 @@ const clientLogos = [
   { name: "Client 14", src: logo14 },
   { name: "Client 15", src: logo15 },
   { name: "Client 16", src: logo16 },
+  { name: "Pristine Polish", src: pristinePolishLogo },
+  { name: "Amygdala Acquisitions", src: amygdalaAcquisitionsLogo },
+  { name: "SPIDXR 4K", src: spidxrLogo4k },
 ];
 
 export default function LogoCarousel() {
@@ -62,7 +68,7 @@ export default function LogoCarousel() {
               className="flex-shrink-0 h-10 w-28 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
               data-testid={`logo-client-${i}`}
             >
-              <img src={logo.src} alt={logo.name} className="h-8 w-auto object-contain max-w-[100px]" />
+              <img src={logo.src} alt={logo.name} className={`${logo.name === "SPIDXR 4K" ? "h-12" : "h-8"} w-auto object-contain max-w-[120px]`} />
             </div>
           ))}
         </motion.div>
