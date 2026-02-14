@@ -16,21 +16,20 @@ import pristinePolishLogo from "@assets/download_(60)_1771092036403.png";
 import amygdalaAcquisitionsLogo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1771092230145.png";
 import spidxrLogo4k from "@assets/Untitled_design_(1)_Medium_1771092233909.png";
 
-// Tech stack logos (using React Icons)
+// Tech stack logos
 import { 
-  SiXcode, SiVisualstudio, SiGoogleads, SiSlack, SiAsana, SiReplit, 
+  SiXcode, SiGoogleads, SiSlack, SiAsana, SiReplit, 
   SiOpenai, SiAnthropic, SiN8N, SiApple, SiWix, SiNotion, SiFirebase,
-  SiGooglegemini, SiHuggingface, SiGoogle, SiGooglesearchconsole,
-  SiAsana as SiAsanaAlt
+  SiGooglegemini, SiHuggingface, SiGoogle, SiGooglesearchconsole
 } from "react-icons/si";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Code2 } from "lucide-react";
 
 const techStack = [
   { name: "Xcode", icon: SiXcode },
-  { name: "VS Code", icon: SiVisualstudio },
+  { name: "VS Code", icon: Code2 },
   { name: "Google Ads", icon: SiGoogleads },
   { name: "Slack", icon: SiSlack },
-  { name: "Asana", icon: SiAsanaAlt },
+  { name: "Asana", icon: SiAsana },
   { name: "Replit", icon: SiReplit },
   { name: "Gemini", icon: SiGooglegemini },
   { name: "ChatGPT", icon: SiOpenai },
