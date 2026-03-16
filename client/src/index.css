@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,10 +35,10 @@
 
   --radius: 0.75rem;
 
-  /* Apple-style system font stack */
-  --font-system: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-sans: var(--font-system);
-  --font-display: var(--font-system);
+  /* Font stack */
+  --font-system: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-sans: 'Space Grotesk', var(--font-system);
+  --font-display: 'Playfair Display', Georgia, serif;
   --font-accent: var(--font-system);
 
   /* Gold gradient */
@@ -87,7 +89,7 @@
   
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-sans);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: -0.01em;

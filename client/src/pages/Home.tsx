@@ -7,6 +7,7 @@ import { useRef, useState, useEffect } from "react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import LogoCarousel from "@/components/LogoCarousel";
 import { FadeIn } from "@/components/TextReveal";
+import LeadForm from "@/components/LeadForm";
 
 import logo1 from "@assets/logo_1.png";
 import logo2 from "@assets/logo_2.png";
@@ -201,8 +202,8 @@ export default function Home() {
                 transition={{ delay: 0.15, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
                 data-testid="text-hero-heading"
               >
-                We Build Systems{" "}
-                <span className="text-gradient">That Scale Businesses</span>
+                Your External{" "}
+                <span className="text-gradient">COO Partner</span>
               </motion.h1>
 
               <motion.p
@@ -212,15 +213,14 @@ export default function Home() {
                 transition={{ delay: 0.3, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                 data-testid="text-hero-subtitle"
               >
-                One unified partner replacing your fragmented agency stack.
-                Marketing. Sales. Technology. Connected.
+                Operations. Growth. Technology. One partner managing all three — so you can focus on what you do best.
               </motion.p>
 
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                className="mb-12"
+                className="mb-12 flex flex-col sm:flex-row items-center justify-center gap-4"
               >
                 <Button
                   size="lg"
@@ -229,6 +229,19 @@ export default function Home() {
                   data-testid="button-hero-cta"
                 >
                   Book Strategy Call <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-charcoal/30 text-charcoal bg-transparent hover:border-gold hover:text-charcoal text-base px-10 py-7 transition-all duration-300"
+                  onClick={() => {
+                    const el = document.getElementById('lead-form');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  data-testid="button-hero-audit"
+                  asChild
+                >
+                  <a href="#lead-form">Get Free Growth Audit</a>
                 </Button>
               </motion.div>
 
@@ -316,7 +329,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-16">
-              <p className="text-gold text-sm tracking-[0.15em] uppercase mb-4 font-medium">The Unified Growth Stack</p>
+              <p className="text-gold text-sm tracking-[0.15em] uppercase mb-4 font-medium">Your External COO Platform</p>
               <h2 className="text-4xl md:text-5xl text-charcoal mb-4 font-semibold leading-tight">
                 Our <span className="text-gradient">Core Services</span>
               </h2>
@@ -447,7 +460,7 @@ export default function Home() {
             </div>
           </FadeIn>
 
-          <div className="grid md:grid-cols-3 gap-6 opacity-40 grayscale pointer-events-none select-none">
+          <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className="group" data-testid={`testimonial-card-${i}`}>
@@ -509,8 +522,28 @@ export default function Home() {
           </div>
         </div>
       )}
+      {/* LEAD FORM - Free Growth Audit */}
+      <section id="lead-form" className="py-24 bg-cream" data-testid="section-lead-form">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <p className="text-gold text-sm tracking-[0.15em] uppercase mb-4 font-medium">Free Growth Audit</p>
+              <h2 className="text-4xl md:text-5xl text-charcoal mb-4 font-semibold leading-tight">
+                Get Your Free <span className="text-gradient">Growth Audit</span>
+              </h2>
+              <p className="text-charcoal-medium text-lg max-w-xl mx-auto">
+                Tell us about your business. We'll identify exactly where your growth is being held back — no call required.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <LeadForm />
+          </FadeIn>
+        </div>
+      </section>
+
       {/* PROCESS - Horizontal Timeline */}
-      <section className="py-24 bg-cream" data-testid="section-process" ref={processRef}>
+      <section className="py-24 bg-white" data-testid="section-process" ref={processRef}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-16">
