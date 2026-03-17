@@ -51,7 +51,8 @@ export default function LeadForm() {
 
   return (
     <div className="bg-white p-6 md:p-8 rounded-2xl border border-charcoal/10 shadow-sm">
-      <h3 className="font-display text-2xl text-charcoal mb-6">Request Your Audit</h3>
+      <h3 className="font-display text-2xl text-charcoal mb-1">Free COO Readiness Assessment</h3>
+      <p className="text-charcoal-medium text-sm mb-6">Answer 5 questions. Find out if your agency is operationally ready to scale — and where the gaps are.</p>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -178,7 +179,7 @@ export default function LeadForm() {
               </>
             ) : (
               <>
-                Get Free Audit <ArrowRight className="ml-2 h-5 w-5" />
+                Get My Free Assessment <ArrowRight className="ml-2 h-5 w-5" />
               </>
             )}
           </Button>

@@ -241,7 +241,7 @@ export default function Home() {
                   data-testid="button-hero-audit"
                   asChild
                 >
-                  <a href="#lead-form">Get Free Growth Audit</a>
+                  <a href="#lead-form">Get Free COO Assessment</a>
                 </Button>
               </motion.div>
 
