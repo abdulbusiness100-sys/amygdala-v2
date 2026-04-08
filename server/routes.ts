@@ -43,11 +43,11 @@ async function sendLeadNotification(lead: {
 
   await transporter.sendMail({
     from: `"SPIDXR Network" <${process.env.SMTP_USER}>`,
-    to: "spidxr253@gmail.com",
-    subject: "New Client",
+    to: "network@spidxr.co.uk",
+    subject: "New Lead — SPIDXR Network Assessment",
     html: `
       <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
-        <h2 style="background:#111;color:#E8C547;padding:20px;margin:0">New COO Assessment Submission</h2>
+        <h2 style="background:#111;color:#E8C547;padding:20px;margin:0">New Business Assessment Submission</h2>
         <table style="width:100%;border-collapse:collapse;background:#fafafa">${rows}</table>
         <p style="padding:16px;color:#888;font-size:12px">Submitted via spidxrnetwork.co.uk</p>
       </div>

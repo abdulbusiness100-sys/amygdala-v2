@@ -45,10 +45,9 @@ export default function Footer() {
           <div>
             <h4 className="font-accent font-semibold text-gold text-sm tracking-wider uppercase mb-6">Get In Touch</h4>
             <ul className="space-y-4 text-cream/70 text-sm">
-              <li>growth@spidxr.co.uk</li>
+              <li>network@spidxr.co.uk</li>
               <li className="pt-2">London, UK</li>
-              <li>Los Angeles, CA</li>
-              <li>Dubai, UAE</li>
+              <li>New York, US</li>
             </ul>
           </div>
         </div>

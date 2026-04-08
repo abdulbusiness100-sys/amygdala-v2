@@ -51,8 +51,8 @@ export default function LeadForm() {
 
   return (
     <div className="bg-white p-6 md:p-8 rounded-2xl border border-charcoal/10 shadow-sm">
-      <h3 className="font-display text-2xl text-charcoal mb-1">Free COO Readiness Assessment</h3>
-      <p className="text-charcoal-medium text-sm mb-6">Answer 5 questions. Find out if your agency is operationally ready to scale — and where the gaps are.</p>
+      <h3 className="font-display text-2xl text-charcoal mb-1">Free Business Assessment</h3>
+      <p className="text-charcoal-medium text-sm mb-6">Answer 5 questions. We'll identify which C-level function your business needs most — and what 90 days of embedded support looks like.</p>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -111,10 +111,14 @@ export default function LeadForm() {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="saas">SaaS</SelectItem>
-                      <SelectItem value="agency">Agency</SelectItem>
-                      <SelectItem value="consulting">Consulting</SelectItem>
-                      <SelectItem value="ecommerce">E-commerce</SelectItem>
+                      <SelectItem value="hospitality">Hospitality / Restaurant</SelectItem>
+                      <SelectItem value="health-wellness">Health & Wellness / Clinic</SelectItem>
+                      <SelectItem value="salon-beauty">Salon / Beauty</SelectItem>
+                      <SelectItem value="cleaning-home-services">Cleaning / Home Services</SelectItem>
+                      <SelectItem value="agency">Marketing Agency</SelectItem>
+                      <SelectItem value="education">Education / Institute</SelectItem>
+                      <SelectItem value="ecommerce">E-commerce / Retail</SelectItem>
+                      <SelectItem value="consulting">Consulting / Professional Services</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
@@ -179,7 +183,7 @@ export default function LeadForm() {
               </>
             ) : (
               <>
-                Get My Free Assessment <ArrowRight className="ml-2 h-5 w-5" />
+                Get My Free Business Assessment <ArrowRight className="ml-2 h-5 w-5" />
               </>
             )}
           </Button>

@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "wouter";
-import { CheckCircle2, Sparkles, Radar, Handshake, Server, Globe, Palette, Share2, ShoppingBag, Target, Mail, Users, Headphones, Settings, Building, BrainCircuit, Rocket } from "lucide-react";
+import { motion } from "framer-motion";
+import { CheckCircle2, Sparkles } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedServicesShowcase from "@/components/AnimatedServicesShowcase";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Button } from "@/components/ui/button";
 
@@ -35,54 +37,10 @@ export default function Services() {
     const timer = setTimeout(initCalendly, 1000);
     return () => clearTimeout(timer);
   }, []);
-  const serviceLayers = [
-    {
-      title: "TOP OF FUNNEL",
-      subtitle: "Visibility & Acquisition",
-      tagline: "Where your market discovers you",
-      icon: Radar,
-      color: "from-gold to-gold-dark",
-      services: [
-        { name: "Website Design & Development", icon: Globe, result: "Average 47% increase in time-on-site" },
-        { name: "Brand Identity & Strategy", icon: Palette, result: "Brands we build command 23% higher prices" },
-        { name: "Social Media Automation", icon: Share2, result: "3x engagement with 70% less time" },
-        { name: "E-commerce Optimization", icon: ShoppingBag, result: "Average 34% revenue increase in 90 days" },
-        { name: "Lead Generation Systems", icon: Target, result: "2.3x more qualified leads per dollar" },
-        { name: "Paid & Organic Acquisition", icon: Rocket, result: "Average 4.2x ROAS across clients" },
-      ]
-    },
-    {
-      title: "MIDDLE FUNNEL",
-      subtitle: "Conversion & Sales",
-      tagline: "Where interest becomes revenue",
-      icon: Handshake,
-      color: "from-gold-dark to-gold",
-      services: [
-        { name: "Lead Nurturing & Email Automation", icon: Mail, result: "67% of closed deals touch 5+ automated emails" },
-        { name: "Full Sales Cycle Management", icon: Users, result: "Average 2.1x close rate improvement" },
-        { name: "Customer Success & Retention", icon: Headphones, result: "38% increase in customer lifetime value" },
-        { name: "Sales Process Automation", icon: Settings, result: "Sales teams save 12 hours/week" },
-      ]
-    },
-    {
-      title: "BACK END",
-      subtitle: "Infrastructure & Scale",
-      tagline: "Where businesses become empires",
-      icon: Server,
-      color: "from-gold to-gold-dark",
-      services: [
-        { name: "Full Application Development", icon: Globe, result: "From concept to MVP in 8-12 weeks" },
-        { name: "Custom CRM Development", icon: Building, result: "CRMs built for exactly how you sell" },
-        { name: "AI Integration & Automation", icon: BrainCircuit, result: "40% reduction in manual workload" },
-        { name: "Go-To-Market Strategy", icon: Rocket, result: "GTM plans that actually execute" },
-        { name: "Enterprise Operations", icon: Building, result: "Scale without the growing pains" },
-      ]
-    }
-  ];
 
   const pricingTiers = [
     {
-      name: 'STRAND',
+      name: 'Single Function',
       tagline: 'For businesses ready to build foundations',
       price: '$3,000 - $5,000',
       period: '/month',
@@ -91,7 +49,7 @@ export default function Services() {
       popular: false,
     },
     {
-      name: 'WEB',
+      name: 'Dual Function',
       tagline: 'For businesses ready to integrate',
       price: '$7,500 - $15,000',
       period: '/month',
@@ -100,7 +58,7 @@ export default function Services() {
       popular: true,
     },
     {
-      name: 'NETWORK',
+      name: 'Full C-Suite',
       tagline: 'For businesses ready to dominate',
       price: '$20,000+',
       period: '/month',
@@ -112,7 +70,7 @@ export default function Services() {
 
   const faqs = [
     { q: 'How long before I see results?', a: 'Most clients see measurable improvements within the first 4-6 weeks. Full system implementation typically takes 8-12 weeks, with optimization continuing thereafter.' },
-    { q: 'What industries do you work with?', a: 'We specialize in B2B services, agencies, consultancies, SaaS, and high-ticket B2C. If your business relies on lead generation and sales processes, we can help.' },
+    { q: 'What industries do you work with?', a: 'We work with hospitality, health & wellness, education, marketing agencies, merchandising, salons, and professional services. Our C-level operators have experience across 10+ industries.' },
     { q: "Do I need technical skills?", a: 'No. We handle all the technical implementation. For the Strand tier, we provide training and guidance anyone can follow.' },
     { q: "What's the minimum commitment?", a: 'We recommend a minimum of 3 months to see full results, but we offer flexible arrangements based on your needs and goals.' },
     { q: "Can I start with one layer and expand?", a: 'Absolutely. Many clients start with a single focus area and expand as they see results. Our system is designed to grow with you.' },
@@ -121,6 +79,21 @@ export default function Services() {
 
   return (
     <div className="overflow-hidden relative min-h-screen grain">
+      {/* Scroll Statement */}
+      <section className="min-h-[60vh] flex items-center justify-center px-6 bg-white pt-24">
+        <motion.h2
+          initial={{ opacity: 0.1, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-semibold text-charcoal text-center max-w-4xl leading-tight tracking-tight"
+          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+        >
+          We don&apos;t teach you how to build the machine.{" "}
+          <span className="text-gold">We build it.</span>
+        </motion.h2>
+      </section>
+
       {/* Hero */}
       <section className="pt-32 pb-20 bg-white relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
@@ -128,57 +101,19 @@ export default function Services() {
             <div className="w-px h-12 bg-gold mx-auto mb-8"></div>
             <p className="font-accent text-gold text-sm tracking-[0.15em] uppercase mb-4">OUR SERVICES</p>
             <h1 className="font-display text-5xl md:text-7xl text-charcoal mb-6">
-              Full-Stack Growth.<br />
-              <span className="text-gradient">Every Layer Covered.</span>
+              C-Level Expertise.<br />
+              <span className="text-gradient">Every Function Covered.</span>
             </h1>
             <p className="text-xl text-charcoal-medium max-w-2xl mx-auto">
-              From your first website visitor to your hundredth enterprise client.<br />
-              One unified system. One partner. Zero gaps.
+              COO. CTO. CFO. CSO. — four C-level operators, one network.<br />
+              We embed directly into your business and build the infrastructure you need to scale.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Service Layers */}
-      <section className="py-24 bg-cream relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {serviceLayers.map((layer, li) => (
-            <ScrollReveal key={li}>
-              <div className="border-2 border-charcoal rounded-3xl p-8 bg-gradient-to-br from-white to-cream/80" data-testid={`section-service-layer-${li}`}>
-                <div className="flex items-center gap-4 mb-8 pb-6 border-b border-charcoal/10">
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${layer.color} flex items-center justify-center`}>
-                    <layer.icon className="w-7 h-7 text-charcoal" />
-                  </div>
-                  <div>
-                    <h2 className="font-display text-2xl text-charcoal">{layer.title}</h2>
-                    <p className="font-accent text-sm text-charcoal-medium">{layer.subtitle} | {layer.tagline}</p>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {layer.services.map((service, si) => (
-                    <div 
-                      key={si} 
-                      className="border border-charcoal/20 bg-gradient-to-b from-white to-cream/50 p-5 rounded-xl h-full hover:border-charcoal/40 transition-colors"
-                      data-testid={`card-service-${li}-${si}`}
-                    >
-                      <div className="flex items-start gap-3 mb-3">
-                        <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
-                          <service.icon className="w-4 h-4 text-gold" />
-                        </div>
-                        <h3 className="font-display text-base text-charcoal leading-tight">{service.name}</h3>
-                      </div>
-                      <div className="bg-gold/5 px-3 py-2 rounded-lg border border-gold/10">
-                        <p className="font-accent text-xs text-gold">{service.result}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
+      {/* Animated Services Showcase — Variant 4 from 21st.dev */}
+      <AnimatedServicesShowcase />
 
       {/* Service Tiers - Cylinders Side by Side */}
       <section className="py-24 bg-white relative z-10">
@@ -205,7 +140,7 @@ export default function Services() {
                     {tier.popular && (
                       <div className="text-center mb-4">
                         <span className="inline-flex items-center gap-2 gold-gradient text-charcoal px-4 py-1 rounded-full text-xs font-accent font-bold">
-                          <Sparkles className="w-3 h-3" /> MOST POPULAR
+                          <Sparkles className="w-3 h-3" fill="currentColor" /> MOST POPULAR
                         </span>
                       </div>
                     )}

@@ -4,6 +4,7 @@ import logo from "@assets/AMYGDALA_ACQUISITIONS_(6)_1768919980907.png";
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import GlobeHero from "../components/GlobeHero";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import LogoCarousel from "@/components/LogoCarousel";
 import { FadeIn } from "@/components/TextReveal";
@@ -17,6 +18,9 @@ import pristinePolishLogo from "@assets/download_(60)_1771092036403.png";
 import amygdalaAcquisitionsLogo from "@assets/AMYGDALA_ACQUISITIONS_(2)_1771092230145.png";
 import spidxrLogo4k from "@assets/AMYGDALA_ACQUISITIONS_(6)_1771093029203.png";
 import clientLogoSpidxr from "@assets/Untitled_design_(1)_Medium_1771092233909.png";
+import genflowLogo from "@assets/Screenshot_2026-02-09_at_17.02.15_1770656579496.png";
+import promerchLogo from "@assets/client_logos_v2/logo_16.png";
+import nurCafeLogo from "@assets/image_1770656434764.png";
 
 // Tech stack logos
 import { 
@@ -119,18 +123,21 @@ const testimonials = [
     company: "Genflow",
     quote: "Revenue went from under $100K to $400K+ in a single quarter. The unified approach changed everything.",
     metric: "312% Revenue Growth",
+    image: genflowLogo,
   },
   {
     name: "",
     company: "Promerch",
     quote: "Nurtured over 1600 leads in the first 30 days. We finally have a system that works together instead of against itself.",
     metric: "Nurtured over 1600 leads",
+    image: promerchLogo,
   },
   {
     name: "",
     company: "Nur Cafe",
     quote: "From £1.1M to £1.7M in revenue. The dashboard alone saved us 15 hours a week in reporting.",
     metric: "55% Revenue Growth",
+    image: nurCafeLogo,
   },
 ];
 
@@ -143,7 +150,6 @@ const processSteps = [
 
 export default function Home() {
   const [, setLocation] = useLocation();
-  const [videoModal, setVideoModal] = useState<number | null>(null);
   const [activeService, setActiveService] = useState<typeof serviceCategories[0] | null>(null);
 
   useEffect(() => {
@@ -265,25 +271,15 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Video Placeholder Below Content */}
+        {/* 3D Globe */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="relative w-full max-w-4xl mt-16"
         >
-          <div
-            className="relative aspect-video rounded-2xl overflow-hidden bg-charcoal/5 border border-charcoal/10 group cursor-pointer shadow-2xl"
-            data-testid="hero-video-placeholder"
-            onClick={() => setVideoModal(0)}
-          >
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <img src={spidxrLogo4k} alt="SPIDXR NETWORK" className="h-10 w-auto mb-8 opacity-40" />
-              <div className="w-20 h-20 rounded-full bg-gold/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <Play className="w-8 h-8 text-charcoal ml-1" fill="currentColor" />
-              </div>
-              <p className="text-charcoal font-medium text-lg mt-6">Meet the Founder</p>
-            </div>
+          <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden" data-testid="hero-globe">
+            <GlobeHero className="w-full h-full" />
           </div>
         </motion.div>
       </div>
@@ -464,13 +460,22 @@ export default function Home() {
             {testimonials.map((t, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className="group" data-testid={`testimonial-card-${i}`}>
-                  {/* Video Thumbnail */}
+                  {/* Company Logo Thumbnail — clicks to Client Results */}
                   <div
-                    className="relative aspect-video rounded-xl overflow-hidden bg-charcoal/5 border border-charcoal/8 mb-5"
+                    className="relative aspect-video rounded-xl overflow-hidden bg-white border border-charcoal/10 mb-5 cursor-pointer shadow-sm group-hover:shadow-lg transition-shadow duration-300"
                     data-testid={`testimonial-video-${i}`}
+                    onClick={() => setLocation("/client-results")}
                   >
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-transparent to-charcoal/10">
-                      <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-md">
+                    {t.image && (
+                      <div className="absolute inset-0 flex items-center justify-center p-10">
+                        <img src={t.image} alt={t.company} className="max-h-20 w-auto object-contain" />
+                      </div>
+                    )}
+                    {/* Dark overlay on hover */}
+                    <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/40 transition-colors duration-300" />
+                    {/* Play button — appears on hover */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-14 h-14 rounded-full bg-gold flex items-center justify-center shadow-xl">
                         <Play className="w-5 h-5 text-charcoal ml-0.5" fill="currentColor" />
                       </div>
                     </div>
@@ -503,36 +508,17 @@ export default function Home() {
           </FadeIn>
         </div>
       </section>
-      {/* Video Modal */}
-      {videoModal !== null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/80 backdrop-blur-sm" onClick={() => setVideoModal(null)}>
-          <div className="relative w-full max-w-3xl mx-4 aspect-video bg-charcoal rounded-xl flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="absolute -top-10 right-0 text-white/70 hover:text-white transition-colors"
-              onClick={() => setVideoModal(null)}
-              data-testid="button-close-modal"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <div className="text-center text-white/50">
-              <Play className="w-12 h-12 mx-auto mb-3 opacity-40" />
-              <p className="text-sm">Video coming soon</p>
-              <p className="text-xs mt-1">Founder video</p>
-            </div>
-          </div>
-        </div>
-      )}
       {/* LEAD FORM - Free Growth Audit */}
       <section id="lead-form" className="py-24 bg-cream" data-testid="section-lead-form">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-12">
-              <p className="text-gold text-sm tracking-[0.15em] uppercase mb-4 font-medium">Free Growth Audit</p>
+              <p className="text-gold text-sm tracking-[0.15em] uppercase mb-4 font-medium">Free Business Assessment</p>
               <h2 className="text-4xl md:text-5xl text-charcoal mb-4 font-semibold leading-tight">
-                Get Your Free <span className="text-gradient">Growth Audit</span>
+                Get Your Free <span className="text-gradient">Business Assessment</span>
               </h2>
               <p className="text-charcoal-medium text-lg max-w-xl mx-auto">
-                Tell us about your business. We'll identify exactly where your growth is being held back — no call required.
+                Tell us about your business. We'll identify which C-level function you need most — and what 90 days looks like.
               </p>
             </div>
           </FadeIn>

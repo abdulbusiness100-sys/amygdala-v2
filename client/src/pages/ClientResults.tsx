@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { SiApple } from "react-icons/si";
 import { Button } from "@/components/ui/button";
+import LogoCarousel from "@/components/LogoCarousel";
 import { 
   BarChart, 
   Bar, 
@@ -59,6 +60,7 @@ import nurCafeRedLogo from "@assets/image_1770656434764.png";
 import nurCafeGreenLogo from "@assets/Screenshot_2026-02-09_at_16.59.20_1770656403434.png";
 import promerchLogo from "@assets/client_logos_v2/logo_16.png";
 import faseehaLogo from "@assets/Logo_(1)_1770656600139.jpeg";
+import pristinePolishLogo from "@assets/download_(60)_1771094001612.png";
 
 const ScrollReveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
   <motion.div
@@ -127,15 +129,16 @@ const callPerformanceData = [
 ];
 
 const industriesServed = [
-  { icon: Building2, name: "Clinics", count: "15+" },
+  { icon: Building2, name: "Health & Wellness", count: "15+" },
   { icon: Store, name: "Cafes & Restaurants", count: "20+" },
   { icon: Target, name: "Marketing Agencies", count: "25+" },
   { icon: Users, name: "Law Firms", count: "8+" },
-  { icon: GraduationCap, name: "Educational Institutes", count: "12+" },
+  { icon: GraduationCap, name: "Education", count: "12+" },
   { icon: Sparkles, name: "Dental Practices", count: "10+" },
+  { icon: Globe, name: "Hospitality", count: "6+" },
 ];
 
-type CaseStudyId = 'genflow' | 'ora-suites' | 'nur-cafe' | 'nur-cafe-expansion' | 'faseeha' | 'ads';
+type CaseStudyId = 'genflow' | 'ora-suites' | 'nur-cafe' | 'nur-cafe-expansion' | 'faseeha' | 'ads' | 'pristine-polish';
 
 interface CaseStudy {
   id: CaseStudyId;
@@ -145,7 +148,6 @@ interface CaseStudy {
   bgColor: string;
   showcaseImage: string;
   headline: string;
-  disabled?: boolean;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -202,7 +204,15 @@ const caseStudies: CaseStudy[] = [
     bgColor: '#b8a98c',
     showcaseImage: faseehaWebsiteImg,
     headline: '700+ Leads in 30 Days',
-    disabled: true,
+  },
+  {
+    id: 'pristine-polish',
+    name: 'Pristine Polish',
+    subtitle: 'Full-Stack Launch & Growth',
+    logo: pristinePolishLogo,
+    bgColor: '#f5e6d3',
+    showcaseImage: pristinePolishLogo,
+    headline: 'Cleaning Business — Built From Zero',
   },
 ];
 
@@ -212,6 +222,7 @@ function GenflowDetail() {
       <div className="flex items-center gap-3 mb-2">
         <img src={genflowLogo} alt="Genflow" className="h-8 object-contain" />
         <span className="text-white/40 text-sm">Sales Growth Consulting</span>
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-rose-900/30 text-rose-400 text-[10px] font-medium border border-rose-500/20 ml-2">CSO</span>
       </div>
       <p className="text-white/50 text-sm max-w-lg">
         Sales growth and execution. From under $100K quarterly to $400K+ through rigorous sales structuring, 
@@ -310,8 +321,8 @@ function OraDetail() {
       <div className="flex items-center gap-3 mb-2">
         <img src={oraSuitesLogo} alt="Ora Suites" className="h-10 object-contain" />
         <div>
-          <span className="text-white/40 text-sm block">Complete Brand Build & Launch</span>
-          <a 
+          <span className="text-white/40 text-sm block">Complete Brand Build & Launch<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-900/30 text-emerald-400 text-[10px] font-medium border border-emerald-500/20 ml-2">CTO</span></span>
+          <a
             href="https://www.orasuites.com" 
             target="_blank" 
             rel="noopener noreferrer"
@@ -378,6 +389,8 @@ function NurCafeDetail() {
       <div className="flex items-center gap-3 mb-2">
         <img src={nurCafeRedLogo} alt="Nur Cafe" className="h-10 object-contain" />
         <span className="text-white/40 text-sm">Operations, Growth & App Build</span>
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-900/30 text-amber-400 text-[10px] font-medium border border-amber-500/20 ml-2">COO</span>
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-900/30 text-sky-400 text-[10px] font-medium border border-sky-500/20 ml-2">CFO</span>
       </div>
       <p className="text-white/50 text-sm max-w-lg">
         Complete business transformation: operations overhaul, custom AI dashboard, mobile ordering app, 
@@ -451,6 +464,8 @@ function NurCafeExpansionDetail() {
         <div className="flex items-center gap-2">
           <Leaf className="w-4 h-4 text-[#4CAF50]" />
           <span className="text-[#4CAF50]/80 text-sm">Green Rebrand & Expansion</span>
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-900/30 text-amber-400 text-[10px] font-medium border border-amber-500/20">COO</span>
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-900/30 text-sky-400 text-[10px] font-medium border border-sky-500/20">CFO</span>
         </div>
       </div>
       <p className="text-white/50 text-sm max-w-lg">
@@ -511,7 +526,7 @@ function AdsDetail() {
   return (
     <div className="space-y-6">
       <div className="mb-2">
-        <span className="text-gold/80 text-sm">Aggregate Data</span>
+        <span className="text-gold/80 text-sm">Aggregate Data<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-900/30 text-amber-400 text-[10px] font-medium border border-amber-500/20 ml-2">COO</span></span>
         <h3 className="text-xl text-white font-bold mt-1">Ad Campaign Performance</h3>
       </div>
       <p className="text-white/50 text-sm max-w-lg">
@@ -595,8 +610,8 @@ function FaseehaDetail() {
       <div className="flex items-center gap-3 mb-2">
         <img src={faseehaLogo} alt="Faseeha Institute" className="h-10 object-contain" />
         <div>
-          <span className="text-white/40 text-sm block">Full Stack Build & Lead Gen</span>
-          <a 
+          <span className="text-white/40 text-sm block">Full Stack Build & Lead Gen<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-900/30 text-emerald-400 text-[10px] font-medium border border-emerald-500/20 ml-2">CTO</span></span>
+          <a
             href="https://www.faseeha.com" 
             target="_blank" 
             rel="noopener noreferrer"
@@ -686,6 +701,53 @@ function FaseehaDetail() {
   );
 }
 
+function PristinePolishDetail() {
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center gap-3 mb-2 flex-wrap">
+        <img src={pristinePolishLogo} alt="Pristine Polish" className="h-10 object-contain" />
+        <span className="text-white/40 text-sm">Full-Stack Launch & Growth</span>
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-900/30 text-emerald-400 text-[10px] font-medium border border-emerald-500/20">CTO</span>
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-900/30 text-amber-400 text-[10px] font-medium border border-amber-500/20">COO</span>
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-rose-900/30 text-rose-400 text-[10px] font-medium border border-rose-500/20">CSO</span>
+      </div>
+      <p className="text-white/50 text-sm max-w-lg">
+        Full-stack launch of a premium cleaning business — website design, admin dashboard, marketing strategy, automation flows, and ongoing growth partnership. Built from zero and still actively scaled by SPIDXR today.
+      </p>
+
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {[
+          { value: "Website", label: "Designed & Built" },
+          { value: "Admin", label: "Dashboard Live" },
+          { value: "Automated", label: "Flows & Bookings" },
+          { value: "Active", label: "Ongoing Growth" },
+        ].map((stat, i) => (
+          <div key={i} className="bg-white/5 rounded-lg p-3 text-center border border-gold/15" data-testid={`stat-pristine-${i}`}>
+            <p className="text-lg text-gold font-bold">{stat.value}</p>
+            <p className="text-white/40 text-xs">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="space-y-2">
+        {[
+          "Full website design & development",
+          "Custom admin dashboard for operations & booking",
+          "Marketing strategy & brand positioning",
+          "Automation & workflow builds (bookings, follow-ups, quotes)",
+          "Growth strategy — scaling the cleaning business directly",
+          "Ongoing partnership — still building and optimising today",
+        ].map((item, i) => (
+          <div key={i} className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+            <span className="text-white/60 text-sm">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function CaseStudyDetail({ id }: { id: CaseStudyId }) {
   switch (id) {
     case 'genflow': return <GenflowDetail />;
@@ -694,6 +756,7 @@ function CaseStudyDetail({ id }: { id: CaseStudyId }) {
     case 'nur-cafe-expansion': return <NurCafeExpansionDetail />;
     case 'ads': return <AdsDetail />;
     case 'faseeha': return <FaseehaDetail />;
+    case 'pristine-polish': return <PristinePolishDetail />;
   }
 }
 
@@ -706,6 +769,22 @@ export default function ClientResults() {
 
   return (
     <div className="min-h-screen">
+      {/* Scroll Statement */}
+      <section className="min-h-[60vh] flex items-center justify-center px-6 bg-charcoal">
+        <motion.h2
+          initial={{ opacity: 0.1, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-semibold text-white text-center max-w-4xl leading-tight tracking-tight"
+          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+        >
+          Real operators.{" "}
+          <span className="text-gold">Real results.</span>{" "}
+          Across every C-level function.
+        </motion.h2>
+      </section>
+
       {/* Hero Section */}
       <section className="relative py-20 bg-charcoal overflow-hidden" data-testid="section-results-hero">
         <div className="absolute inset-0 opacity-20">
@@ -761,16 +840,13 @@ export default function ClientResults() {
                 {caseStudies.map((study) => (
                   <button
                     key={study.id}
-                    onClick={() => !study.disabled && setSelectedStudy(study.id)}
+                    onClick={() => setSelectedStudy(study.id)}
                     className={`relative rounded-xl overflow-hidden transition-all duration-300 border-2 group ${
-                      study.disabled 
-                        ? 'opacity-20 grayscale cursor-not-allowed border-transparent' 
-                        : selectedStudy === study.id
-                          ? 'border-gold ring-1 ring-gold/30 scale-[1.02]'
-                          : 'border-white/5'
+                      selectedStudy === study.id
+                        ? 'border-gold ring-1 ring-gold/30 scale-[1.02]'
+                        : 'border-white/5'
                     }`}
                     data-testid={`card-client-${study.id}`}
-                    disabled={study.disabled}
                   >
                     <div 
                       className="aspect-square flex items-center justify-center p-4 relative"
@@ -841,6 +917,11 @@ export default function ClientResults() {
           </div>
         </div>
       </section>
+
+      {/* Client Logo Carousel */}
+      <div className="bg-white py-8">
+        <LogoCarousel />
+      </div>
 
       {/* CTA */}
       <section className="py-20 bg-charcoal relative overflow-hidden">
